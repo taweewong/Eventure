@@ -118,30 +118,55 @@ body {
 	font-size: 50px;
 }
 
-.his-list {
+.his-head {
 	height: 700px;
 	background-color: white;
 	border: 3px #95989A solid;
 	border-top: 0px;
 	font-size: 16px;
 	color: #95989A;
+	overflow-y: scroll;
 }
 
-.his-list>div {
+.his-head>div {
 	padding: 0px;
 }
 
 .date, .event, .location, .etc {
 	margin-top: 20px;
-	padding-bottom: 15px;
+	margin-bottom: 0px;
+	padding: 15px;
 	border: 3px #95989A solid;
 	border-width: 0px 0px 1px 0px;
 }
 
 .text {
 	color: black;
+	margin: 10px 0px 0px 0px;
+	padding-left: 15px;
 }
 
-.text:nth-child(2n) {
+.text-row {
+	padding-top: 10px;
+	height: 40px;
+	width: 100%;
 	background-color: #f7f7f7;
+}
+
+.box {
+	padding-left: 0px;
+}
+
+.his-list {
+	height: 40px;
+}
+
+.his-list:nth-of-type(2n-1) {
+	background-color: #F3F3F3;
+}
+
+.search {
+	width: 50%;
+	position: absolute;
+	right: 10%;
 }
