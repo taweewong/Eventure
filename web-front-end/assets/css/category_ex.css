@@ -96,14 +96,10 @@
 
 /*Default CSS*/
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 body {
 	background-color: #F3F3F3;
 }
 
->>>>>>> category_page
 .wrapper {
 	text-align: center;
 	width: 80%;
@@ -134,49 +130,7 @@ body {
 	
 }
 
-<<<<<<< HEAD
-=======
-body {
-	background-color: #F3F3F3;
-}
-
-.wrapper {
-	text-align: center;
-	width: 100%;
-	background-color: white;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.title {
-	text-align: left;	
-	padding: 30px;
-	background-color: #0099FF;
-	color: white;
-}
-
-.box {
-	width: 450px;
-	display: inline-block;
-}
-
-.box>div:first-child {
-	width: 200px;
-	display: inline-block;
-}
-
-.show-case {
-	padding: 30px;
-	
-}
-
 .detail {
 	display: inline-block;
     vertical-align: middle;
->>>>>>> profile
-=======
-.detail {
-	display: inline-block;
-    vertical-align: middle;
->>>>>>> category_page
 }
