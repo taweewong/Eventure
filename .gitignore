@@ -46,3 +46,4 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 /web-back-end/Eventure/nbproject/private/
+/web-back-end/Eventure/dist/
