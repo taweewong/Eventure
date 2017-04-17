@@ -19,7 +19,7 @@
                     <h3>Sign in</h3>
                     <p>Havn't registered yet ? <a href="sign_up.jsp">sign up</a></p>
                     <div class="form">
-                        <form method="POST">
+                        <form method="POST" action="NewServlet">
                             <h4>Username :</h4>
                             <input type="text" name="username" class="form-input">
                             <h4>Password :</h4>
