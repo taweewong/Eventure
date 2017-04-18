@@ -1,0 +1,199 @@
+/*Default CSS*/
+.container-fluid {
+	padding: 0px;
+}
+
+.navbar-default {
+	margin-bottom: 0px;
+	background-color: white;
+	height: 150px;
+	background-color: #F3F3F3;
+	/*padding: 50px 5%;*/
+}
+
+.navbar-brand {
+
+}
+
+#search-div {
+	padding: 0px;
+}
+
+#search-bar {
+	border-radius: 15px 0px 0px 15px;
+}
+
+#search-btn {
+	border-radius: 0px 15px 15px 0px;
+}
+
+#search-bar, #search-btn {
+	height: 40px;
+}
+
+#search-group {
+	padding-top: 5px;
+
+}
+
+@media (min-width: 400px) {
+	.navbar-default {
+		padding: 50px 5%;
+	}
+
+	.navbar-brand {
+		font-size: 50px;
+		margin: 0px 30px 0px 0px;
+	}
+
+	.content > h1{
+		font-size: 80px;
+	}
+}
+
+@media (max-width: 500px) {
+	.navbar-default {
+		padding: 50px 1%;
+	}
+
+	.navbar-brand {
+		font-size: 40px;
+		margin: 0px 10px 0px 0px;
+	}
+
+	.content > h1{
+		font-size: 50px;
+	}
+}
+
+.footer {
+	color: white;
+	background-color: black;
+	height: 200px;
+	padding: 15px 35px;
+}
+
+.footer>h2 {
+	font-weight: 400;
+}
+
+#blue {
+    color: #0099FF;
+}
+
+#blue:hover {
+	color: #0066FF;
+	text-decoration: underline;
+}
+
+.menu {
+	font-size: 20px;
+}
+
+.nav.navbar-nav.navbar-right li a:hover {
+    text-decoration: underline;
+}
+
+body {
+	background-color: #F3F3F3;
+}
+
+/*Default CSS*/
+
+h5 {
+	color: #0099FF;
+}
+
+.container {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.head {
+	height: 150px;
+}
+
+.title {
+	height: 150px;
+	background-color: #0099FF;
+	color: white;
+	display: flex;
+	padding-left: 30px;
+}
+
+.title>h1 {
+	display: flex;
+	align-items: center;
+}
+
+.box {
+	border: 2px gray solid;
+	height: 100%;
+}
+
+.event-rows {
+	height: 120px;
+	display: flex;
+	align-items: center;
+}
+
+.btn {
+	background-color: #0099FF;
+	border: none;
+	color: white;
+	min-width: 90%;
+}
+
+.btn:hover {
+	background-color: #11AAFF;
+	border: none;
+	color: white;
+}
+
+.btn:active:focus {
+	background-color: #0088EE;
+	border: none;
+	color: white;
+}
+
+.box-body {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.request-name {
+	display: inline-block;
+	align-items: center;
+	margin-left: 15px;
+}
+
+.detail-box {
+	display: flex;
+	align-items: center;
+}
+
+.modal-body {
+	padding: 30px;
+}
+
+.text-row {
+	margin: 20px 0px 20px 0px;
+}
+
+#applicant-detail {
+	margin: 0px;
+	color: #777777;
+}
+
+.modal-btn {
+	height: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+#line {
+	border: 1px #C3C3C3 solid;
+}
+
+.q-form {
+	margin: 15px 0px 15px 0px;
+}
