@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Request</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,900" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/join_req.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, user-scalable=false;">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<!-- NAV BAR -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        	<span class="sr-only">Toggle navigation</span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	      	</button>
+	      	<a class="navbar-brand" href="index.html">EVENTURE</a>
+	    </div>
+	    <div class="rows">
+	    	<div class="col-lg-4 col-md-4 col-sm-4" id="search-div">
+			    <div class="input-group" id="search-group">
+			      	<input type="text" class="form-control" id="search-bar" placeholder="Search events">
+			      	<span class="input-group-addon" id="search-btn">GO!</span>
+			    </div><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    <ul class="nav navbar-nav navbar-right menu">
+			    	<li><a href="sign_in.html">Sign in</a></li>
+			    	<li><a href="sign_up.html" id="blue">Sign up</a></li>
+			    </ul>
+			</div><!-- /.navbar-collapse -->
+	    </div>
+
+	</nav>
+
+	<!-- CONTAINER ! -->
+	<div class="container">
+		<div class="rows head">
+			<div class="col-xs-12 title">
+				<h1>Join Request</h1>
+			</div>
+		</div>
+		<div class="rows box">
+			<div class="box-body">
+				<div class="event-rows">
+					<div class="col-xs-8 detail-box">
+						<img class="img-circle" src="assets/css/pic/profile-icon.png" width="100">
+						<div class="request-name">
+							<h3>Methas Sea</h3>
+							<!-- <h4>View answer</h4> -->
+							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+							  	View Answer
+							</button>
+						</div>
+					</div>
+					<div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">Approve</button></div>
+					<div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">Reject</button></div>
+				</div>
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  	<div class="modal-dialog" role="document">
+				    	<div class="modal-content">
+				      		<!-- <div class="modal-header">
+				        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        		<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				      		</div> -->
+				      		<div class="modal-body">
+				        		<div>
+				        			<img class="img-circle" src="assets/css/pic/profile-icon.png" width="75">
+				        		</div>
+				        		<div class="text-row">
+				        			<h5>Name</h5>
+				        			<h3 id="applicant-detail">Methas Sea</h3>
+				        		</div>
+				        		<div class="text-row">
+				        			<h5>E-mail</h5>
+				        			<h3 id="applicant-detail">Methas_Sea@outlook.com</h3>
+				        		</div>
+				        		<div class="text-row">
+				        			<h5>Age</h5>
+				        			<h3 id="applicant-detail">44</h3>
+				        		</div>
+				        		<div class="text-row">
+				        			<h5>Phone</h5>
+				        			<h3 id="applicant-detail">09-112-112</h3>
+				        		</div>
+				        		<div class="rows modal-btn">
+				        			<div class="col-xs-4"><button type="button" class="btn btn-default">Approve</button></div>
+									<div class="col-xs-4"><button type="button" class="btn btn-default">Reject</button></div>
+				        		</div>
+				        		<div id="line"></div>
+				        		<div class="q-form">
+						        	<div class="question">
+						        		<h4>Who killed R8</h4>
+						        	</div>
+						        	<div class="answer">
+						        		<p>His brother</p>
+						        	</div>
+				        		</div>
+				      		</div>
+				      		<!-- <div class="modal-footer">
+				        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        		<button type="button" class="btn btn-primary">Save changes</button>
+				      		</div> -->
+				    	</div>
+				  	</div>
+				</div>
+				<!-- Modal -->
+			</div>
+		</div>		
+	</div>
+
+	<!-- FOOTER ! -->
+	<div class="container-fluid">
+		<div class="footer">
+			<h2>EVENTURE</h2>
+		</div>
+	</div>
+
+
+
+</body>
+</html>
