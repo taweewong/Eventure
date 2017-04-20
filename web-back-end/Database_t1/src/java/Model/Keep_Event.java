@@ -72,7 +72,7 @@ public class Keep_Event {
             rs = stmt.executeQuery(sql);
                
             while (rs.next()) {
-                System.out.println("kuyyyyyyyyy");
+                
                 Event ev = new Event();
                 ev.setCate_id(rs.getString("CATE_ID"));
                 ev.setDetail(rs.getString("DETAIL"));
