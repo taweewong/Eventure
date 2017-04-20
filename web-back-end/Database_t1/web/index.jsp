@@ -23,16 +23,18 @@
 
         <div class="container-fluid">
             <!-- Category -->
-            <div class=category>
-                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet';">Technical</button>
-                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Art & Music</button>
-                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Sport & Health</button>
-                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Community</button>
-                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Food</button>
-                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">IT</button>
-                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Other</button>
-            </div>
+            <form action="category_ex_Servlet" method="POST">
+                <div class=category>
+                    <button class="btn btn-default cate" type="submit" value="01" name="cate_ex" >Technical</button>
+                    <button class="btn btn-default cate" type="submit" value="02" name="cate_ex" >Art & Music</button>
+                    <button class="btn btn-default cate" type="submit" value="03" name="cate_ex" >Sport & Health</button>
+                    <button class="btn btn-default cate" type="submit" value="04" name="cate_ex" >Community</button>
+                    <button class="btn btn-default cate" type="submit" value="05" name="cate_ex" >Food</button>
+                    <button class="btn btn-default cate" type="submit" value="06" name="cate_ex" >IT</button>
+                    <button class="btn btn-default cate" type="submit" value="07" name="cate_ex" >Other</button>
+                </div>
 
+            </form>
             <!-- Upcoming -->
             <div class="upcoming">
                 <div>
