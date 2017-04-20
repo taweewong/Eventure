@@ -35,7 +35,7 @@ public class Keep_Event {
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE CATE_ID = '01'";
+            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE CATE_ID = '"+CATE_ID+"'";
             rs = stmt.executeQuery(sql);
 //                System.out.println(sql);
             while (rs.next()) {

@@ -52,9 +52,11 @@ public class Category_ex_Servlet extends HttpServlet {
             
             Boolean status_login = false;
             
+            String value = request.getParameter("cate_ex");
+            System.out.println(value);
            
             
-            String CATE_ID = "01";
+            String CATE_ID = request.getParameter("cate_ex");
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
             int login;
@@ -62,7 +64,7 @@ public class Category_ex_Servlet extends HttpServlet {
             
             try {
                 stmt = conn.createStatement();
-                String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE CATE_ID = '01'";
+                String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE CATE_ID = '"+CATE_ID+"'";
                 ResultSet rs = stmt.executeQuery(sql);
                 Keep_Event kevent = new Keep_Event(conn);
                 kevent.show_cate_id(CATE_ID);
