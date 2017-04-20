@@ -24,13 +24,13 @@
         <div class="container-fluid">
             <!-- Category -->
             <div class=category>
-                <div class=cate>Technical</div>
-                <div class=cate>Art & Music</div>
-                <div class=cate>Sport & Health</div>
-                <div class=cate>Community</div>
-                <div class=cate>Food</div>
-                <div class=cate>IT</div>
-                <div class=cate>Other</div>
+                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet';">Technical</button>
+                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Art & Music</button>
+                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Sport & Health</button>
+                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Community</button>
+                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Food</button>
+                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">IT</button>
+                <button class="btn btn-default cate" value="tech" onclick="location.href='category_ex_Servlet.java';">Other</button>
             </div>
 
             <!-- Upcoming -->
