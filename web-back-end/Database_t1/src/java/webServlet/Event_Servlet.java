@@ -74,7 +74,7 @@ public class Event_Servlet extends HttpServlet {
                 
                 session.setAttribute("EVENT_ID", EVENT_ID);
 
-                Event event = new Event(EVENT_ID, rs1.getString("EVENT_NAME"), rs1.getString("LOCATION"), rs1.getString("DURATION"), rs1.getString("DETAIL"), rs1.getString("ORGANIZER"), rs1.getString("CATE_ID"));
+                Event event = new Event(EVENT_ID, rs1.getString("EVENT_NAME"), rs1.getString("LOCATION"), rs1.getString("DURATION"), rs1.getString("DETAIL"), rs1.getString("ORGANIZER"), rs1.getString("CATE_ID"), rs1.getDate("DATE_EVENT"), rs1.getTime("EVENT_START"));
                 session.setAttribute("event_session", event);
 
                 
