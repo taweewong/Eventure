@@ -1,0 +1,134 @@
+/*Default CSS*/
+.container-fluid {
+	padding: 0px;
+}
+
+.navbar-default {
+	margin-bottom: 0px;
+	background-color: white;
+	height: 150px;
+	background-color: #F3F3F3;
+	/*padding: 50px 5%;*/
+}
+
+.navbar-brand {
+
+}
+
+#search-div {
+	padding: 0px;
+}
+
+#search-bar {
+	border-radius: 15px 0px 0px 15px;
+}
+
+#search-btn {
+	border-radius: 0px 15px 15px 0px;
+}
+
+#search-bar, #search-btn {
+	height: 40px;
+}
+
+#search-group {
+	padding-top: 5px;
+
+}
+
+@media (min-width: 400px) {
+	.navbar-default {
+		padding: 50px 5%;
+	}
+
+	.navbar-brand {
+		font-size: 50px;
+		margin: 0px 30px 0px 0px;
+	}
+
+	.content > h1{
+		font-size: 80px;
+	}
+}
+
+@media (max-width: 500px) {
+	.navbar-default {
+		padding: 50px 1%;
+	}
+
+	.navbar-brand {
+		font-size: 40px;
+		margin: 0px 10px 0px 0px;
+	}
+
+	.content > h1{
+		font-size: 50px;
+	}
+}
+
+.footer {
+	color: white;
+	background-color: black;
+	height: 200px;
+	padding: 15px 35px;
+}
+
+.footer>h2 {
+	font-weight: 400;
+}
+
+#blue {
+    color: #0099FF;
+}
+
+#blue:hover {
+	color: #0066FF;
+	text-decoration: underline;
+}
+
+.menu {
+	font-size: 20px;
+}
+
+.nav.navbar-nav.navbar-right li a:hover {
+    text-decoration: underline;
+}
+.container-header{
+	background-color: #0099FF;
+	width: 100%;
+	height: 80px;
+	color : white;
+}
+.header-text{
+	padding-left: 30px;
+	padding-top: 10px;
+}
+.box {
+	background-color: white;
+	border: 2px gray solid;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+.col-md-8{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.member-col{
+	display: inline-block;
+}
+.member-pic{
+	display: inline-block;
+}
+.member-text{
+	padding-top: 25px;
+	padding-bottom: 20px;
+	display: inline-block;
+}
+.member-name{
+	color: #0099ff;
+	font-size: 16px;
+}
+.member-mail{
+	font-size: 14px;
+}
+/*Default CSS*/
