@@ -1,3 +1,7 @@
+h5 {
+	color: #0099FF;
+}
+
 .container {
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -25,14 +29,8 @@
 	height: 100%;
 }
 
-.box-head {
-	height: 50px;
-	padding: 30px;
-	border-bottom: 2px #c4c4c4 solid;
-}
-
 .event-rows {
-	height: 40px;
+	height: 120px;
 	display: flex;
 	align-items: center;
 }
@@ -41,6 +39,7 @@
 	background-color: #0099FF;
 	border: none;
 	color: white;
+	min-width: 90%;
 }
 
 .btn:hover {
@@ -58,4 +57,41 @@
 .box-body {
 	padding-left: 30px;
 	padding-right: 30px;
+}
+.request-name {
+	display: inline-block;
+	align-items: center;
+	margin-left: 15px;
+}
+
+.detail-box {
+	display: flex;
+	align-items: center;
+}
+
+.modal-body {
+	padding: 30px;
+}
+
+.text-row {
+	margin: 20px 0px 20px 0px;
+}
+
+#applicant-detail {
+	margin: 0px;
+	color: #777777;
+}
+
+.modal-btn {
+	height: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+#line {
+	border: 1px #C3C3C3 solid;
+}
+
+.q-form {
+	margin: 15px 0px 15px 0px;
 }

@@ -33,13 +33,14 @@ public class Keep_History {
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM RESERVE where USER_ID = '1'";
+            String sql = "SELECT DATE_RESERVE, EVENT_NAME, LOCATION FROM RESERVE JOIN EVENT USING (USER_ID) where USER_ID ='1' GROUP BY EVENT_NAME;";
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 History ev = new History();
                 ev.setUser_id(USER_ID);
-                ev.setEvent_id(rs.getString("EVENT_ID"));
-                ev.setDate(rs.getString("DATE"));
+                ev.setDate_reserve(rs.getString("DATE_RESERVE"));
+                ev.setEvent_name(rs.getString("EVENT_NAME"));
+                ev.setLocation(rs.getString("LOCATION"));
                 history.add(ev);
             }
             

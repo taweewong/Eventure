@@ -1,0 +1,98 @@
+/*Default CSS*/
+.container-fluid {
+	padding: 0px;
+}
+
+.navbar-default {
+	margin-bottom: 0px;
+	background-color: white;
+	height: auto;
+	background-color: #F3F3F3;
+	/*padding: 50px 5%;*/
+}
+
+.navbar-brand {
+	
+}
+
+#search-div {
+	padding: 0px;
+}
+
+#search-bar {
+	border-radius: 15px 0px 0px 15px;
+}
+
+#search-btn {
+	border-radius: 0px 15px 15px 0px;
+}
+
+#search-bar, #search-btn {
+	height: 40px;
+}
+
+#search-group {
+	padding-top: 5px;
+
+}
+
+@media (min-width: 400px) {
+	.navbar-default {
+		padding: 50px 5%;
+	}
+
+	.navbar-brand {
+		font-size: 50px;
+		margin: 0px 30px 0px 0px;
+	}
+
+	.content > h1{
+		font-size: 80px;
+	}
+}
+
+@media (max-width: 500px) {
+	.navbar-default {
+		padding: 50px 1%;
+	}
+
+	.navbar-brand {
+		font-size: 40px;
+		margin: 0px 10px 0px 0px;
+	}
+
+	.content > h1{
+		font-size: 50px;
+	}
+}
+
+.footer {
+	color: white;
+	background-color: black;
+	height: 200px;
+	padding: 15px 35px;
+}
+
+.footer>h2 {
+	font-weight: 400;
+}
+
+#blue {
+    color: #0099FF;
+}
+
+#blue:hover {
+	color: #0066FF;
+	text-decoration: underline;
+}
+
+.menu {
+	font-size: 20px;
+}
+
+.nav.navbar-nav.navbar-right li a:hover {
+    text-decoration: underline;
+}
+
+/*Default CSS*/
+

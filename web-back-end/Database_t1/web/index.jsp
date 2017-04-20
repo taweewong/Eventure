@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Technical</title>
+        <title>Eventure</title>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="assets/css/index.css"/>
         <%@include file="navbar_jsp.jsp" %>
