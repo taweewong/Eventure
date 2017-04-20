@@ -112,6 +112,15 @@ hr {
 	transition: 0.5s;
 }
 
+.fa-trash-o {
+	color: gray;
+	transition: 0.3s;
+}
+
+.fa-trash-o:hover {
+	color: red;
+}
+
 .container {
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -162,7 +171,7 @@ hr {
 }
 
 .input-question {
-	color: black;
+	color: gray;
 	width: 90%;
 	border: none;
 	/*border-bottom: 2px gray solid;*/
