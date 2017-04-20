@@ -41,6 +41,14 @@
                     <div><h3>UPCOMMING EVENTS</h3></div>
                     <div class="see-all">see all</div>
                 </div>
+                
+                
+                
+                
+                
+                
+                
+                
                 <div id="up-showcase">
                     <div class=up-block>
                         <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">

@@ -6,9 +6,11 @@
 package Model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +29,8 @@ public class Event {
     private String detail;
     private String organizer;
     private String cate_id;
+    private Date date_event;
+    private Time event_start;
 
     
     
@@ -35,7 +39,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(String event_id, String event_name, String location, String duration, String detail, String organizer, String cate_id) {
+    public Event(String event_id, String event_name, String location, String duration, String detail, String organizer, String cate_id, Date date_event, Time event_start) {
         this.event_id = event_id;
         this.event_name = event_name;
         this.location = location;
@@ -43,7 +47,13 @@ public class Event {
         this.detail = detail;
         this.organizer = organizer;
         this.cate_id = cate_id;
+        this.date_event = date_event;
+        this.event_start = event_start;
     }
+
+    
+
+    
 
     public String getEvent_id() {
         return event_id;
@@ -101,6 +111,25 @@ public class Event {
         this.cate_id = cate_id;
     }
 
+    public Date getDate_event() {
+        return date_event;
+    }
+
+    public void setDate_event(Date date_event) {
+        this.date_event = date_event;
+    }
+
+    public Time getEvent_start() {
+        return event_start;
+    }
+
+    public void setEvent_start(Time event_start) {
+        this.event_start = event_start;
+    }
+
+    
+    
+    
     private ServletContext getServletContext() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

@@ -31,14 +31,15 @@ public class Keep_Event {
     
     public void show_cate_id(String CATE_ID) {
         try {
-            //System.out.println("ggggggg");
+            System.out.println("ggggggg");
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
             String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE CATE_ID = '"+CATE_ID+"'";
             rs = stmt.executeQuery(sql);
-//                System.out.println(sql);
+               System.out.println(CATE_ID);
             while (rs.next()) {
+                System.out.println("aaaaaaaccccccc");
                 Event ev = new Event();
                 ev.setCate_id(CATE_ID);
                 ev.setDetail(rs.getString("DETAIL"));
@@ -47,6 +48,8 @@ public class Keep_Event {
                 ev.setLocation(rs.getString("LOCATION"));
                 ev.setLocation(rs.getString("DURATION"));
                 ev.setOrganizer(rs.getString("ORGANIZER"));
+                ev.setDate_event(rs.getDate("DATE_EVENT"));
+                ev.setEvent_start(rs.getTime("EVENT_START"));
                 events.add(ev);
             }
 
