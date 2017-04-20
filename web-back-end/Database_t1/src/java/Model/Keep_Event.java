@@ -96,6 +96,43 @@ public class Keep_Event {
     }
     
     
+    public void query_explore() {
+        try {
+            System.out.println("ggggggg");
+            Statement stmt = null;
+            ResultSet rs = null;
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) limit 12";
+            rs = stmt.executeQuery(sql);
+               
+            while (rs.next()) {
+                
+                Event ev = new Event();
+                ev.setCate_id(rs.getString("CATE_ID"));
+                ev.setDetail(rs.getString("DETAIL"));
+                ev.setEvent_id(rs.getString("EVENT_ID"));
+                ev.setEvent_name(rs.getString("EVENT_NAME"));
+                ev.setLocation(rs.getString("LOCATION"));
+                ev.setLocation(rs.getString("DURATION"));
+                ev.setOrganizer(rs.getString("ORGANIZER"));
+                ev.setDate_event(rs.getDate("DATE_EVENT"));
+                ev.setEvent_start(rs.getTime("EVENT_START"));
+                events.add(ev);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+        
+        
+    }
+    
+    
+    
+    
+    
     
      public List<Event> getEvents() {
         return events;
