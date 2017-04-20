@@ -31,6 +31,7 @@ $("#add-btn").click(function() {
 	html += '<h3>Question ' + count + ' <span><i class="fa fa-trash-o" aria-hidden="true"></i></span></h3>\n';
 	html += '<textarea id="q' + count + '" class="input-question" rows="1" name="answer1"></textarea>\n'
 	html += '<hr align="left">\n'
+	html += '<br>\n'
 	html += '</div>\n'
 
 	// add html
