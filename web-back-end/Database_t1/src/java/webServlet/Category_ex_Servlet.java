@@ -64,7 +64,7 @@ public class Category_ex_Servlet extends HttpServlet {
             
             try {
                 stmt = conn.createStatement();
-                String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE CATE_ID = '"+CATE_ID+"'";
+                String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE CATE_ID = '"+CATE_ID+" '";
                 ResultSet rs = stmt.executeQuery(sql);
                 Keep_Event kevent = new Keep_Event(conn);
                 kevent.show_cate_id(CATE_ID);

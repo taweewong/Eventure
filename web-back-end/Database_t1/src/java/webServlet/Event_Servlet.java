@@ -6,6 +6,7 @@
 package webServlet;
 
 import Model.Event;
+import Model.Keep_User;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -64,6 +65,12 @@ public class Event_Servlet extends HttpServlet {
                 stmt = conn.createStatement();
                 rs1 = stmt.executeQuery(sql);
                 rs1.next();
+                
+                Keep_User ku = new Keep_User(conn);
+                ku.show_user_lists(EVENT_ID);
+                
+                session.setAttribute("User_list", ku.getUsers());
+                
                 
                 session.setAttribute("EVENT_ID", EVENT_ID);
 
