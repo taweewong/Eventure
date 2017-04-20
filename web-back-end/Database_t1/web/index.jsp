@@ -54,20 +54,14 @@
                     System.out.println(events.get(0).getEvent_name());
 
                 %>
-                
-                
-                
-                
-                
-                
-                
+
                 <div id="up-showcase">
                     <% for(Model.Event i: events) {%>
                     <div class=up-block>
                         <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">
-                        <h3><%= i.getEvent_name() %></h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation() %></h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event() %> | <%= i.getEvent_start() %></h4>					
+                        <h4><%= i.getEvent_name() %></h4>
+                        <h5><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation() %></h5>
+                        <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event() %> | <%= i.getEvent_start() %></h5>					
                     </div>
                     <%}%>
                 </div>
