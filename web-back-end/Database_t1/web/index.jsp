@@ -4,6 +4,9 @@
     Author     : Taweewong
 --%>
 
+<%@page import="java.sql.Connection"%>
+<%@page import="Model.Keep_Event"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -41,7 +44,16 @@
                     <div><h3>UPCOMMING EVENTS</h3></div>
                     <div class="see-all">see all</div>
                 </div>
-                
+                <% LinkedList<Model.Event> events = new LinkedList<Model.Event>();
+                    ServletContext ctx = getServletContext();
+                    Connection conn = (Connection) ctx.getAttribute("connection");
+                    Model.Keep_Event ke = new Model.Keep_Event(conn);
+                    ke.query_time();
+                    events = (LinkedList<Model.Event>) ke.getEvents();
+                    //Model.Event[] array = ke.toArray(new Model.Event[ke.size()]);
+                    System.out.println(events.get(0).getEvent_name());
+
+                %>
                 
                 
                 
@@ -50,30 +62,14 @@
                 
                 
                 <div id="up-showcase">
+                    <% for(Model.Event i: events) {%>
                     <div class=up-block>
                         <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">
-                        <h3>UNTITLED EVENT 1</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>					
+                        <h3><%= i.getEvent_name() %></h3>
+                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation() %></h4>
+                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event() %> | <%= i.getEvent_start() %></h4>					
                     </div>
-                    <div class=up-block>
-                        <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">
-                        <h3>UNTITLED EVENT 2</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
-                    <div class=up-block>
-                        <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">
-                        <h3>UNTITLED EVENT 3</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
-                    <div class=up-block>
-                        <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">
-                        <h3>UNTITLED EVENT 4</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
+                    <%}%>
                 </div>
             </div>
 
