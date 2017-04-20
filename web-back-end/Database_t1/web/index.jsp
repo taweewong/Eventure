@@ -51,7 +51,7 @@
                     ke.query_time();
                     events = (LinkedList<Model.Event>) ke.getEvents();
                     //Model.Event[] array = ke.toArray(new Model.Event[ke.size()]);
-                    System.out.println(events.get(0).getEvent_name());
+                    //System.out.println(events.get(0).getEvent_name());
 
                 %>
 
@@ -68,65 +68,28 @@
             </div>
 
             <!-- Explore -->
+            <% LinkedList<Model.Event> explore = new LinkedList<Model.Event>();
+                    
+                    Model.Keep_Event kep = new Model.Keep_Event(conn);
+                    kep.query_time();
+                    explore = (LinkedList<Model.Event>) kep.getEvents();
+                    //Model.Event[] array = ke.toArray(new Model.Event[ke.size()]);
+                    System.out.println(explore.get(0).getEvent_name());
+
+                %>
             <div class="explore row">
                 <div>
                     <div><h3>EXPLORE EVENTS</h3></div>					
                 </div>
                 <div id="exp-showcase" class="col-lg-12">
+                    <% for(Model.Event i: explore) {%>
                     <div class="exp-block">
                         <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3>UNTITLED EVENT 5</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
+                        <h3><%= i.getEvent_name() %></h3>
+                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation() %></h4>
+                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event() %> | <%= i.getEvent_start() %></h4>	
                     </div>
-                    <div class="exp-block">
-                        <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3>UNTITLED EVENT 6</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
-                    <div class="exp-block">
-                        <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3>UNTITLED EVENT 7</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
-                    <div class="exp-block">
-                        <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3>UNTITLED EVENT 8</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
-                    <div class="exp-block">
-                        <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3>UNTITLED EVENT 9</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
-                    <div class="exp-block">
-                        <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3>UNTITLED EVENT 10</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
-                    <div class="exp-block">
-                        <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3>UNTITLED EVENT 11</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
-                    <div class="exp-block">
-                        <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3>UNTITLED EVENT 12</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
-                    <div class="exp-block">
-                        <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3>UNTITLED EVENT 13</h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>	
-                    </div>
+                    <% } %>
                 </div>
             </div>
         </div>
