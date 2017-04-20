@@ -1,0 +1,192 @@
+/*Default CSS*/
+.container-fluid {
+	padding: 0px;
+}
+
+.navbar-default {
+	margin-bottom: 0px;
+	background-color: white;
+	height: 150px;
+	background-color: #F3F3F3;
+	/*padding: 50px 5%;*/
+}
+
+.navbar-brand {
+
+}
+
+#search-div {
+	padding: 0px;
+}
+
+#search-bar {
+	border-radius: 15px 0px 0px 15px;
+}
+
+#search-btn {
+	border-radius: 0px 15px 15px 0px;
+}
+
+#search-bar, #search-btn {
+	height: 40px;
+}
+
+#search-group {
+	padding-top: 5px;
+
+}
+
+@media (min-width: 400px) {
+	.navbar-default {
+		padding: 50px 5%;
+	}
+
+	.navbar-brand {
+		font-size: 50px;
+		margin: 0px 30px 0px 0px;
+	}
+
+	.content > h1{
+		font-size: 80px;
+	}
+}
+
+@media (max-width: 500px) {
+	.navbar-default {
+		padding: 50px 1%;
+	}
+
+	.navbar-brand {
+		font-size: 40px;
+		margin: 0px 10px 0px 0px;
+	}
+
+	.content > h1{
+		font-size: 50px;
+	}
+}
+
+.footer {
+	color: white;
+	background-color: black;
+	height: 200px;
+	padding: 15px 35px;
+}
+
+.footer>h2 {
+	font-weight: 400;
+}
+
+#blue {
+    color: #0099FF;
+}
+
+#blue:hover {
+	color: #0066FF;
+	text-decoration: underline;
+}
+
+.menu {
+	font-size: 20px;
+}
+
+.nav.navbar-nav.navbar-right li a:hover {
+    text-decoration: underline;
+}
+
+body {
+	background-color: #F3F3F3;
+}
+
+/*Default CSS*/
+h1 {
+	color: #0099FF;
+	font-size: 50px;
+}
+
+hr {
+	margin-top: 0px;
+	border: black 1px solid;
+	width: 20%;
+	align-items: left;
+	transition: 0.5s;
+}
+
+.fa-trash-o {
+	color: gray;
+	transition: 0.3s;
+}
+
+.fa-trash-o:hover {
+	color: red;
+}
+
+.container {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border: 1px gray solid;
+	padding: 30px;
+	background-color: white;
+}
+
+.title-box {
+	margin-bottom: 25px;
+}
+
+.input-box {
+	padding-left: 5%;
+}
+
+.text {
+	font-size: 26px;
+}
+
+#event-name {
+	width: 80%;
+}
+
+#input-name-div {
+	margin-bottom: 20px;
+}
+
+.question {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.name-input {
+	padding-left: 5px;
+	border: 2px #c4c4c4 solid;
+	border-radius: 5px;
+}
+
+.name-input:focus {
+	outline: none;
+	border: 2px #0099FF solid;
+	border-radius: 5px;
+}
+
+.question {
+	font-size: 22px;
+}
+
+.input-question {
+	color: gray;
+	width: 90%;
+	border: none;
+	/*border-bottom: 2px gray solid;*/
+	transition: 0.5s;
+
+}
+
+.input-question:focus {
+	outline: none;
+	color: #0099FF;
+	border: none;
+	/*border-bottom: 2px #0099FF solid;*/
+}
+
+.input-question:focus + hr {
+	width: 100%;
+	border: #0099FF 1px solid;
+}

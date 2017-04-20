@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Form</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,900" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/create_form.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, user-scalable=false;">
+</head>
+<body>
+	<!-- NAV BAR -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        	<span class="sr-only">Toggle navigation</span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	      	</button>
+	      	<a class="navbar-brand" href="index.html">EVENTURE</a>
+	    </div>
+	    <div class="rows">
+	    	<div class="col-lg-4 col-md-4 col-sm-4" id="search-div">
+			    <div class="input-group" id="search-group">
+			      	<input type="text" class="form-control" id="search-bar" placeholder="Search events">
+			      	<span class="input-group-addon" id="search-btn">GO!</span>
+			    </div><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    <ul class="nav navbar-nav navbar-right menu">
+			    	<li><a href="sign_in.html">Sign in</a></li>
+			    	<li><a href="sign_up.html" id="blue">Sign up</a></li>
+			    </ul>
+			</div><!-- /.navbar-collapse -->
+	    </div>
+
+	</nav>
+
+	<!-- CONTAINER ! -->
+	<div class="container">
+		<div class="rows title-box">
+			<h1>Create Form</h1>
+		</div>
+		<div class="rows input-box">
+			<form>
+				<div id="input-name-div">
+					<h3>
+						Form name : 
+						<input class="name-input" type="text" name="event-name" id="event-name">
+					</h3>
+				</div>
+				<br>
+				<div class="question">
+					<h3>Question 1 <span><i class="fa fa-trash-o" aria-hidden="true"></i></span></h3>
+					<textarea id="q1" class="input-question" rows="1" name="answer1"></textarea>
+					<hr align="left">
+					<br>
+				</div>
+			</form>
+			<button class="btn btn-default" id="add-btn">Add question</button>
+			<br><br><br>
+			<button class="btn btn-success submit-btn" type="submit">submit</button>
+		</div>
+	</div>
+
+	<!-- FOOTER ! -->
+	<div class="container-fluid">
+		<div class="footer">
+			<h4>EVENTURE</h4>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="assets/js/create_form.js"></script>
+</body>
+</html>
