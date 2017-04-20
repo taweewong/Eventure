@@ -71,7 +71,7 @@
             <% LinkedList<Model.Event> explore = new LinkedList<Model.Event>();
                     
                     Model.Keep_Event kep = new Model.Keep_Event(conn);
-                    kep.query_time();
+                    kep.query_explore();
                     explore = (LinkedList<Model.Event>) kep.getEvents();
                     //Model.Event[] array = ke.toArray(new Model.Event[ke.size()]);
                     System.out.println(explore.get(0).getEvent_name());
@@ -83,6 +83,7 @@
                 </div>
                 <div id="exp-showcase" class="col-lg-12">
                     <% for(Model.Event i: explore) {%>
+                    <% System.out.println("aaa"); %>
                     <div class="exp-block">
                         <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
                         <h3><%= i.getEvent_name() %></h3>
