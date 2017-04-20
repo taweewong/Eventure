@@ -56,7 +56,8 @@ public class History_Servlet extends HttpServlet {
             Statement stmt = null;
             try {
                 stmt = conn.createStatement();
-                String sql = "SELECT * FROM RESERVE where USER_ID ='1'";
+                String sql = "SELECT USER_ID, DATE_RESERVE, EVENT_NAME, LOCATION FROM RESERVE JOIN EVENT USING (USER_ID) where USER_ID ='1' GROUP BY EVENT_NAME;";
+                        
                 
                 ResultSet rs = stmt.executeQuery(sql);
                 

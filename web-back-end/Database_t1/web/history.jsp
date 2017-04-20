@@ -23,7 +23,7 @@
           LinkedList<Model.History> kh = new LinkedList<Model.History>();
             
            kh = (LinkedList<Model.History>)session.getAttribute("history_list");
-           System.out.println(kh.get(0).getDate());
+           System.out.println(kh.get(0).getDate_reserve());
   
         %>
         
@@ -46,18 +46,18 @@
                 </div>
                 <!-- List -->
                 <% for(Model.History i: kh){ 
-                System.out.println(i.getDate());
+                System.out.println(i.getDate_reserve());
                 %>
                 
                 <div class="his-list col-xs-12">
                     <div class="col-xs-2 box">
-                        <p class="text date-list"> <%= i.getDate() %> </p>
+                        <p class="text date-list"> <%= i.getDate_reserve() %> </p>
                     </div>
                     <div class="col-xs-3 box">
-                        <p class="text event-list">Test</p>
+                        <p class="text event-list"><%= i.getEvent_name() %></p>
                     </div>
                     <div class="col-xs-3 box">
-                        <p class="text locate-list">Somewhere on Earth</p>
+                        <p class="text locate-list"><%=i.getLocation() %></p>
                     </div>		
                 </div>
                 

@@ -10,20 +10,20 @@ package Model;
  * @author thitikron_gun
  */
 public class History {
-     private String user_id;
-      private String event_id;
-       private String date;
+    private String user_id;
+     private String date_reserve;
+      private String event_name;
+       private String location;
+       
 
     public History() {
     }
 
-       
-    
-       
-    public History(String user_id, String event_id, String date) {
+    public History(String user_id, String date_reserve, String event_name, String location) {
         this.user_id = user_id;
-        this.event_id = event_id;
-        this.date = date;
+        this.date_reserve = date_reserve;
+        this.event_name = event_name;
+        this.location = location;
     }
 
     public String getUser_id() {
@@ -34,23 +34,37 @@ public class History {
         this.user_id = user_id;
     }
 
-    public String getEvent_id() {
-        return event_id;
-    }
-
-    public void setEvent_id(String event_id) {
-        this.event_id = event_id;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
     
     
-       
+    
+    
+
+    public String getDate_reserve() {
+        return date_reserve;
+    }
+
+    public void setDate_reserve(String date_reserve) {
+        this.date_reserve = date_reserve;
+    }
+
+    public String getEvent_name() {
+        return event_name;
+    }
+
+    public void setEvent_name(String event_name) {
+        this.event_name = event_name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+
+    
+    
     
 }
