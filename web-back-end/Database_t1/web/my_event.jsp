@@ -4,6 +4,7 @@
     Author     : Taweewong
 --%>
 
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -20,6 +21,13 @@
                     <h1>My Events</h1>
                 </div>
             </div>
+            <% LinkedList<Model.Event> ke = new LinkedList<Model.Event>();
+
+            ke = (LinkedList<Model.Event>) session.getAttribute("my_event");
+            //Model.Event[] array = ke.toArray(new Model.Event[ke.size()]);
+            System.out.println(ke.get(0).getEvent_name());
+
+        %>
             <div class="rows box">
                 <div class="box-head">
                     <div class="col-xs-3">Event</div>
@@ -29,34 +37,15 @@
                     <div class="col-xs-2">View</div>
                 </div>
                 <div class="box-body">
+                    <% for (Model.Event i : ke) {%>
                     <div class="event-rows">
-                        <div class="col-xs-3">Untitled Event</div>
-                        <div class="col-xs-2">01-01-2017</div>
-                        <div class="col-xs-2">13.00 - 17.00</div>
-                        <div class="col-xs-3">Somewhere on Earth</div>
+                        <div class="col-xs-3"><%= i.getEvent_name() %></div>
+                        <div class="col-xs-2"><%= i.getDate_event() %></div>
+                        <div class="col-xs-2"><%= i.getEvent_start() %></div>
+                        <div class="col-xs-3"><%= i.getLocation() %></div>
                         <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">View</button></div>
                     </div>
-                    <div class="event-rows">
-                        <div class="col-xs-3">Untitled Event</div>
-                        <div class="col-xs-2">01-01-2017</div>
-                        <div class="col-xs-2">13.00 - 17.00</div>
-                        <div class="col-xs-3">Somewhere on Earth</div>
-                        <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">View</button></div>
-                    </div>
-                    <div class="event-rows">
-                        <div class="col-xs-3">Untitled Event</div>
-                        <div class="col-xs-2">01-01-2017</div>
-                        <div class="col-xs-2">13.00 - 17.00</div>
-                        <div class="col-xs-3">Somewhere on Earth</div>
-                        <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">View</button></div>
-                    </div>
-                    <div class="event-rows">
-                        <div class="col-xs-3">Untitled Event</div>
-                        <div class="col-xs-2">01-01-2017</div>
-                        <div class="col-xs-2">13.00 - 17.00</div>
-                        <div class="col-xs-3">Somewhere on Earth</div>
-                        <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">View</button></div>
-                    </div>	
+                   <%}%> 
                 </div>
             </div>		
         </div>
