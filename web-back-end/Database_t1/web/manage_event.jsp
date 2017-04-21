@@ -17,6 +17,11 @@
         <div class="container-fluid">
             <div class="head-pic">
                 <img class="head-pic-crop" src="assets/css/pic/anthony-delanoix-48936.jpg">
+                <%
+                
+                
+                
+                %>
             </div>
             <div class="container">
                 <div class="row">
@@ -29,8 +34,10 @@
                             </div>
                         </div>
                         <div class="box">
+                            <form action="create_form.jsp">
                             <button type="button" class="btn btn-default manage-btn">Create Application Form</button>
                             <button type="button" class="btn btn-default manage-btn">View join request</button>
+                            </form>
                         </div>
                     </div>
                 </div>

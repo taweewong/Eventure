@@ -49,7 +49,6 @@ public class Create_form_Servlet extends HttpServlet {
             Connection conn = (Connection) ctx.getAttribute("connection");
             String title = request.getParameter("event_name");
             answer = request.getParameterValues("answer1");
-            System.out.println(answer[1]);
             Statement stmt = null;
             Statement stmt1 = null;
             ResultSet rs;
