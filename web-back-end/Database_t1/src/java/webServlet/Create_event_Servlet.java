@@ -53,15 +53,12 @@ public class Create_event_Servlet extends HttpServlet {
             String location = request.getParameter("location");
             String event_desc = request.getParameter("event_desc");
             String organizer = request.getParameter("organizer");
-            String cate_id = request.getParameter("cate_id");
-            System.out.println(cate_id);
+            String cate_id = request.getParameter("category");
+            System.out.println(cate_id+"   Cate_id");
             HttpSession session = request.getSession(true);
 
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
-            
-            
-            
             
             Keep_Event ke = new Keep_Event(conn);
             ke.query_event_id();
@@ -91,6 +88,7 @@ public class Create_event_Servlet extends HttpServlet {
                 
                 
                 stmt = conn.createStatement();
+             
                 String sql1 = "INSERT INTO EVENT VALUES ('"+event_id+"','"+event_name+"','"+location+"','"+duration+"','"+event_desc+"','"+organizer+"','"+userid.getUser_id()+"','"+cate_id+"','"+date+"','"+time+"');" ;
                 stmt.executeUpdate(sql1);
                 System.out.println(sql1);

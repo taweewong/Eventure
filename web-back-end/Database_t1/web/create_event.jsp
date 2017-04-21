@@ -25,13 +25,13 @@
                         <div class="dropdown" align="right">
 
                             <select class="selectpicker" name="category" form="create_form" title="select category" required>
-                                <option>Technical</option>
-                                <option>Art & Music</option>
-                                <option>Sport & Health</option>
-                                <option>Community</option>
-                                <option>Food</option>
-                                <option>IT</option>
-                                <option>Others</option>
+                                <option value="01" >Technical</option>
+                                <option value="02">Art & Music</option>
+                                <option value="03">Sport & Health</option>
+                                <option value="04">Community</option>
+                                <option value="05">Food</option>
+                                <option value="06" >IT</option>
+                                <option value="07">Others</option>
                             </select>
 
                         </div>
