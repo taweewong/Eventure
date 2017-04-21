@@ -47,7 +47,8 @@ public class My_event_Servlet extends HttpServlet {
             
             User user_id = (User) session.getAttribute("user_session");
             Keep_Event ke = new Keep_Event(conn);
-            ke.query_my_event("2");
+            System.out.println(user_id.getUser_id());
+            ke.query_my_event(user_id.getUser_id());
             
             session.setAttribute("my_event", ke.getEvents());
             

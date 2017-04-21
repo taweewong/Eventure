@@ -6,6 +6,7 @@
 package webServlet;
 
 import Model.Keep_Event;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -80,7 +81,7 @@ public class Create_event_Servlet extends HttpServlet {
             String duration = "0";
             //String organizer = "No";
             
-            String userid = "1";
+            User userid = (User) session.getAttribute("user_session");
             
             Statement stmt;
             Statement get_userid;
@@ -90,7 +91,7 @@ public class Create_event_Servlet extends HttpServlet {
                 
                 
                 stmt = conn.createStatement();
-                String sql1 = "INSERT INTO EVENT VALUES ('"+event_id+"','"+event_name+"','"+location+"','"+duration+"','"+event_desc+"','"+organizer+"','"+userid+"','"+cate_id+"','"+date+"','"+time+"');" ;
+                String sql1 = "INSERT INTO EVENT VALUES ('"+event_id+"','"+event_name+"','"+location+"','"+duration+"','"+event_desc+"','"+organizer+"','"+userid.getUser_id()+"','"+cate_id+"','"+date+"','"+time+"');" ;
                 stmt.executeUpdate(sql1);
                 System.out.println(sql1);
                 
