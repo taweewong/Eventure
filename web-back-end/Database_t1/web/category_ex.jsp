@@ -33,7 +33,7 @@
                 <div class="show-case">
 
                     <% for (Model.Event i : ke) {%>
-                    <div class="box col-xs-12 col-sm-4">
+                    <div class="box col-xs-12 col-sm-4 col-md-3">
                         <div><img src="assets/css/pic/NoImageAvailable.png" width="200"></div>                      
                         <div class="detail">                               
                             <%--<c:forEach  var="i" items="${array}">
