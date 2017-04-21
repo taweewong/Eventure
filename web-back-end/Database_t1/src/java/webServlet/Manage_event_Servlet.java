@@ -44,7 +44,7 @@ public class Manage_event_Servlet extends HttpServlet {
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
             String event_id = (String) request.getParameter("event");
-            System.out.println(event_id+"event_id");
+            System.out.println(event_id+" event_id");
             Keep_Event ke = new Keep_Event(conn);
             ke.query_event_information(event_id);
             Event ev = ke.getEvents().get(0);

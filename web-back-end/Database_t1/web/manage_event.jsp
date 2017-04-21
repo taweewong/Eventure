@@ -36,12 +36,14 @@
                             </div>
                         </div>
                         <div class="box">
-                           
+                            
                             <a class="btn btn-default manage-btn" name="create" value="01" href="create_form.jsp" role="button">Create Application Form</a>
                                 <%-- <a type="button" class="btn btn-default manage-btn">Create Application Form</a> --%>
                  
-                            
-                                <a class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id() %>" href="Join_req_Servlet" role="button">View join request</a>
+                                <form action="Join_req_Servlet">
+                                <input type="submit" class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id() %>" >
+                                </form>
+                                <%--<a class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id() %>" href="Join_req_Servlet" role="button">View join request</a>--%>
                                 <%--<button type="button" class="btn btn-default manage-btn">View join request</button>--%>
                             
                         </div>

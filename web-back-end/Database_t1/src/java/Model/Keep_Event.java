@@ -163,7 +163,7 @@ public class Keep_Event {
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM event;";
+            String sql = "SELECT * FROM event where event_id ='"+event_id+"'";
             rs = stmt.executeQuery(sql);
 
             rs.next();

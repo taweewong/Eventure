@@ -49,7 +49,9 @@
 
                                 <%--<a class="btn btn-default manage-btn" name="event" value="<%= i.getEvent_id() %>" href="Manage_event_Servlet" role="button">view</a>--%>
                             </div>
-                                <div class="col-xs-2"><input type="submit" class="btn btn-default manage-btn" name="event" value="<%= i.getEvent_id() %>" ></div>
+                                <div class="col-xs-2">
+                                    <input type="submit" class="btn btn-default manage-btn" name="event" value="<%= i.getEvent_id() %>" >
+                                </div>
                         </div>
                     </form>
                     

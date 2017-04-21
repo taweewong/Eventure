@@ -23,15 +23,14 @@
             </div>
             <%
                 //Model.Event event = new Model.Event();
-                LinkedList<Model.User> users = new LinkedList<Model.User>();
+                LinkedList<Model.User> user_join = new LinkedList<Model.User>();
                 String event = (String) session.getAttribute("event_join");
-                users = (LinkedList<Model.User>) session.getAttribute("user_join");
-                
+                user_join = (LinkedList<Model.User>) session.getAttribute("user_join");
 
             %>
             <div class="rows box">
                 <div class="box-body">
-                    <% for(Model.User i: users){ %>
+                    <% for(Model.User i: user_join){ %>
                     <div class="event-rows">
                         <div class="col-xs-8 detail-box">
                             

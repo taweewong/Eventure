@@ -27,11 +27,11 @@ public class Keep_User {
     
     public void show_user_lists(String EVENT_ID) {
         try {
-            //System.out.println("ggggggg");
+            System.out.println(EVENT_ID);
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "select * from muser join account using (USER_ID) where EVENT_ID = '"+EVENT_ID+"'";
+            String sql = "select * from muser join account using (USER_ID) where EVENT_ID = "+EVENT_ID+";";
             rs = stmt.executeQuery(sql);
 //                System.out.println(sql);
             while (rs.next()) {
