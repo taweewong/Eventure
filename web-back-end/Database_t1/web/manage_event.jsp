@@ -37,11 +37,11 @@
                         </div>
                         <div class="box">
                            
-                            <a class="btn btn-default manage-btn" name="event" value="01" href="create_form.jsp" role="button">Create Application Form</a>
+                            <a class="btn btn-default manage-btn" name="create" value="01" href="create_form.jsp" role="button">Create Application Form</a>
                                 <%-- <a type="button" class="btn btn-default manage-btn">Create Application Form</a> --%>
                  
                             
-                            <a class="btn btn-default manage-btn" name="event" value="02" href="Join_req_Servlet" role="button">View join request</a>
+                                <a class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id() %>" href="Join_req_Servlet" role="button">View join request</a>
                                 <%--<button type="button" class="btn btn-default manage-btn">View join request</button>--%>
                             
                         </div>

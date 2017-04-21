@@ -31,7 +31,17 @@ public class Event {
     private String cate_id;
     private Date date_event;
     private Time event_start;
+    private String user_id;
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    
     
     
 

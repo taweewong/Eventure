@@ -39,16 +39,20 @@
                 <div class="box-body">
                     
                     <% for (Model.Event i : ke) {%>
-                    <div class="event-rows">
-                        <div class="col-xs-3"><%= i.getEvent_name() %></div>
-                        <div class="col-xs-2"><%= i.getDate_event() %></div>
-                        <div class="col-xs-2"><%= i.getEvent_start() %></div>
-                        <div class="col-xs-3"><%= i.getLocation() %></div>
-                        <div>
-                            <a class="btn btn-default manage-btn" name="event" value="<%i.getEvent_id();%>" href="Manage_event_Servlet" role="button">view</a>
+                    <form action="Manage_event_Servlet">
+                        <div class="event-rows">
+                            <div class="col-xs-3"><%= i.getEvent_name()%></div>
+                            <div class="col-xs-2"><%= i.getDate_event()%></div>
+                            <div class="col-xs-2"><%= i.getEvent_start()%></div>
+                            <div class="col-xs-3"><%= i.getLocation()%></div>
+                            <div>
+
+                                <%--<a class="btn btn-default manage-btn" name="event" value="<%= i.getEvent_id() %>" href="Manage_event_Servlet" role="button">view</a>--%>
+                            </div>
+                                <div class="col-xs-2"><input type="submit" class="btn btn-default manage-btn" name="event" value="<%= i.getEvent_id() %>" ></div>
                         </div>
-                            <%-- <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn" name="event" value="<%i.getEvent_id();%>" >View</button></div>--%>
-                    </div>
+                    </form>
+                    
                    <%}%>
                     
                 </div>
