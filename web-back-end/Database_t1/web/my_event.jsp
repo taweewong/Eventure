@@ -45,7 +45,7 @@
                         <div class="col-xs-2"><%= i.getEvent_start() %></div>
                         <div class="col-xs-3"><%= i.getLocation() %></div>
                         <div>
-                            <a class="btn btn-default manage-btn" name="event" value="<%i.getEvent_id();%>" href="Manage_event_Servlet.java" role="button">view</a>
+                            <a class="btn btn-default manage-btn" name="event" value="<%i.getEvent_id();%>" href="Manage_event_Servlet" role="button">view</a>
                         </div>
                             <%-- <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn" name="event" value="<%i.getEvent_id();%>" >View</button></div>--%>
                     </div>

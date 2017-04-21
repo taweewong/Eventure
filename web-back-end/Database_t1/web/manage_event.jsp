@@ -4,6 +4,7 @@
     Author     : Taweewong
 --%>
 
+<%@page import="Model.Event"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,8 +19,9 @@
             <div class="head-pic">
                 <img class="head-pic-crop" src="assets/css/pic/anthony-delanoix-48936.jpg">
                 <%
-                
-                
+                   Model.Event event = new Event();
+                   event = (Model.Event) session.getAttribute("event_id_inf");
+                   System.out.println(event.getEvent_name());
                 
                 %>
             </div>
@@ -27,17 +29,21 @@
                 <div class="row">
                     <div class="topic col-xs-12">
                         <div class="box">
-                            <h1>Untitled Event</h1>
+                            <h1><%= event.getEvent_name() %></h1>
                             <div class="place-n-time">
-                                <h4><i class="fa fa-map-marker" aria-hidden="true"></i> Somewhere on Earth</h4>
-                                <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 03/009/2017 | 13.00</h4>
+                                <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.getLocation() %> </h4>
+                                <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= event.getDate_event() %> | <%= event.getEvent_start() %></h4>
                             </div>
                         </div>
                         <div class="box">
-                            <form action="create_form.jsp">
-                            <button type="button" class="btn btn-default manage-btn">Create Application Form</button>
-                            <button type="button" class="btn btn-default manage-btn">View join request</button>
-                            </form>
+                           
+                            <a class="btn btn-default manage-btn" name="event" value="01" href="create_form.jsp" role="button">Create Application Form</a>
+                                <%-- <a type="button" class="btn btn-default manage-btn">Create Application Form</a> --%>
+                 
+                            
+                            <a class="btn btn-default manage-btn" name="event" value="02" href="Join_req_Servlet" role="button">View join request</a>
+                                <%--<button type="button" class="btn btn-default manage-btn">View join request</button>--%>
+                            
                         </div>
                     </div>
                 </div>

@@ -5,26 +5,20 @@
  */
 package webServlet;
 
-import Model.Event;
-import Model.Keep_Event;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Sea
  */
-@WebServlet(name = "Manage_event_Servlet", urlPatterns = {"/Manage_event_Servlet"})
-public class Manage_event_Servlet extends HttpServlet {
+@WebServlet(name = "Join_req_Servlet", urlPatterns = {"/Join_req_Servlet"})
+public class Join_req_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,18 +34,15 @@ public class Manage_event_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession(true);
-            ServletContext ctx = getServletContext();
-            Connection conn = (Connection) ctx.getAttribute("connection");
-            String event_id = request.getParameter("event");
-            System.out.println(event_id);
-            Keep_Event ke = new Keep_Event(conn);
-            ke.query_event_information(event_id);
-            Event ev = ke.getEvents().get(0);
-            session.setAttribute("event_id_inf", ev);
-            
-            RequestDispatcher rd = request.getRequestDispatcher("manage_event.jsp");
-            rd.forward(request, response);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Join_req_Servlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Join_req_Servlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
