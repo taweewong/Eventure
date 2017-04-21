@@ -46,8 +46,22 @@
                     </ul>
                     <% } else { %>
                     <ul class="nav navbar-nav navbar-right menu">
-                        <li><a href="Profile_jsp.jsp">Profile</a></li>
-                        <li><a href="Sign_out_Servlets" id="blue">Sign out</a></li>
+                        <li><a id="blue" href="create_event.jsp">Create event</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" id="main-menu" type="button" data-toggle="dropdown">
+                                    <img class="img-rounded" src="assets/css/pic/profile-icon.png" alt="Trolltunga Norway" width="50">
+                                    <span id="menu-name"><span>Sea Methas</span> <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="Profile_jsp.jsp">Profile</a></li>
+                                    <li><a href="My_event_Servlet">My event</a></li>
+                                    <li><a href="History_Servlet">History</a></li>
+                                    <li><a href="Sign_out_Servlets">Sign out</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        
                     </ul>
                     <% }%>
                 </div><!-- /.navbar-collapse -->
