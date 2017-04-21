@@ -11,35 +11,32 @@
         <title>Create Eventure</title>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="assets/css/create_event.css">
+
         <%@include file="navbar_jsp.jsp" %>
     <body>
         <!-- CONTAINER ! -->
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
         <div class="container">
             <div class="row">
                 <div class="box col-md-8 col-md-offset-2">
                     <h1 class="header">Create Eventure</h1>
-                    <form action="Create_event_Servlet" method="post">
-                    <div class="dropdown" align="right">
-                        
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Category :
-                            <span class="caret"></span>
-                        </button>
+                    <form action="Create_event_Servlet" method="post" id="create_form">
+                        <div class="dropdown" align="right">
 
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                            <li ><a>Technical <input type="hidden" value="01" name="cate_id"/></a></li>
-                            <li ><a>Art & Music <input type="hidden" value="02" name="cate_id"/></a></li>
-                            <li ><a>Sport & Health <input type="hidden" value="03" name="cate_id"/></a></li>
-                            <li ><a>Community <input type="hidden" value="04" name="cate_id"/></a></li>
-                            <li ><a>Food <input type="hidden" value="05" name="cate_id"/></a></li>
-                            <li ><a>IT <input type="hidden" value="06" name="cate_id"/></a></li>
-                            <li ><a>Others <input type="hidden" value="07" name="cate_id"/></a></li>
-                        </ul>
+                            <select class="selectpicker" name="category" form="create_form" title="select category" required>
+                                <option>Technical</option>
+                                <option>Art & Music</option>
+                                <option>Sport & Health</option>
+                                <option>Community</option>
+                                <option>Food</option>
+                                <option>IT</option>
+                                <option>Others</option>
+                            </select>
 
-                    </div>
-                    <br>
-                                    
+                        </div>
+                        <br>
+
                         <div class="form">
                             <div class="event">
                                 Event Name : <input type="text" name="event_name" size="70"><br><br>
