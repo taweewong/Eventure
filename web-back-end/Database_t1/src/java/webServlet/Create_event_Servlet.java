@@ -5,12 +5,14 @@
  */
 package webServlet;
 
+import Model.Keep_Event;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -49,17 +51,36 @@ public class Create_event_Servlet extends HttpServlet {
             String time = request.getParameter("time");
             String location = request.getParameter("location");
             String event_desc = request.getParameter("event_desc");
-            
+            String organizer = request.getParameter("organizer");
+            String cate_id = request.getParameter("cate_id");
+            System.out.println(cate_id);
             HttpSession session = request.getSession(true);
 
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
             
-            String event_id = "0001";
+            
+            
+            
+            Keep_Event ke = new Keep_Event(conn);
+            ke.query_event_id();
+            
+            
+            
+            
+            String event_id = ke.getNum();
+            
+            System.out.println(event_id);
+            
+            int eventid_new = Integer.parseInt(event_id);
+            eventid_new++;
+            event_id = eventid_new + "";
+            
+            
             String duration = "0";
-            String organizer = "No";
-            String cate_id = "0000";
-            String userid = "0000";
+            //String organizer = "No";
+            
+            String userid = "1";
             
             Statement stmt;
             Statement get_userid;
@@ -69,7 +90,7 @@ public class Create_event_Servlet extends HttpServlet {
                 
                 
                 stmt = conn.createStatement();
-                String sql1 = "INSERT INTO EVENT VALUES ('"+event_id+"','"+event_name+"','"+location+"','"+duration+"','"+event_desc+"','"+organizer+"','"+userid+"','"+cate_id+"');" ;
+                String sql1 = "INSERT INTO EVENT VALUES ('"+event_id+"','"+event_name+"','"+location+"','"+duration+"','"+event_desc+"','"+organizer+"','"+userid+"','"+cate_id+"','"+date+"','"+time+"');" ;
                 stmt.executeUpdate(sql1);
                 System.out.println(sql1);
                 
@@ -88,7 +109,7 @@ public class Create_event_Servlet extends HttpServlet {
                 
           
             
-            RequestDispatcher pg = request.getRequestDispatcher("sign_in.html");
+            RequestDispatcher pg = request.getRequestDispatcher("index.jsp");
             pg.forward(request, response);
         }
     }

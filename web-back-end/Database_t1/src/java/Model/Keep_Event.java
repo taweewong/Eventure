@@ -23,7 +23,18 @@ import webServlet.Category_ex_Servlet;
 public class Keep_Event {
     List <Event> events;
     Connection conn;
+    private String num;
 
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+            
+    
+    
     public Keep_Event() {
     }
     
@@ -31,7 +42,7 @@ public class Keep_Event {
     
     public void show_cate_id(String CATE_ID) {
         try {
-            System.out.println("ggggggg");
+            
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
@@ -64,7 +75,7 @@ public class Keep_Event {
     
     public void query_time() {
         try {
-            System.out.println("ggggggg");
+            
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
@@ -98,7 +109,7 @@ public class Keep_Event {
     
     public void query_explore() {
         try {
-            System.out.println("ggggggg");
+            
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
@@ -154,6 +165,30 @@ public class Keep_Event {
                 ev.setEvent_start(rs.getTime("EVENT_START"));
                 events.add(ev);
             }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+           
+    }
+    
+    
+    
+    
+    public void query_event_id () {
+        try {
+       
+            Statement stmt = null;
+            ResultSet rs = null;
+            stmt = conn.createStatement();
+            String sql = "SELECT MAX(EVENT_ID) maxevent FROM EVENT;";
+            rs = stmt.executeQuery(sql);
+               
+            rs.next();
+            
+            this.num = (String) rs.getString("maxevent");
+                
 
         } catch (SQLException ex) {
             Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);
