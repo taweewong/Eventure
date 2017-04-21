@@ -43,12 +43,15 @@
                             </div>
                             <div class="form-input">
                                 Date : <input type="date" name="date"></input> &nbsp; Time : <input type="time" name="time"> &nbsp; Location : <input type="text" name="location" size="24">
-                                <br><br><br>
+                                <br><br>
+                                Organizer : <input type="text" name="organizer"></input>
+                                <br><br><br>      
                             </div>
                             <div class="big-box">
                                 Event description : <br>
                                 <textarea name="event_desc" rows="8" cols="84"></textarea><br><br>
                             </div>
+                            
                             <div class="sbutton">
                                 <div class="button">
                                     <input type="submit" name="submit" value="Create Eventure" id="submit"> &nbsp; or &nbsp; <a href="index.jsp" id="blue">Discard</a>
