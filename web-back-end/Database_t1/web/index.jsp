@@ -57,12 +57,15 @@
 
                 <div id="up-showcase">
                     <% for(Model.Event i: events) {%>
-                    <div class=up-block>
-                        <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">
-                        <h4><%= i.getEvent_name() %></h4>
-                        <h5><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation() %></h5>
-                        <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event() %> | <%= i.getEvent_start() %></h5>					
-                    </div>
+                    <a class="event-thumbnail" href="Event_Servlet" value="<% i.getEvent_id(); %>">
+                        <div class=up-block>
+                            <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">
+                            <h4><%= i.getEvent_name()%></h4>
+                            <h5><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation()%></h5>
+                            <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event()%> | <%= i.getEvent_start()%></h5>					
+                        </div>
+                    </a>
+                    
                     <%}%>
                 </div>
             </div>
@@ -84,12 +87,15 @@
                 <div id="exp-showcase" class="col-lg-12">
                     <% for(Model.Event i: explore) {%>
                     <% System.out.println("aaa"); %>
-                    <div class="exp-block">
-                        <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
-                        <h3><%= i.getEvent_name() %></h3>
-                        <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation() %></h4>
-                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event() %> | <%= i.getEvent_start() %></h4>	
-                    </div>
+                    <a class="event-thumbnail" href="Event_Servlet" value="<% i.getEvent_id(); %>
+                        <div class="exp-block">
+                            <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
+                            <h3><%= i.getEvent_name()%></h3>
+                            <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation()%></h4>
+                            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event()%> | <%= i.getEvent_start()%></h4>	
+                        </div>
+                    </a>
+                    
                     <% } %>
                 </div>
             </div>
