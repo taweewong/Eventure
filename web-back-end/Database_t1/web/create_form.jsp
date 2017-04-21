@@ -19,7 +19,7 @@
                 <h1>Create Form</h1>
             </div>
             <div class="rows input-box">
-                <form>
+                <form action="Create_form_Servlet">
                     <div id="input-name-div">
                         <h3>
                             Form name : 
@@ -35,10 +35,14 @@
                             <br>
                         </div>
                     </div>
+
                         
                     <button class="btn btn-default" id="add-btn" type="button">Add question</button>
                     <br><br><br>
                     <button class="btn btn-success submit-btn" type="submit">submit</button>
+
+                    
+          
                 </form>
             </div>
         </div>
