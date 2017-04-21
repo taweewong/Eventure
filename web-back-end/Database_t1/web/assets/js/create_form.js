@@ -35,7 +35,7 @@ $("#add-btn").click(function() {
 	html += '</div>\n'
 
 	// add html
-	$("form").append(html);
+	$("#my-form").append(html);
 	
 	// Delete question
 	$('.question').on("click", "span", function(event) {
