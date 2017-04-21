@@ -23,20 +23,23 @@
                     <div id="input-name-div">
                         <h3>
                             Form name : 
-                            <input class="name-input" type="text" name="event-name" id="event-name">
+                            <input class="name-input" type="text" name="event_name" id="event-name">
                         </h3>
                     </div>
                     <br>
-                    <div class="question">
-                        <h3>Question 1 <span><i class="fa fa-trash-o" aria-hidden="true"></i></span></h3>
-                        <textarea id="q1" class="input-question" rows="1" name="answer1"></textarea>
-                        <hr align="left">
-                        <br>
+                    <div id="my-form">
+                        <div class="question">
+                            <h3>Question 1 <span><i class="fa fa-trash-o" aria-hidden="true"></i></span></h3>
+                            <textarea id="q1" class="input-question" rows="1" name="answer1"></textarea>
+                            <hr align="left">
+                            <br>
+                        </div>
                     </div>
+                        
+                    <button class="btn btn-default" id="add-btn" type="button">Add question</button>
+                    <br><br><br>
+                    <button class="btn btn-success submit-btn" type="submit">submit</button>
                 </form>
-                <button class="btn btn-default" id="add-btn">Add question</button>
-                <br><br><br>
-                <button class="btn btn-success submit-btn" type="submit">submit</button>
             </div>
         </div>
         <script type="text/javascript" src="assets/js/create_form.js"></script>
