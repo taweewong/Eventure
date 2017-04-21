@@ -39,7 +39,6 @@ h5 {
 	background-color: #0099FF;
 	border: none;
 	color: white;
-	min-width: 90%;
 }
 
 .btn:hover {
@@ -94,4 +93,8 @@ h5 {
 
 .q-form {
 	margin: 15px 0px 15px 0px;
+}
+
+.manage-btn {
+    min-width: 90%;
 }

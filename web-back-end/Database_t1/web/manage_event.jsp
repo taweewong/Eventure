@@ -19,33 +19,35 @@
             <div class="head-pic">
                 <img class="head-pic-crop" src="assets/css/pic/anthony-delanoix-48936.jpg">
                 <%
-                   Model.Event event = new Event();
-                   event = (Model.Event) session.getAttribute("event_id_inf");
-                   System.out.println(event.getEvent_name());
-                
+                    Model.Event event = new Event();
+                    event = (Model.Event) session.getAttribute("event_id_inf");
+                    System.out.println(event.getEvent_name());
+
                 %>
             </div>
             <div class="container">
                 <div class="row">
                     <div class="topic col-xs-12">
                         <div class="box">
-                            <h1><%= event.getEvent_name() %></h1>
+                            <h1><%= event.getEvent_name()%></h1>
                             <div class="place-n-time">
-                                <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.getLocation() %> </h4>
-                                <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= event.getDate_event() %> | <%= event.getEvent_start() %></h4>
+                                <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.getLocation()%> </h4>
+                                <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= event.getDate_event()%> | <%= event.getEvent_start()%></h4>
                             </div>
                         </div>
                         <div class="box">
-                            
-                            <a class="btn btn-default manage-btn" name="create" value="01" href="create_form.jsp" role="button">Create Application Form</a>
-                                <%-- <a type="button" class="btn btn-default manage-btn">Create Application Form</a> --%>
-                 
-                                <form action="Join_req_Servlet">
-                                <input type="submit" class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id() %>" >
-                                </form>
-                                <%--<a class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id() %>" href="Join_req_Servlet" role="button">View join request</a>--%>
-                                <%--<button type="button" class="btn btn-default manage-btn">View join request</button>--%>
-                            
+                            <form action="Create_form_Servlet">
+                                <button type="submit" class="btn btn-default manage-btn" name="create" value="<%= event.getEvent_id()%>">Create Application Form</button>
+                            </form>
+                            <br>
+                            <%-- <a type="button" class="btn btn-default manage-btn">Create Application Form</a> --%>
+
+                            <form action="Join_req_Servlet">
+                                <button type="submit" class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id()%>">View Join Request</button>
+                            </form>
+                            <%--<a class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id() %>" href="Join_req_Servlet" role="button">View join request</a>--%>
+                            <%--<button type="button" class="btn btn-default manage-btn">View join request</button>--%>
+
                         </div>
                     </div>
                 </div>
