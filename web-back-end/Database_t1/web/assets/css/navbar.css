@@ -94,5 +94,29 @@
     text-decoration: underline;
 }
 
+#main-menu {
+    background-color: #F3F3F3;
+    padding: 0px;
+    border: 0px;
+    margin-left: 20px;
+}
+
+#main-menu:hover {
+    background-color: #F3F3F3;
+}
+
+#main-menu:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#menu-name {
+    color: black;
+    transition: 0.1s;
+}
+
+#menu-name:hover {
+    color: #0099FF;
+}
 /*Default CSS*/
 
