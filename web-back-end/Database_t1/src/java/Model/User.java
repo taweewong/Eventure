@@ -17,6 +17,7 @@ public class User {
     private String email;
     private String user_id;
     private String admin_id;
+    private String event_id;
     private String account_id;
     private String firstname;
     private String lastname;
