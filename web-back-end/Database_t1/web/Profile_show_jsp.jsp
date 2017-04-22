@@ -28,7 +28,7 @@
         <div class="container">
             <div class="wrapper center-block">
                 <div class="col-lg-6 col-xs-12" id="left">
-                    <div><img src="<%= user.getImage()%>" width="300" class="img-circle"></div>
+                    <div><img src="<%= user.getImage()%>" width="300" class="img-rounded"></div>
                     <h2><%= user.getFirstname()%> <%= user.getLastname()%></h2>
                 </div>
                 <div class="col-lg-6 col-xs-12" id="right">
@@ -49,6 +49,8 @@
                         <input type="date" name="bdate" value="<%= user.getBdate()%>" class="form-input" disabled="">
                         <h4>Email</h4>
                         <input type="text" name="email" value="<%= user.getEmail()%>" class="form-input" disabled="">
+                        <h4>Address</h4>
+                        <input type="text" name="email" value="<%= user.getAddress()%>" class="form-input" disabled="">
                     </form>	
                 </div>
             </div>
