@@ -28,7 +28,7 @@
 	<div class="container">
 		<div class="wrapper center-block">
 			<div class="col-lg-6 col-xs-12" id="left">
-				<div><img src="assets/css/pic/profile-icon.png" width="300" class="img-circle"></div>
+				<div><img src="<%= user.getImage()%>" width="300" class="img-circle"></div>
 				<h2><%= user.getFirstname()%> <%= user.getLastname()%></h2>
 				<a href="#" id="change-img">Change profile image</a>
 			</div>

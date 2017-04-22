@@ -5,6 +5,7 @@
  */
 package Model;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import webServlet.Category_ex_Servlet;
 
@@ -54,7 +56,7 @@ public class Keep_Event {
                 ev.setEvent_id(rs.getString("EVENT_ID"));
                 ev.setEvent_name(rs.getString("EVENT_NAME"));
                 ev.setLocation(rs.getString("LOCATION"));
-                ev.setLocation(rs.getString("DURATION"));
+                
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -84,7 +86,7 @@ public class Keep_Event {
                 ev.setEvent_id(rs.getString("EVENT_ID"));
                 ev.setEvent_name(rs.getString("EVENT_NAME"));
                 ev.setLocation(rs.getString("LOCATION"));
-                ev.setLocation(rs.getString("DURATION"));
+                
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -114,7 +116,7 @@ public class Keep_Event {
                 ev.setEvent_id(rs.getString("EVENT_ID"));
                 ev.setEvent_name(rs.getString("EVENT_NAME"));
                 ev.setLocation(rs.getString("LOCATION"));
-                ev.setLocation(rs.getString("DURATION"));
+                
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -129,7 +131,7 @@ public class Keep_Event {
 
     public void query_my_event(String USER_ID) {
         try {
-            System.out.println("ggggggg");
+            
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
@@ -144,7 +146,7 @@ public class Keep_Event {
                 ev.setEvent_id(rs.getString("EVENT_ID"));
                 ev.setEvent_name(rs.getString("EVENT_NAME"));
                 ev.setLocation(rs.getString("LOCATION"));
-                ev.setLocation(rs.getString("DURATION"));
+                
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -174,7 +176,7 @@ public class Keep_Event {
             ev.setEvent_id(rs.getString("EVENT_ID"));
             ev.setEvent_name(rs.getString("EVENT_NAME"));
             ev.setLocation(rs.getString("LOCATION"));
-            ev.setLocation(rs.getString("DURATION"));
+            
             ev.setOrganizer(rs.getString("ORGANIZER"));
             ev.setDate_event(rs.getDate("DATE_EVENT"));
             ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -200,6 +202,41 @@ public class Keep_Event {
             rs.next();
 
             this.num = (String) rs.getString("maxevent");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    
+    
+    public void query_search_event(String EVENT_NAME) {
+        try {
+
+            Statement stmt = null;
+            ResultSet rs = null;
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM EVENT WHERE EVENT_NAME LIKE '%"+EVENT_NAME+"%';";
+            rs = stmt.executeQuery(sql);
+
+            
+            
+            while (rs.next()) {
+
+                Event ev = new Event();
+                ev.setCate_id(rs.getString("CATE_ID"));
+                ev.setDetail(rs.getString("DETAIL"));
+                ev.setEvent_id(rs.getString("EVENT_ID"));
+                ev.setEvent_name(rs.getString("EVENT_NAME"));
+                ev.setLocation(rs.getString("LOCATION"));
+                
+                ev.setOrganizer(rs.getString("ORGANIZER"));
+                ev.setDate_event(rs.getDate("DATE_EVENT"));
+                ev.setEvent_start(rs.getTime("EVENT_START"));
+                events.add(ev);
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);

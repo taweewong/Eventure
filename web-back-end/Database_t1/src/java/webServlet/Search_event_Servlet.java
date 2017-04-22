@@ -5,9 +5,7 @@
  */
 package webServlet;
 
-import Model.Event;
-import Model.Keep_User;
-import Model.User;
+import Model.Keep_Event;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -29,8 +27,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author thitikron_gun
  */
-@WebServlet(name = "Event_Servlet", urlPatterns = {"/Event_Servlet"})
-public class Event_Servlet extends HttpServlet {
+@WebServlet(name = "Search_event_Servlet", urlPatterns = {"/Search_event_Servlet"})
+public class Search_event_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,49 +44,47 @@ public class Event_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String search_request = request.getParameter("search_request");
+            System.out.println(search_request);
             
-            String EVENT_ID = request.getParameter("eid") ;
-            HttpSession session = request.getSession(true);
-
+            HttpSession session = request.getSession(true);           
+            Boolean status_login = false;
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
-
+            int ST=0;
             Statement stmt = null;
-            
+
             try {
                 stmt = conn.createStatement();
-                String sql = "SELECT * FROM EVENT where EVENT_ID = '" + EVENT_ID + "'";
+                
+                String sql = "SELECT * FROM EVENT WHERE EVENT_NAME LIKE '%"+search_request+"%';";                
                 ResultSet rs = stmt.executeQuery(sql);
                 
-                stmt = null;
-                ResultSet rs1 = null;
-                stmt = conn.createStatement();
-                rs1 = stmt.executeQuery(sql);
-                rs1.next();
+                if (!rs.isBeforeFirst()) {
+                    ST++;
+                    session.setAttribute("EVENT_SEARCH", search_request);
+                    session.setAttribute("ST", ST);
+                    RequestDispatcher pg = request.getRequestDispatcher("search_event.jsp");
+                    pg.forward(request, response);
+                }
                 
-                Keep_User ku = new Keep_User(conn);
-                
-                ku.show_user_lists(EVENT_ID);
-                
-                session.setAttribute("User_list", ku.getUsers());
-                
-                
-                session.setAttribute("EVENT_ID", EVENT_ID);
+                Keep_Event S_event = new Keep_Event(conn);
+                S_event.query_search_event(search_request);
 
-                Event event = new Event(EVENT_ID, rs1.getString("EVENT_NAME"), rs1.getString("LOCATION"), rs1.getString("DURATION"), rs1.getString("DETAIL"), rs1.getString("ORGANIZER"), rs1.getString("CATE_ID"), rs1.getDate("DATE_EVENT"), rs1.getTime("EVENT_START"));
-                session.setAttribute("event_session", event);
-
-                
-           
-                
-                RequestDispatcher pg = request.getRequestDispatcher("event.jsp");
+                session.setAttribute("event_list", S_event.getEvents());
+                session.setAttribute("ST", ST);
+                session.setAttribute("EVENT_SEARCH", search_request);
+                RequestDispatcher pg = request.getRequestDispatcher("search_event.jsp");
                 pg.forward(request, response);
-                        
-                        
+                
+                
+                
+                if (rs.next()) {}
             } catch (SQLException ex) {
-                Logger.getLogger(Event_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Search_event_Servlet.class.getName()).log(Level.SEVERE, null, ex);
             }
                 
+            
             
             
         }

@@ -20,7 +20,7 @@
             LinkedList<Model.User> users = new LinkedList<Model.User>();
             event = (Model.Event) session.getAttribute("event_session");
             users = (LinkedList<Model.User>) session.getAttribute("User_list");
-            System.out.println(users.get(0).getFirstname());
+            //System.out.println(users.get(0).getFirstname());
         %>
 
 
