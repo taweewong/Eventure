@@ -25,7 +25,7 @@
 
             ke = (LinkedList<Model.Event>) session.getAttribute("my_event");
             //Model.Event[] array = ke.toArray(new Model.Event[ke.size()]);
-            System.out.println(ke.get(0).getEvent_name());
+            //System.out.println(ke.get(0).getEvent_name());
 
         %>
             <div class="rows box">

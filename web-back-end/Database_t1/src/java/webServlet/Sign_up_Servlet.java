@@ -8,11 +8,15 @@ package webServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -93,17 +97,21 @@ public class Sign_up_Servlet extends HttpServlet {
                 }
                 
                 stmt = conn.createStatement();
-                String sql1 = "INSERT INTO ACCOUNT VALUES ('"+acc+"','"+Fname+"','"+Lname+"','"+Email+"','"+Mobile+"','"+Bdate+"','"+age+"','"+address+"','"+occ+"','"+userid+"');" ;
+                String sql1 = "INSERT INTO ACCOUNT VALUES ('"+acc+"','"+Fname+"','"+Lname+"','"+Email+"','"+Mobile+"','"+Bdate+"','"+age+"','"+address+"','"+occ+"','"+userid+"','TEST');" ;
                 stmt.executeUpdate(sql1);
                 System.out.println(sql1);
                 
                 
        
-                String sql2 = "INSERT INTO MUSER VALUES ('"+userid+"','"+Username+"','"+Password+"','"+acc+"','"+eventid+"','"+adminid+"');" ;
+                String sql2 = "INSERT INTO MUSER VALUES ('"+userid+"','"+Username+"','"+Password+"','"+acc+"','0000');" ;
                 stmt.executeUpdate(sql2);
                 System.out.println(sql2);
                 
                 
+                
+                String sql3 = "INSERT INTO RESERVE VALUES ('"+userid+"','0','2017-04-13');" ;
+                stmt.executeUpdate(sql3);
+                System.out.println(sql3);
                 
 
             } catch (SQLException ex) {
@@ -111,7 +119,7 @@ public class Sign_up_Servlet extends HttpServlet {
             }
             
             
-            RequestDispatcher pg = request.getRequestDispatcher("sign_in.html");
+            RequestDispatcher pg = request.getRequestDispatcher("sign_in.jsp");
             pg.forward(request, response);
             
         }
