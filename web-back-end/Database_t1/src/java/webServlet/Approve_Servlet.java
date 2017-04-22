@@ -5,26 +5,20 @@
  */
 package webServlet;
 
-import Model.Keep_Question;
-import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Sea
  */
-@WebServlet(name = "Show_question_Answer", urlPatterns = {"/Show_question_Answer"})
-public class Show_question_Answer extends HttpServlet {
+@WebServlet(name = "Approve_Servlet", urlPatterns = {"/Approve_Servlet"})
+public class Approve_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,27 +33,16 @@ public class Show_question_Answer extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession(true);
-            ServletContext ctx = getServletContext();
-            Connection conn = (Connection) ctx.getAttribute("connection");
-            
-            String user_id = request.getParameter("viewanswer");
-            System.out.println("viewanswer "+user_id);
-            User user = (User) session.getAttribute("user_session");
-            
-            String event_id = (String) session.getAttribute("event_join");
-            
-            Keep_Question kq = new Keep_Question(conn);
-            kq.query_question(user.getUser_id(), event_id);
-            session.setAttribute("question_join", kq.getQuestions());
-            
-            RequestDispatcher rd = request.getRequestDispatcher("join_req");
-            rd.forward(request, response);
-           
-                    
-            
-            
-            
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Approve_Servlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Approve_Servlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

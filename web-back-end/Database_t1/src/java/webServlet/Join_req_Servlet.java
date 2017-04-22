@@ -5,7 +5,9 @@
  */
 package webServlet;
 
+import Model.Keep_Question;
 import Model.Keep_User;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -47,8 +49,16 @@ public class Join_req_Servlet extends HttpServlet {
             Keep_User ku = new Keep_User(conn);
             ku.show_user_lists(event_id);
             
+            
+            String user_id = request.getParameter("viewanswer");
+            System.out.println("viewanswer "+user_id);
+            User user = (User) session.getAttribute("user_session");
+                       
+            
+            
             session.setAttribute("user_join", ku.getUsers());
             session.setAttribute("event_join", event_id);
+            
             
             RequestDispatcher rd = request.getRequestDispatcher("join_req.jsp");
             rd.forward(request, response);

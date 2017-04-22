@@ -4,6 +4,8 @@
     Author     : Taweewong
 --%>
 
+<%@page import="java.sql.Connection"%>
+<%@page import="Model.Keep_Question"%>
 <%@page import="Model.Question"%>
 <%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -28,7 +30,10 @@
                 //LinkedList<Model.Question> question = new LinkedList<Question>();
                 String event = (String) session.getAttribute("event_join");
                 user_join = (LinkedList<Model.User>) session.getAttribute("user_join");
-                
+                ServletContext ctx = getServletContext();
+                Connection conn = (Connection) ctx.getAttribute("connection");
+                //LinkedList<Model.Question> question = new LinkedList<Question>();
+                //question = (LinkedList<Model.Question>) session.getAttribute("question_join");
 
             %>
             <div class="rows box">
@@ -41,18 +46,18 @@
                             <div class="request-name">
                                 <h3><%= i.getFirstname() + " " + i.getLastname()%></h3>
                                 <!-- <h4>View answer</h4> -->
-                                <form action="Show_question_Answer">
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" name="viewanswer" data-target="#<%= i.getUser_id() %>" value="<%= i.getUser_id() %>">
+
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" name="viewanswer" data-target="#<%= i.getUser_id()%>" value="<%= i.getUser_id()%>">
                                     View Answer
                                 </button>
-                                </form>
+
                             </div>
                         </div>
                         <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">Approve</button></div>
                         <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">Reject</button></div>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="<%= i.getUser_id() %>" class="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal fade" id="<%= i.getUser_id()%>" class="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <!-- <div class="modal-header">
@@ -65,7 +70,10 @@
                                     </div>
                                     <div class="text-row">
                                         <h5>Name</h5>
-                                        <% System.out.println(i.getFirstname() + " " + i.getLastname()); 
+                                        <% System.out.println(i.getFirstname() + " " + i.getLastname());
+                                            Keep_Question kq = new Keep_Question(conn);
+                                            kq.query_question(i.getUser_id(), event);
+                                            session.setAttribute("question_join", kq.getQuestions());
                                             LinkedList<Model.Question> question = new LinkedList<Question>();
                                             question = (LinkedList<Model.Question>) session.getAttribute("question_join");
                                         %>
@@ -84,17 +92,19 @@
                                         <h3 id="applicant-detail"><%= i.getPhone()%></h3>
                                     </div>
                                     <div class="rows modal-btn">
-                                        <div class="col-xs-4"><button type="button" class="btn btn-default">Approve</button></div>
+                                        <form action="Approve_Servlet">
+                                            <div class="col-xs-4"><button type="submit" class="btn btn-default" name="approve" value="<%= i.getUser_id() %>">Approve</button></div>
+                                        </form>
                                         <div class="col-xs-4"><button type="button" class="btn btn-default">Reject</button></div>
                                     </div>
                                     <div id="line"></div>
                                     <div class="q-form">
-                                        <% for(Model.Question j: question) { %>
+                                        <% for (Model.Question j : question) {%>
                                         <div class="question">
-                                            <h4><%= j.getQUESTION() %> ?</h4>
+                                            <h4><%= j.getQUESTION()%> ?</h4>
                                         </div>
                                         <div class="answer">
-                                            <p>2</p>
+                                            <p><%= j.getANSWER()%></p>
                                         </div>
                                         <% } %>
                                     </div>

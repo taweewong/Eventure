@@ -35,6 +35,7 @@ public class Keep_User {
             rs = stmt.executeQuery(sql);
 //                System.out.println(sql);
             while (rs.next()) {
+                System.out.println("user");
                 User user_ex = new User();
                 user_ex.setAccount_id(rs.getString("ACCOUNT_ID"));
                 user_ex.setAddress(rs.getString("ADDRESS"));
