@@ -53,6 +53,8 @@
                         <input type="date" name="bdate" value="<%= user.getBdate()%>" class="form-input">
                         <h4>Email</h4>
                         <input type="text" name="email" value="<%= user.getEmail()%>" class="form-input">
+                        <h4>Address</h4>
+                        <input type="text" name="email" value="<%= user.getAddress()%>" class="form-input" disabled="">
                         <h4>Profile image</h4>
                         <input type="file" id="change-img" name="file"><br><br>
                         <button class="btn btn-default confirm-btn" type="submit" name="edit_confirm">Confirm change</button>

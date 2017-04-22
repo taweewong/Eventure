@@ -6,17 +6,20 @@
 package webServlet;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -79,16 +82,39 @@ public class Update_profile_Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fname = request.getParameter("fname");
-        System.out.println("fname " + fname);
+        
+        HttpSession session = request.getSession();
+        Model.User user = new Model.User();
+        
+        user = (Model.User) request.getAttribute("user_session");
+        
+        
+        
+        /*
         Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
         InputStream fileContent = filePart.getInputStream();
         System.out.println("filename : " + fileName);
         
-        File uploads = new File("web\\assets\\css\\pic\\profile_image\\" + fileName);
+        //filePart.write(fileName);
+        
+        File file = new File("C:‪/Users/Taweewong/Downloads/doge.jpeg");
+        file.createNewFile();
+        */
+        
+        String app = request.getServletContext().getRealPath("");
+        String savepath = app + "assets\\image\\profile_img\\";
+     
+        //new File(savepath).mkdir();
+        
+        Part part  = request.getPart("file");
+        part.write(savepath + "hello.jpg");
+        
+        
         RequestDispatcher rd = request.getRequestDispatcher("Profile_jsp.jsp");
         rd.forward(request, response);
+        
+        
     }
 
     /**
