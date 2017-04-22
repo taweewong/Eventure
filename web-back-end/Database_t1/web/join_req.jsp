@@ -30,13 +30,13 @@
             %>
             <div class="rows box">
                 <div class="box-body">
-                    <% for(Model.User i: user_join){ %>
+                    <% for (Model.User i : user_join) {%>
                     <div class="event-rows">
                         <div class="col-xs-8 detail-box">
-                            
+
                             <img class="img-circle" src="assets/css/pic/profile-icon.png" width="100">
                             <div class="request-name">
-                                <h3><%= i.getFirstname()+" "+i.getLastname() %></h3>
+                                <h3><%= i.getFirstname() + " " + i.getLastname()%></h3>
                                 <!-- <h4>View answer</h4> -->
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                                     View Answer
@@ -60,19 +60,20 @@
                                     </div>
                                     <div class="text-row">
                                         <h5>Name</h5>
-                                        <h3 id="applicant-detail"><%= i.getFirstname()+" "+i.getLastname() %></h3>
+                                        <% System.out.println(i.getFirstname() + " " + i.getLastname()); %>
+                                        <h3 id="applicant-detail"><%= i.getFirstname() + " " + i.getLastname()%></h3>
                                     </div>
                                     <div class="text-row">
                                         <h5>E-mail</h5>
-                                        <h3 id="applicant-detail"><%= i.getEmail() %></h3>
+                                        <h3 id="applicant-detail"><%= i.getEmail()%></h3>
                                     </div>
                                     <div class="text-row">
                                         <h5>Age</h5>
-                                        <h3 id="applicant-detail"><%= i.getBdate() %></h3>
+                                        <h3 id="applicant-detail"><%= i.getBdate()%></h3>
                                     </div>
                                     <div class="text-row">
                                         <h5>Phone</h5>
-                                        <h3 id="applicant-detail"><%= i.getPhone() %></h3>
+                                        <h3 id="applicant-detail"><%= i.getPhone()%></h3>
                                     </div>
                                     <div class="rows modal-btn">
                                         <div class="col-xs-4"><button type="button" class="btn btn-default">Approve</button></div>
