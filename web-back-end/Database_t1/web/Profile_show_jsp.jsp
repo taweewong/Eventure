@@ -28,7 +28,7 @@
         <div class="container">
             <div class="wrapper center-block">
                 <div class="col-lg-6 col-xs-12" id="left">
-                    <div><img src="<%= user.getImage()%>" width="300" class="img-circle"></div>
+                    <div><img src="<%= user.getImage()%>" width="300" class="img-rounded"></div>
                     <h2><%= user.getFirstname()%> <%= user.getLastname()%></h2>
                 </div>
                 <div class="col-lg-6 col-xs-12" id="right">
