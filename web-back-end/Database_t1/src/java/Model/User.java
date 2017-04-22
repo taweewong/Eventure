@@ -22,11 +22,12 @@ public class User {
     private String bdate;
     private String address;
     private String phone;
+    private String image;
 
     public User() {
     }
 
-    public User(String username, String password, String email, String user_id, String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone) {
+    public User(String username, String password, String email, String user_id, String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone, String image) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -39,6 +40,7 @@ public class User {
         this.bdate = bdate;
         this.address = address;
         this.phone = phone;
+        this.image = image;
     }
     
     
@@ -143,6 +145,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
     
