@@ -29,14 +29,14 @@
 		<div class="wrapper center-block">
 			<div class="col-lg-6 col-xs-12" id="left">
 				<div><img src="assets/css/pic/profile-icon.png" width="300" class="img-circle"></div>
-				<h2>Event Entvee</h2>
+				<h2><%= user.getFirstname()%> <%= user.getLastname()%></h2>
 				<a href="#" id="change-img">Change profile image</a>
 			</div>
 			<div class="col-lg-6 col-xs-12" id="right">
 				<div class="header">
                                     
                                     <div><h1> Edit My Profile </h1></div>
-					<div><a href="#">My profile</a></div>
+					<div><a href="Profile_show_jsp.jsp">My profile</a></div>
 				</div>
                                 
 				<form action="" method="POST">
@@ -49,7 +49,8 @@
 					<h4>Birth date</h4>
 					<input type="date" name="bdate" value="<%= user.getBdate() %>" class="form-input">
 					<h4>Email</h4>
-					<input type="text" name="email" value="<%= user.getEmail() %>" class="form-input">
+                                        <input type="text" name="email" value="<%= user.getEmail() %>" class="form-input"><br><br>
+                                        <button class="btn btn-default confirm-btn" type="submit" name="edit_confirm">Confirm change</button>
 				</form>	
 			</div>
 		</div>
