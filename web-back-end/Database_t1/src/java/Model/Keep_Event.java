@@ -56,7 +56,7 @@ public class Keep_Event {
                 ev.setEvent_id(rs.getString("EVENT_ID"));
                 ev.setEvent_name(rs.getString("EVENT_NAME"));
                 ev.setLocation(rs.getString("LOCATION"));
-                ev.setLocation(rs.getString("DURATION"));
+                
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -86,7 +86,7 @@ public class Keep_Event {
                 ev.setEvent_id(rs.getString("EVENT_ID"));
                 ev.setEvent_name(rs.getString("EVENT_NAME"));
                 ev.setLocation(rs.getString("LOCATION"));
-                ev.setLocation(rs.getString("DURATION"));
+                
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -116,7 +116,7 @@ public class Keep_Event {
                 ev.setEvent_id(rs.getString("EVENT_ID"));
                 ev.setEvent_name(rs.getString("EVENT_NAME"));
                 ev.setLocation(rs.getString("LOCATION"));
-                ev.setLocation(rs.getString("DURATION"));
+                
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -146,7 +146,7 @@ public class Keep_Event {
                 ev.setEvent_id(rs.getString("EVENT_ID"));
                 ev.setEvent_name(rs.getString("EVENT_NAME"));
                 ev.setLocation(rs.getString("LOCATION"));
-                ev.setLocation(rs.getString("DURATION"));
+                
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -176,7 +176,7 @@ public class Keep_Event {
             ev.setEvent_id(rs.getString("EVENT_ID"));
             ev.setEvent_name(rs.getString("EVENT_NAME"));
             ev.setLocation(rs.getString("LOCATION"));
-            ev.setLocation(rs.getString("DURATION"));
+            
             ev.setOrganizer(rs.getString("ORGANIZER"));
             ev.setDate_event(rs.getDate("DATE_EVENT"));
             ev.setEvent_start(rs.getTime("EVENT_START"));
@@ -231,7 +231,7 @@ public class Keep_Event {
                 ev.setEvent_id(rs.getString("EVENT_ID"));
                 ev.setEvent_name(rs.getString("EVENT_NAME"));
                 ev.setLocation(rs.getString("LOCATION"));
-                ev.setLocation(rs.getString("DURATION"));
+                
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
