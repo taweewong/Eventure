@@ -47,7 +47,7 @@ public class Event_Servlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            String EVENT_ID ="0000";
+            String EVENT_ID = request.getParameter("eid") ;
             HttpSession session = request.getSession(true);
 
             ServletContext ctx = getServletContext();
@@ -67,6 +67,7 @@ public class Event_Servlet extends HttpServlet {
                 rs1.next();
                 
                 Keep_User ku = new Keep_User(conn);
+                
                 ku.show_user_lists(EVENT_ID);
                 
                 session.setAttribute("User_list", ku.getUsers());

@@ -10,6 +10,8 @@ package Model;
  * @author thitikron_gun
  */
 public class User {
+    //SELECT * FROM account join muser using (USER_ID) join reserve using (USER_ID) join event using (EVENT_ID) where EVENT_ID = 0000
+    
     private String username;
     private String password ;
     private String email;
@@ -23,11 +25,13 @@ public class User {
     private String address;
     private String phone;
     private String image;
-
+    
+    
+    
     public User() {
     }
 
-    public User(String username, String password, String email, String user_id, String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone, String image) {
+    public User(String username, String password, String email, String user_id,String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone, String image) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -90,6 +94,9 @@ public class User {
     public void setEvent_id(String event_id) {
         this.event_id = event_id;
     }
+     
+    
+    
 
     public String getAdmin_id() {
         return admin_id;
