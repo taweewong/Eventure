@@ -11,6 +11,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -39,20 +45,84 @@ public class Update_profile_Servlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    Model.User user = new Model.User();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Update_profile_Servlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Update_profile_Servlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession session = request.getSession();
+
+            String fname = request.getParameter("fname");
+            String lname = request.getParameter("lname");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+            String bdate = request.getParameter("bdate");
+            String address = request.getParameter("address");
+            String occupation = request.getParameter("occupation");
+
+            user = (Model.User) session.getAttribute("user_session");
+
+            System.out.println("USER_ID : " + user.getUser_id());
+
+            ServletContext ctx = getServletContext();
+            Connection conn = (Connection) ctx.getAttribute("connection");
+
+            //IMAGE UPLOADER
+            /*
+                Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
+                String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+                InputStream fileContent = filePart.getInputStream();
+                System.out.println("filename : " + fileName);
+                
+                //filePart.write(fileName);
+                
+                File file = new File("C:‪/Users/Taweewong/Downloads/doge.jpeg");
+                file.createNewFile();
+             */
+            String app = request.getServletContext().getRealPath("");
+            String savepath = app + "assets\\image\\profile_img\\";
+
+            //new File(savepath).mkdir();
+            Part part = request.getPart("file");
+            part.write(savepath + user.getUser_id() + "_profile_img.jpg");
+            
+            String image;
+            image = ("assets/image/profile_img/" + user.getUser_id() + "_profile_img.jpg");
+            
+            //UPDATE DATA BASE
+            Statement stmt = null;
+            try {
+                stmt = conn.createStatement();
+                String sql = "UPDATE account "
+                        + "SET first_name = '" + fname + "', "
+                        + "last_name = '" + lname + "', "
+                        + "email = '" + email + "', "
+                        + "phone = '" + phone + "', "
+                        + "b_date = '" + bdate + "', "
+                        + "address = '" + address + "', "
+                        + "occupation = '" + occupation + "', "
+                        + "image = '" + image + "'"
+                        + "WHERE user_id = '" + user.getUser_id() + "'";
+
+                int rs = stmt.executeUpdate(sql);
+                
+                user.setFirstname(fname);
+                user.setLastname(lname);
+                user.setEmail(email);
+                user.setPassword(phone);
+                user.setBdate(bdate);
+                user.setAddress(address);
+                user.setOccupation(occupation);
+                user.setImage(image);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Update_profile_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            response.sendRedirect("Profile_show_jsp.jsp");
+
         }
     }
 
@@ -82,39 +152,7 @@ public class Update_profile_Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession session = request.getSession();
-        Model.User user = new Model.User();
-        
-        user = (Model.User) request.getAttribute("user_session");
-        
-        
-        
-        /*
-        Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
-        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-        InputStream fileContent = filePart.getInputStream();
-        System.out.println("filename : " + fileName);
-        
-        //filePart.write(fileName);
-        
-        File file = new File("C:‪/Users/Taweewong/Downloads/doge.jpeg");
-        file.createNewFile();
-        */
-        
-        String app = request.getServletContext().getRealPath("");
-        String savepath = app + "assets\\image\\profile_img\\";
-     
-        //new File(savepath).mkdir();
-        
-        Part part  = request.getPart("file");
-        part.write(savepath + "hello.jpg");
-        
-        
-        RequestDispatcher rd = request.getRequestDispatcher("Profile_jsp.jsp");
-        rd.forward(request, response);
-        
-        
+        processRequest(request, response);
     }
 
     /**

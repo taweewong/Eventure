@@ -50,7 +50,9 @@
                         <h4>Email</h4>
                         <input type="text" name="email" value="<%= user.getEmail()%>" class="form-input" disabled="">
                         <h4>Address</h4>
-                        <input type="text" name="email" value="<%= user.getAddress()%>" class="form-input" disabled="">
+                        <input type="text" name="address" value="<%= user.getAddress()%>" class="form-input" disabled="">
+                        <h4>Occupation</h4>
+                        <input type="text" name="occupation" value="<%= user.getOccupation()%>" class="form-input" disabled="">
                     </form>	
                 </div>
             </div>

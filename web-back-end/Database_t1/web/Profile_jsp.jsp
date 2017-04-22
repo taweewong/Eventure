@@ -54,9 +54,11 @@
                         <h4>Email</h4>
                         <input type="text" name="email" value="<%= user.getEmail()%>" class="form-input">
                         <h4>Address</h4>
-                        <input type="text" name="email" value="<%= user.getAddress()%>" class="form-input" disabled="">
+                        <input type="text" name="address" value="<%= user.getAddress()%>" class="form-input">
+                        <h4>Occupation</h4>
+                        <input type="text" name="occupation" value="<%= user.getOccupation()%>" class="form-input">
                         <h4>Profile image</h4>
-                        <input type="file" id="change-img" name="file"><br><br>
+                        <input type="file" id="change-img" name="file" accept="image/*"><br><br>
                         <button class="btn btn-default confirm-btn" type="submit" name="edit_confirm">Confirm change</button>
                     </form>
                 </div>
