@@ -8,6 +8,7 @@ package webServlet;
 import Model.Event;
 import Model.Keep_Event;
 import Model.Keep_History;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -47,16 +48,20 @@ public class History_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String USER_ID = "0000";
+           
             HttpSession session = request.getSession(true);
             List <Event> events = null;
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
-
+            User user = new User();
+            user = (User) session.getAttribute("user_session");
+            String USER_ID = user.getUser_id();
+            
+            
             Statement stmt = null;
             try {
                 stmt = conn.createStatement();
-                String sql = "SELECT USER_ID, DATE_RESERVE, EVENT_NAME, LOCATION FROM RESERVE JOIN EVENT USING (USER_ID) where USER_ID ='1' GROUP BY EVENT_NAME;";
+                String sql = "SELECT USER_ID, DATE_RESERVE, EVENT_NAME, LOCATION FROM RESERVE JOIN EVENT USING (USER_ID) where USER_ID ='"+USER_ID+"' GROUP BY EVENT_NAME;";
                         
                 
                 ResultSet rs = stmt.executeQuery(sql);
