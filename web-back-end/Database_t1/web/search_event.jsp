@@ -65,7 +65,7 @@
                         </c:forEach> --%>            
                             <h2><%= i.getEvent_name()%></h2>
                             <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation()%>   </h4>
-                            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDuration()%></h4>
+                            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event() %></h4>
                         </div>
                     </div>
                     <% }}%>
