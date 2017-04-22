@@ -31,7 +31,7 @@ public class Keep_User {
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "select * from muser join account using (USER_ID) where EVENT_ID = "+EVENT_ID+";";
+            String sql = "SELECT * FROM account join muser using (USER_ID) join reserve using (USER_ID) join event using (EVENT_ID) where '"+EVENT_ID+"'";
             rs = stmt.executeQuery(sql);
 //                System.out.println(sql);
             while (rs.next()) {
@@ -41,13 +41,17 @@ public class Keep_User {
                 user_ex.setAdmin_id(rs.getString("ADMIN_ID"));
                 user_ex.setBdate(rs.getString("B_DATE"));
                 user_ex.setEmail(rs.getString("EMAIL"));
-                user_ex.setEvent_id(EVENT_ID);
+                user_ex.setEvent_id(rs.getString("EVENT_ID"));
                 user_ex.setFirstname(rs.getString("FIRST_NAME"));
                 user_ex.setLastname(rs.getString("LAST_NAME"));
                 user_ex.setPassword(rs.getString("PASSWORD"));
                 user_ex.setPhone(rs.getString("PHONE"));
                 user_ex.setUser_id(rs.getString("USER_ID"));
                 user_ex.setUsername(rs.getString("USERNAME"));
+                
+                
+                
+                
                 
                 users.add(user_ex);
             }
