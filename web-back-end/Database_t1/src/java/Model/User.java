@@ -25,13 +25,14 @@ public class User {
     private String address;
     private String phone;
     private String image;
+    private String occupation;
     
     
     
     public User() {
     }
 
-    public User(String username, String password, String email, String user_id,String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone, String image) {
+    public User(String username, String password, String email, String user_id, String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone, String image, String occupation) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -45,7 +46,10 @@ public class User {
         this.address = address;
         this.phone = phone;
         this.image = image;
+        this.occupation = occupation;
     }
+
+   
     
     
     
@@ -160,6 +164,14 @@ public class User {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
     }
     
     

@@ -93,7 +93,7 @@ public class Sign_in_Servlet extends HttpServlet {
                         rs2 = stmt.executeQuery(sql2);
                         rs2.next();
                         
-                        User user = new User(username, password, rs1.getString("EMAIL"), rs1.getString("USER_ID"),rs2.getString("EVENT_ID"),rs.getString("ADMIN_ID"), rs1.getString("ACCOUNT_ID"), rs1.getString("FIRST_NAME"), rs1.getString("LAST_NAME"), rs1.getString("B_DATE"), rs1.getString("ADDRESS"), rs1.getString("PHONE"), rs1.getString("IMAGE"));
+                        User user = new User(username, password, rs1.getString("EMAIL"), rs1.getString("USER_ID"),rs2.getString("EVENT_ID"),rs.getString("ADMIN_ID"), rs1.getString("ACCOUNT_ID"), rs1.getString("FIRST_NAME"), rs1.getString("LAST_NAME"), rs1.getString("B_DATE"), rs1.getString("ADDRESS"), rs1.getString("PHONE"), rs1.getString("IMAGE"), rs1.getString("OCCUPATION"));
                         
                         session.setAttribute("user_session", user);
                         session.setAttribute("muser_session", muser);
