@@ -4,6 +4,7 @@
     Author     : Taweewong
 --%>
 
+<%@page import="Model.Question"%>
 <%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,8 +25,10 @@
             <%
                 //Model.Event event = new Model.Event();
                 LinkedList<Model.User> user_join = new LinkedList<Model.User>();
+                //LinkedList<Model.Question> question = new LinkedList<Question>();
                 String event = (String) session.getAttribute("event_join");
                 user_join = (LinkedList<Model.User>) session.getAttribute("user_join");
+                
 
             %>
             <div class="rows box">
@@ -38,16 +41,18 @@
                             <div class="request-name">
                                 <h3><%= i.getFirstname() + " " + i.getLastname()%></h3>
                                 <!-- <h4>View answer</h4> -->
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                                <form action="Show_question_Answer">
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" name="viewanswer" data-target="#<%= i.getUser_id() %>" value="<%= i.getUser_id() %>">
                                     View Answer
                                 </button>
+                                </form>
                             </div>
                         </div>
                         <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">Approve</button></div>
                         <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">Reject</button></div>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal fade" id="<%= i.getUser_id() %>" class="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <!-- <div class="modal-header">
@@ -60,7 +65,10 @@
                                     </div>
                                     <div class="text-row">
                                         <h5>Name</h5>
-                                        <% System.out.println(i.getFirstname() + " " + i.getLastname()); %>
+                                        <% System.out.println(i.getFirstname() + " " + i.getLastname()); 
+                                            LinkedList<Model.Question> question = new LinkedList<Question>();
+                                            question = (LinkedList<Model.Question>) session.getAttribute("question_join");
+                                        %>
                                         <h3 id="applicant-detail"><%= i.getFirstname() + " " + i.getLastname()%></h3>
                                     </div>
                                     <div class="text-row">
@@ -81,12 +89,14 @@
                                     </div>
                                     <div id="line"></div>
                                     <div class="q-form">
+                                        <% for(Model.Question j: question) { %>
                                         <div class="question">
-                                            <h4>1+1 = ?</h4>
+                                            <h4><%= j.getQUESTION() %> ?</h4>
                                         </div>
                                         <div class="answer">
                                             <p>2</p>
                                         </div>
+                                        <% } %>
                                     </div>
                                 </div>
                                 <!-- <div class="modal-footer">
