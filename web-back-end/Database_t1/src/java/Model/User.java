@@ -16,7 +16,6 @@ public class User {
     private String password ;
     private String email;
     private String user_id;
-    private String event_id;
     private String admin_id;
     private String account_id;
     private String firstname;
@@ -28,7 +27,6 @@ public class User {
     private String occupation;
     
     
-    
     public User() {
     }
 
@@ -37,7 +35,6 @@ public class User {
         this.password = password;
         this.email = email;
         this.user_id = user_id;
-        this.event_id = event_id;
         this.admin_id = admin_id;
         this.account_id = account_id;
         this.firstname = firstname;
@@ -55,8 +52,11 @@ public class User {
     
     
 
+    public String getEvent_id() {
+        return event_id;
+    }
     
-    
+   
     
 
     public String getUsername() {
@@ -91,9 +91,6 @@ public class User {
         this.user_id = user_id;
     }
 
-    public String getEvent_id() {
-        return event_id;
-    }
 
     public void setEvent_id(String event_id) {
         this.event_id = event_id;

@@ -31,10 +31,11 @@ public class Keep_User {
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM account join muser using (USER_ID) join reserve using (USER_ID) join event using (EVENT_ID) where EVENT_ID='"+EVENT_ID+"'";
+            String sql = "SELECT * FROM account join muser using (USER_ID) join reserve using (USER_ID) join event using (EVENT_ID) where EVENT_ID ='"+EVENT_ID+"'";
             rs = stmt.executeQuery(sql);
 //                System.out.println(sql);
             while (rs.next()) {
+                System.out.println("user");
                 User user_ex = new User();
                 user_ex.setAccount_id(rs.getString("ACCOUNT_ID"));
                 user_ex.setAddress(rs.getString("ADDRESS"));

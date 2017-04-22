@@ -6,7 +6,6 @@
 package webServlet;
 
 import Model.Keep_Question;
-import Model.Keep_User;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sea
  */
-@WebServlet(name = "Join_req_Servlet", urlPatterns = {"/Join_req_Servlet"})
-public class Join_req_Servlet extends HttpServlet {
+@WebServlet(name = "Show_question_Answer", urlPatterns = {"/Show_question_Answer"})
+public class Show_question_Answer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,28 +39,27 @@ public class Join_req_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession(true);
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
-            HttpSession session = request.getSession(true);
-            String event_id = request.getParameter("event");
-            
-            Keep_User ku = new Keep_User(conn);
-            ku.show_user_lists(event_id);
-            
             
             String user_id = request.getParameter("viewanswer");
             System.out.println("viewanswer "+user_id);
             User user = (User) session.getAttribute("user_session");
-                       
             
+            String event_id = (String) session.getAttribute("event_join");
             
-            session.setAttribute("user_join", ku.getUsers());
-            session.setAttribute("event_join", event_id);
+            Keep_Question kq = new Keep_Question(conn);
+            kq.query_question(user.getUser_id(), event_id);
+            session.setAttribute("question_join", kq.getQuestions());
             
-            
-            RequestDispatcher rd = request.getRequestDispatcher("join_req.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("join_req");
             rd.forward(request, response);
+           
+                    
+            
+            
+            
         }
     }
 

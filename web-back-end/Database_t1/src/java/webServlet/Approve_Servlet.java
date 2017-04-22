@@ -5,27 +5,20 @@
  */
 package webServlet;
 
-import Model.Keep_Question;
-import Model.Keep_User;
-import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Sea
  */
-@WebServlet(name = "Join_req_Servlet", urlPatterns = {"/Join_req_Servlet"})
-public class Join_req_Servlet extends HttpServlet {
+@WebServlet(name = "Approve_Servlet", urlPatterns = {"/Approve_Servlet"})
+public class Approve_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,27 +34,15 @@ public class Join_req_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ServletContext ctx = getServletContext();
-            Connection conn = (Connection) ctx.getAttribute("connection");
-            HttpSession session = request.getSession(true);
-            String event_id = request.getParameter("event");
-            
-            Keep_User ku = new Keep_User(conn);
-            ku.show_user_lists(event_id);
-            
-            
-            String user_id = request.getParameter("viewanswer");
-            System.out.println("viewanswer "+user_id);
-            User user = (User) session.getAttribute("user_session");
-                       
-            
-            
-            session.setAttribute("user_join", ku.getUsers());
-            session.setAttribute("event_join", event_id);
-            
-            
-            RequestDispatcher rd = request.getRequestDispatcher("join_req.jsp");
-            rd.forward(request, response);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Approve_Servlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Approve_Servlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
