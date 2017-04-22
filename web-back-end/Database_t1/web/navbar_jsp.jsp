@@ -31,8 +31,17 @@
             <div class="rows">
                 <div class="col-lg-4 col-md-4 col-sm-4" id="search-div">
                     <div class="input-group" id="search-group">
-                        <input type="text" class="form-control" id="search-bar" placeholder="Search events">
-                        <span class="input-group-addon" id="search-btn">GO!</span>
+                        <form action="Search_event_Servlet" method="POST">
+                           
+                            <input type="text" name="search_request" class="form-control" id="search-bar" placeholder="Search events">
+                            <span>
+    <!--                            <button class="btn btn-default" type="submit">Go!!!!!</button> -->
+                                <button type="submit" class="input-group-addon" id="search-btn">GO!</button>
+                            </span>
+                            
+                            
+                            
+                        </form>
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
