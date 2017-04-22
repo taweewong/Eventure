@@ -47,7 +47,7 @@ public class Event_Servlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            String EVENT_ID = "0000" ;
+            String EVENT_ID = request.getParameter("eid") ;
             HttpSession session = request.getSession(true);
 
             ServletContext ctx = getServletContext();

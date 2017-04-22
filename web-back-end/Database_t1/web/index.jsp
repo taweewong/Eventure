@@ -57,7 +57,7 @@
 
                 <div id="up-showcase">
                     <% for(Model.Event i: events) {%>
-                    <a class="event-thumbnail" href="Event_Servlet" value="<% i.getEvent_id(); %>">
+                    <a class="event-thumbnail" href="Event_Servlet?eid=<%= i.getEvent_id() %>" value="<% i.getEvent_id(); %>">
                         <div class=up-block>
                             <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">
                             <h4><%= i.getEvent_name()%></h4>
@@ -87,7 +87,7 @@
                 <div id="exp-showcase" class="col-lg-12">
                     <% for(Model.Event i: explore) {%>
                     <% System.out.println("aaa"); %>
-                    <a class="event-thumbnail" href="Event_Servlet" value="<% i.getEvent_id(); %>">
+                    <a class="event-thumbnail" href="Event_Servlet?eid=<%= i.getEvent_id() %>" value="<% i.getEvent_id(); %>">
                         <div class="exp-block">
                             <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
                             <h3><%= i.getEvent_name()%></h3>
