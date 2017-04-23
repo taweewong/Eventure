@@ -84,7 +84,7 @@ public class Update_profile_Servlet extends HttpServlet {
              */
             //new File(savepath).mkdir();
             String app = request.getServletContext().getRealPath("");
-            String savepath = app + "assets\\image\\profile_img\\";
+            String savepath = app + "assets/image/profile_img/";
             Part part = request.getPart("file");
             String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 
