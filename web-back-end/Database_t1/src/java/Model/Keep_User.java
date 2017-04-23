@@ -93,6 +93,34 @@ public class Keep_User {
         }
     }
     
+    
+    public void show_user_all() {
+        try {
+        
+            Statement stmt = null;
+            ResultSet rs = null;
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM account join muser using (USER_ID)";
+            rs = stmt.executeQuery(sql);
+//                System.out.println(sql);
+            while (rs.next()) {
+                System.out.println("user");
+                User user_ex = new User();
+
+                user_ex.setFirstname(rs.getString("FIRST_NAME"));
+                user_ex.setLastname(rs.getString("LAST_NAME"));
+
+                user_ex.setUser_id(rs.getString("USER_ID"));
+                user_ex.setUsername(rs.getString("USERNAME"));
+                
+                users.add(user_ex);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public List<User> getUsers() {
         return users;
     }

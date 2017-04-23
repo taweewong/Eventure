@@ -39,6 +39,39 @@ public class Keep_Event {
     public Keep_Event() {
     }
 
+    
+    public void query_event() {
+        try {
+
+            Statement stmt = null;
+            ResultSet rs = null;
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM EVENT;";
+            rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+
+                Event ev = new Event();
+                ev.setCate_id(rs.getString("CATE_ID"));
+                ev.setDetail(rs.getString("DETAIL"));
+                ev.setEvent_id(rs.getString("EVENT_ID"));
+                ev.setEvent_name(rs.getString("EVENT_NAME"));
+                ev.setLocation(rs.getString("LOCATION"));
+                
+                ev.setOrganizer(rs.getString("ORGANIZER"));
+                ev.setDate_event(rs.getDate("DATE_EVENT"));
+                ev.setEvent_start(rs.getTime("EVENT_START"));
+                events.add(ev);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    
     public void show_cate_id(String CATE_ID) {
         try {
 
