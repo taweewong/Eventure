@@ -73,19 +73,19 @@ public class Create_event_Servlet extends HttpServlet {
             User userid = (User) session.getAttribute("user_session");
             //System.out.println(userid.getUser_id()+"jjjjjjjj");
             Statement stmt;
-
+            
             Statement get_userid;
             Statement set_k;
-            //System.out.println("user_id_createvent"+userid.getUser_id());
+            System.out.println("user_id_createvent"+userid.getUser_id());
 
             try {
-
-             stmt = conn.createStatement();
-             String sql1 = "INSERT INTO EVENT VALUES ("+event_id+",'"+event_name+"','"+location+"',"+duration+",'"+event_desc+"','"+organizer+"',"+userid.getUser_id()+",'"+cate_id+"','"+date+"','"+time+"', NULL);";
-                stmt.executeUpdate(sql1);
-             
-
                 
+                
+                
+
+                stmt = conn.createStatement();
+             
+                String sql1 = "INSERT INTO EVENT VALUES ("+event_id+",'"+event_name+"','"+location+"',"+duration+",'"+event_desc+"','"+organizer+"',"+userid.getUser_id()+",'"+cate_id+"','"+date+"','"+time+"', NULL);";
 
                 stmt.executeUpdate(sql1);
                 System.out.println(sql1);

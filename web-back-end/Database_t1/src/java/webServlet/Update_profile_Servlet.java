@@ -112,7 +112,7 @@ public class Update_profile_Servlet extends HttpServlet {
                         + "image = '" + image + "'"
                         + "WHERE user_id = '" + user.getUser_id() + "'";
 
-                int rs = stmt.executeUpdate(sql);
+                stmt.executeUpdate(sql);
 
                 user.setFirstname(fname);
                 user.setLastname(lname);
