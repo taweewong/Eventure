@@ -10,12 +10,14 @@ package Model;
  * @author thitikron_gun
  */
 public class User {
+    //SELECT * FROM account join muser using (USER_ID) join reserve using (USER_ID) join event using (EVENT_ID) where EVENT_ID = 0000
+    
     private String username;
     private String password ;
     private String email;
     private String user_id;
-    private String event_id;
     private String admin_id;
+    private String event_id;
     private String account_id;
     private String firstname;
     private String lastname;
@@ -23,16 +25,18 @@ public class User {
     private String address;
     private String phone;
     private String image;
-
+    private String occupation;
+    private String gender;
+    
+    
     public User() {
     }
 
-    public User(String username, String password, String email, String user_id, String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone, String image) {
+    public User(String username, String password, String email, String user_id, String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone, String image, String occupation, String gender) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.user_id = user_id;
-        this.event_id = event_id;
         this.admin_id = admin_id;
         this.account_id = account_id;
         this.firstname = firstname;
@@ -41,14 +45,21 @@ public class User {
         this.address = address;
         this.phone = phone;
         this.image = image;
+        this.occupation = occupation;
+        this.gender = gender;
     }
+
+   
     
     
     
     
 
+    public String getEvent_id() {
+        return event_id;
+    }
     
-    
+   
     
 
     public String getUsername() {
@@ -83,13 +94,13 @@ public class User {
         this.user_id = user_id;
     }
 
-    public String getEvent_id() {
-        return event_id;
-    }
 
     public void setEvent_id(String event_id) {
         this.event_id = event_id;
     }
+     
+    
+    
 
     public String getAdmin_id() {
         return admin_id;
@@ -153,6 +164,22 @@ public class User {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     
     

@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="box">
-                            <form action="Create_form_Servlet">
+                            <form action="create_form.jsp">
                                 <button type="submit" class="btn btn-default manage-btn" name="create" value="<%= event.getEvent_id()%>">Create Application Form</button>
                             </form>
                             <br>

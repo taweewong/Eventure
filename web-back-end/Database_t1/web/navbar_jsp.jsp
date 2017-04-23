@@ -4,6 +4,7 @@
     Author     : Taweewong
 --%>
 
+<%@page import="Model.User"%>
 <%@page import="jdk.nashorn.internal.ir.RuntimeNode.Request"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,900" rel="stylesheet">
@@ -29,9 +30,9 @@
                 <a class="navbar-brand" href="index.jsp">EVENTURE</a>
             </div>
             <div class="rows">
-                <div class="col-lg-4 col-md-4 col-sm-4" id="search-div">
+                <div class="col-xs-4" id="search-div">
                     <div class="input-group" id="search-group">
-                        <form action="Search_event_Servlet" method="POST">
+                        <form action="Search_event_Servlet" method="POST" id="search-form">
                            
                             <input type="text" name="search_request" class="form-control" id="search-bar" placeholder="Search events">
                             <span>
@@ -46,6 +47,8 @@
                 </div><!-- /.col-lg-6 -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <%
+                        User user = new User();
+                        user = (User) session.getAttribute("user_session");
                         if (session.getAttribute("status")==null || (Boolean) session.getAttribute("status") == false) {
                     %>
                     <ul class="nav navbar-nav navbar-right menu">
@@ -59,11 +62,11 @@
                         <li>
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" id="main-menu" type="button" data-toggle="dropdown">
-                                    <img class="img-rounded" src="assets/css/pic/profile-icon.png" alt="Trolltunga Norway" width="50">
-                                    <span id="menu-name"><span>Sea Methas</span> <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                                    <img class="img-rounded profile-nav-img" src="<%= user.getImage() %>">
+                                    <span id="menu-name"><span><%= user.getFirstname() %> <%= user.getLastname() %></span> <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="Profile_jsp.jsp">Profile</a></li>
+                                    <li><a href="Profile_show_jsp.jsp">Profile</a></li>
                                     <li><a href="My_event_Servlet">My event</a></li>
                                     <li><a href="History_Servlet">History</a></li>
                                     <li><a href="Sign_out_Servlets">Sign out</a></li>

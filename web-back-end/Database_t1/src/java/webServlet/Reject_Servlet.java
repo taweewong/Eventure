@@ -5,15 +5,15 @@
  */
 package webServlet;
 
-import Model.Event;
-import Model.Keep_User;
-import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -27,10 +27,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author thitikron_gun
+ * @author Sea
  */
-@WebServlet(name = "Event_Servlet", urlPatterns = {"/Event_Servlet"})
-public class Event_Servlet extends HttpServlet {
+@WebServlet(name = "Reject_Servlet", urlPatterns = {"/Reject_Servlet"})
+public class Reject_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,52 +45,34 @@ public class Event_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
             
-            String EVENT_ID = request.getParameter("eid") ;
-            HttpSession session = request.getSession(true);
-
+            
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
-
-            Statement stmt = null;
+            
+            String user_id = request.getParameter("reject");
+            String event_id = (String) session.getAttribute("event_join");
             
             try {
-                stmt = conn.createStatement();
-                String sql = "SELECT * FROM EVENT where EVENT_ID = '" + EVENT_ID + "'";
-                ResultSet rs = stmt.executeQuery(sql);
-                
-                stmt = null;
-                ResultSet rs1 = null;
-                stmt = conn.createStatement();
-                rs1 = stmt.executeQuery(sql);
-                rs1.next();
-                
-                Keep_User ku = new Keep_User(conn);
-                
-                ku.show_user_lists(EVENT_ID);
-                
-                session.setAttribute("User_list", ku.getUsers());
-                
-                
-                session.setAttribute("EVENT_ID", EVENT_ID);
-
-                Event event = new Event(EVENT_ID, rs1.getString("EVENT_NAME"), rs1.getString("LOCATION"), rs1.getString("DURATION"), rs1.getString("DETAIL"), rs1.getString("ORGANIZER"), rs1.getString("CATE_ID"), rs1.getDate("DATE_EVENT"), rs1.getTime("EVENT_START"));
-                session.setAttribute("event_session", event);
-
-                
-           
-                
-                RequestDispatcher pg = request.getRequestDispatcher("event.jsp");
-                pg.forward(request, response);
-                        
-                        
-            } catch (SQLException ex) {
-                Logger.getLogger(Event_Servlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                
+                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                Date date = new Date();
             
+            Statement stmt = null;
+            ResultSet rs = null;
+            stmt = conn.createStatement();
+            //String sql = "INSERT INTO reserve values("+user_id+','+event_id+','+dateFormat.format(date)+','+1+")";
+            String sql = "UPDATE reserve set STATUS = 2 where USER_ID ="+user_id+" and EVENT_ID ="+ event_id;
+            stmt.executeUpdate(sql);
+//                System.out.println(sql);
             
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            RequestDispatcher rd = request.getRequestDispatcher("Join_req_Servlet");
+            rd.forward(request, response);
         }
     }
 
