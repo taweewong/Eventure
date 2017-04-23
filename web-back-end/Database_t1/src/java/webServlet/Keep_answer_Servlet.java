@@ -7,11 +7,21 @@ package webServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,15 +44,51 @@ public class Keep_answer_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Keep_answer_Servlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Keep_answer_Servlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String[] answer;
+            HttpSession session = request.getSession();
+            ServletContext ctx = getServletContext();
+            Connection conn = (Connection) ctx.getAttribute("connection");
+            String title = request.getParameter("event_name");
+            String event_id = request.getParameter("event_create_form");
+            answer = request.getParameterValues("answer1");
+            Statement stmt = null;
+            Statement stmt1 = null;
+            ResultSet rs;
+            ResultSet rs1;
+            LinkedList<Model.Real_Question> question = new LinkedList<Model.Real_Question>();
+            question = (LinkedList<Model.Real_Question>) session.getAttribute("question_answer_form");
+            int count = 0;
+            try {
+                stmt = conn.createStatement();
+                stmt1 = conn.createStatement();
+                
+                rs1 = null;
+                
+                for (String i : answer) {
+                    rs = null;
+                    
+                    String get_num = "SELECT max(ANSWER_ID) maxnum FROM ANSWER";
+                    
+                    
+                    rs = stmt.executeQuery(get_num);
+                    rs.next();
+                    
+                    int plus_num = Integer.parseInt( rs.getString("maxnum"));
+                    
+                    System.out.println(Integer.parseInt( rs.getString("maxnum")));
+                    plus_num++;
+                    
+                    //System.out.println(plus_form);
+                    String sql = "INSERT INTO answer VALUES("+plus_num+",'"+i+"',"+question.get(count).getQuestion_id()+")";
+                    count++;
+                    stmt.executeUpdate(sql);
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Create_form_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
         }
     }
 

@@ -4,6 +4,10 @@
     Author     : Taweewong
 --%>
 
+<%@page import="Model.Real_Question"%>
+<%@page import="Model.Question"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="Model.Keep_Question"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,33 +23,39 @@
                 <h1>Application Form</h1>
             </div>
             <%
-                String event_id = (String) session.getAttribute("event_id_join");
+                //String event_id = (String) session.getAttribute("event_id_join");
+                String event_id = (String) session.getAttribute("event_join");
+                
+
+                LinkedList<Model.Real_Question> question = new LinkedList<Model.Real_Question>();
+                question = (LinkedList<Model.Real_Question>) session.getAttribute("question_answer_form");
             %>
 
             <div class="rows input-box">
-                <form action="Answer_form_Servlet">
+                <form action="Keep_answer_Servlet">
 
 
 
                     <div id="input-name-div">
                         <h3>
-                            Form Name
+                            
+                            <%= question.get(0).getForm_name() %>
                         </h3>
                     </div>
                     <br>
                     <div id="my-form">
-
+                        
                         <!-- Loop -->
-
+                        <% for(Model.Real_Question i: question) {%>
                         <div class="answer">
-                            <h3>Question 1</h3>
+                            <h3><%= i.getQuestion() %></h3>
                             <textarea id="q1" class="input-question" rows="1" name="answer1"></textarea>
                             <hr align="left">
                             <br>
                         </div>
 
                         <!-- Loop -->
-                        
+                        <% } %>
                     </div>
 
 

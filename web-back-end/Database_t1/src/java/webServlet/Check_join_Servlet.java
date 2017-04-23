@@ -72,7 +72,7 @@ public class Check_join_Servlet extends HttpServlet {
                 Logger.getLogger(Check_join_Servlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            RequestDispatcher rd = request.getRequestDispatcher("answer_form.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("Answer_form_Servlet");
             rd.forward(request, response);
         }
     }
