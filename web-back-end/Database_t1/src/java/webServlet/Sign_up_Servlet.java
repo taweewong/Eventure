@@ -106,7 +106,7 @@ public class Sign_up_Servlet extends HttpServlet {
                 stmt.executeUpdate(sql1);
                 System.out.println(sql1);
 
-                String sql2 = "INSERT INTO MUSER VALUES ('" + user_id + "','" + Username + "','" + Password + "','" + acc + "','" + eventid + "','" + adminid + "');";
+                String sql2 = "INSERT INTO MUSER VALUES ('" + user_id + "','" + Username + "','" + Password + "','" + acc + "','" + adminid + "');";
                 stmt.executeUpdate(sql2);
                 System.out.println(sql2);
 
