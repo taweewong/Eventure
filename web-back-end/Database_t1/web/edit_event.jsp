@@ -4,11 +4,12 @@
     Author     : Taweewong
 --%>
 
+<%@page import="Model.Event"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Create Eventure</title>
+        <title>Edit Eventure</title>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="assets/css/edit_event.css">
 
@@ -20,8 +21,11 @@
         <div class="container">
             <div class="row">
                 <div class="box col-md-8 col-md-offset-2">
-                    <h1 class="header">Create Eventure</h1>
-                    <form action="Create_event_Servlet" method="post" id="create_form">
+                    <h1 class="header">Edit Eventure</h1>
+                    <% 
+                        Event event = (Event) session.getAttribute("event_session");
+                    %>
+                    <form action="Update_event_Servlet" method="post" id="create_form">
                         <div class="dropdown" align="right">
 
                             <select class="selectpicker" name="category" form="create_form" title="select category" required>
@@ -39,17 +43,17 @@
 
                         <div class="form">
                             <div class="event">
-                                Event Name : <input type="text" name="event_name" size="70"><br><br>
+                                Event Name : <input type="text" name="event_name" size="70" value="<%= event.getEvent_name() %>"><br><br>
                             </div>
                             <div class="form-input">
-                                Date : <input type="date" name="date"></input> &nbsp; Time : <input type="time" name="time"> &nbsp; Location : <input type="text" name="location" size="24">
+                                Date : <input type="date" name="date" value="<%= event.getDate_event()%>"></input> &nbsp; Time : <input type="time" name="time" value="<%= event.getEvent_start()%>"> &nbsp; Location : <input type="text" name="location" size="24" value="<%= event.getLocation() %>">
                                 <br><br>
-                                Organizer : <input type="text" name="organizer"></input>
+                                Organizer : <input type="text" name="organizer" value="<%= event.getOrganizer() %>"></input>
                                 <br><br><br>      
                             </div>
                             <div class="big-box">
                                 Event description : <br>
-                                <textarea name="event_desc" rows="8" cols="84"></textarea><br><br>
+                                <textarea name="event_desc" rows="8" cols="84"><%= event.getDetail() %></textarea><br><br>
                             </div>
                             
                             <div class="sbutton">

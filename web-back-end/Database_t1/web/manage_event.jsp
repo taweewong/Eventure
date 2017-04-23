@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="topic col-xs-12">
                         <div class="box">
-                            <h1><%= event.getEvent_name()%></h1>
+                            <h1><a href="Event_Servlet?eid=<%= event.getEvent_id() %>"><%= event.getEvent_name()%></a></h1>
                             <div class="place-n-time">
                                 <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.getLocation()%> </h4>
                                 <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= event.getDate_event()%> | <%= event.getEvent_start()%></h4>
