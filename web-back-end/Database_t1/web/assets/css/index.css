@@ -23,27 +23,6 @@ body {
 	font-weight: 900;
 }
 
-#search-div {
-	padding: 0px;
-}
-
-#search-bar {
-	border-radius: 15px 0px 0px 15px;
-}
-
-#search-btn {
-	border-radius: 0px 15px 15px 0px;
-}
-
-#search-bar, #search-btn {
-	height: 40px;
-}
-
-#search-group {
-	padding-top: 5px;
-
-}
-
 @media (max-width: 900px) {
 	#big-pic {
 		height: 400px;

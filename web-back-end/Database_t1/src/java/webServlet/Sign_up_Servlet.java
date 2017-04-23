@@ -48,7 +48,7 @@ public class Sign_up_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            /* TODO output your page here. You may use following sample code. */
+ /* TODO output your page here. You may use following sample code. */
             String Username = request.getParameter("username");
             String Email = request.getParameter("email");
             String Password = request.getParameter("password");
@@ -57,71 +57,65 @@ public class Sign_up_Servlet extends HttpServlet {
             String Lname = request.getParameter("lname");
             String Mobile = request.getParameter("mobile");
             String Bdate = request.getParameter("bdate");
-            
-            String acc = "0000";
-            String age = "0001";
-            String address = "0001";
-            String occ = "0001";
-            String userid = "0000";
+            String Gender = request.getParameter("gender");
+            String Address = request.getParameter("address");
+            String Occ = request.getParameter("occupation");
+            String Image = "assets/image/profile_img/default.png";
+
+            if (!(Password_Con.equals(Password))) {
+                response.sendRedirect("sign_up.jsp");
+                return;
+            }
+
+            if (Address.equals("")) {
+                Address = "";
+            }
+            if (Occ == null) {
+                Occ = "";
+            }
+
+            int acc;
+            int user_id;
+
             String eventid = "0000";
-            String adminid = "0000";
-                    
-            
+            String adminid = null;
+
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
-            
+
             Statement stmt;
             Statement get_acc;
             Statement get_userid;
             try {
+                //Add Acount ID
                 get_acc = conn.createStatement();
-                ResultSet res = get_acc.executeQuery("Select * From ACCOUNT;");
-                while (res.next())
-                {
-                    acc = res.getString("ACCOUNT_ID");
-                    int account_new = Integer.parseInt(acc);
-                    account_new ++;
-                    acc = account_new+""; 
-//                    String.format("%04d", acc);
-                }
-                
+                ResultSet res = get_acc.executeQuery("Select max(account_id) From ACCOUNT;");
+
+                res.next();
+                acc = Integer.parseInt(res.getString("max(account_id)")) + 1;
+
+                //Add User ID
                 get_userid = conn.createStatement();
-                ResultSet res1 = get_userid.executeQuery("Select * From MUSER;");
-                while (res1.next())
-                {
-                    userid = res1.getString("USER_ID");
-                    int userid_new = Integer.parseInt(userid);
-                    userid_new ++;
-                    userid = userid_new+""; 
-                    
-                }
-                
+                ResultSet res1 = get_userid.executeQuery("Select max(user_id) From MUSER;");
+
+                res1.next();
+                user_id = Integer.parseInt(res1.getString("max(user_id)")) + 1;
+
                 stmt = conn.createStatement();
-                String sql1 = "INSERT INTO ACCOUNT VALUES ('"+acc+"','"+Fname+"','"+Lname+"','"+Email+"','"+Mobile+"','"+Bdate+"','"+age+"','"+address+"','"+occ+"','"+userid+"','TEST');" ;
+                String sql1 = "INSERT INTO ACCOUNT VALUES ('" + acc + "','" + Fname + "','" + Lname + "','" + Email + "','" + Mobile + "','" + Bdate + "','" + Address + "','" + Occ + "','" + user_id + "','" + Image + "','" + Gender + "');";
                 stmt.executeUpdate(sql1);
                 System.out.println(sql1);
-                
-                
-       
-                String sql2 = "INSERT INTO MUSER VALUES ('"+userid+"','"+Username+"','"+Password+"','"+acc+"','0000');" ;
+
+                String sql2 = "INSERT INTO MUSER VALUES ('" + user_id + "','" + Username + "','" + Password + "','" + acc + "','" + eventid + "','" + adminid + "');";
                 stmt.executeUpdate(sql2);
                 System.out.println(sql2);
-                
-                
-                
-                String sql3 = "INSERT INTO RESERVE VALUES ('"+userid+"','0','2017-04-13');" ;
-                stmt.executeUpdate(sql3);
-                System.out.println(sql3);
-                
 
             } catch (SQLException ex) {
                 Logger.getLogger(Sign_up_Servlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            
-            RequestDispatcher pg = request.getRequestDispatcher("sign_in.jsp");
-            pg.forward(request, response);
-            
+            response.sendRedirect("sign_in.jsp");
+
         }
     }
 

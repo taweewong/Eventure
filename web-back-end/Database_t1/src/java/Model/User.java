@@ -26,12 +26,13 @@ public class User {
     private String phone;
     private String image;
     private String occupation;
+    private String gender;
     
     
     public User() {
     }
 
-    public User(String username, String password, String email, String user_id, String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone, String image, String occupation) {
+    public User(String username, String password, String email, String user_id, String event_id, String admin_id, String account_id, String firstname, String lastname, String bdate, String address, String phone, String image, String occupation, String gender) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -45,6 +46,7 @@ public class User {
         this.phone = phone;
         this.image = image;
         this.occupation = occupation;
+        this.gender = gender;
     }
 
    
@@ -170,6 +172,14 @@ public class User {
 
     public void setOccupation(String occupation) {
         this.occupation = occupation;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     
     

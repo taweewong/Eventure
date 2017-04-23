@@ -19,7 +19,7 @@
     <body>
 
         <!-- CONTAINER ! -->
-        <% Model.User user = new Model.User();
+        <% user = new Model.User();
 
             user = (Model.User) session.getAttribute("user_session");
 
@@ -43,6 +43,8 @@
                         <input type="text" name="fname" value="<%= user.getFirstname()%>" class="form-input" disabled="">
                         <h4>Last name :</h4>
                         <input type="text" name="lname" value="<%= user.getLastname()%>" class="form-input" disabled="">
+                        <h4>Gender :</h4>
+                        <input type="text" name="gender" value="<%= user.getGender()%>" class="form-input" disabled="">
                         <h4>Mobile phone number :</h4>
                         <input type="text" name="phone" value="<%= user.getPhone()%>" class="form-input" disabled="">
                         <h4>Birth date</h4>
@@ -50,7 +52,9 @@
                         <h4>Email</h4>
                         <input type="text" name="email" value="<%= user.getEmail()%>" class="form-input" disabled="">
                         <h4>Address</h4>
-                        <input type="text" name="email" value="<%= user.getAddress()%>" class="form-input" disabled="">
+                        <input type="text" name="address" value="<%= user.getAddress()%>" class="form-input" disabled="">
+                        <h4>Occupation</h4>
+                        <input type="text" name="occupation" value="<%= user.getOccupation()%>" class="form-input" disabled="">
                     </form>	
                 </div>
             </div>

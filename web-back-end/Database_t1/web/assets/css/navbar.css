@@ -1,80 +1,105 @@
 /*Default CSS*/
 .container-fluid {
-	padding: 0px;
+    padding: 0px;
 }
 
 .navbar-default {
-	margin-bottom: 0px;
-	background-color: white;
-	height: auto;
-	background-color: #F3F3F3;
-	/*padding: 50px 5%;*/
+    margin-bottom: 0px;
+    background-color: white;
+    height: auto;
+    background-color: #F3F3F3;
+    /*padding: 50px 5%;*/
 }
 
 .navbar-brand {
-	
+
+}
+
+#search-form {
+    display: flex;
 }
 
 #search-div {
-	padding: 0px;
+    padding: 0px;
 }
 
 #search-bar {
-	border-radius: 15px 0px 0px 15px;
+    border-radius: 15px 0px 0px 15px;
+    width: 100%;
 }
 
 #search-btn {
-/*	border-radius: 0px 15px 15px 0px;*/
+    border-radius: 0px 15px 15px 0px;
+    width: 100%;
 }
 
 #search-bar, #search-btn {
-	height: 40px;
+    height: 40px;
 }
 
 #search-group {
-	padding-top: 5px;
+    padding-top: 5px;
+    width: 100%;
+}
 
+
+@media (max-width: 1020px) {
+    #search-div {
+        width: 200px;
+    }
+}
+
+@media (min-width: 1020px) {
+    #search-div {
+        width: 300px;
+    }
+}
+
+@media (max-width: 760px) {
+    #search-div {
+        width: 100%;
+    }
 }
 
 @media (min-width: 400px) {
-	.navbar-default {
-		padding: 50px 5%;
-	}
+    .navbar-default {
+        padding: 50px 5%;
+    }
 
-	.navbar-brand {
-		font-size: 50px;
-		margin: 0px 30px 0px 0px;
-	}
+    .navbar-brand {
+        font-size: 50px;
+        margin: 0px 30px 0px 0px;
+    }
 
-	.content > h1{
-		font-size: 80px;
-	}
+    .content > h1{
+        font-size: 80px;
+    }
 }
 
 @media (max-width: 500px) {
-	.navbar-default {
-		padding: 50px 1%;
-	}
+    .navbar-default {
+        padding: 50px 1%;
+    }
 
-	.navbar-brand {
-		font-size: 40px;
-		margin: 0px 10px 0px 0px;
-	}
+    .navbar-brand {
+        font-size: 40px;
+        margin: 0px 10px 0px 0px;
+    }
 
-	.content > h1{
-		font-size: 50px;
-	}
+    .content > h1{
+        font-size: 50px;
+    }
 }
 
 .footer {
-	color: white;
-	background-color: black;
-	height: 200px;
-	padding: 15px 35px;
+    color: white;
+    background-color: black;
+    height: 200px;
+    padding: 15px 35px;
 }
 
 .footer>h2 {
-	font-weight: 400;
+    font-weight: 400;
 }
 
 #blue {
@@ -82,12 +107,12 @@
 }
 
 #blue:hover {
-	color: #0066FF;
-	text-decoration: underline;
+    color: #0066FF;
+    text-decoration: underline;
 }
 
 .menu {
-	font-size: 20px;
+    font-size: 20px;
 }
 
 .nav.navbar-nav.navbar-right li a:hover {
@@ -117,6 +142,10 @@
 
 #menu-name:hover {
     color: #0099FF;
+}
+
+.profile-nav-img {
+    width: 50px;
 }
 /*Default CSS*/
 
