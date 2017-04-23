@@ -53,8 +53,12 @@
 
                             </div>
                         </div>
-                        <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">Approve</button></div>
-                        <div class="col-xs-2"><button type="button" class="btn btn-default manage-btn">Reject</button></div>
+                        <form action="Approve_Servlet">
+                            <div class="col-xs-2"><button type="submit" class="btn btn-default manage-btn" name="approve" value="<%= i.getUser_id() %>">Approve</button></div>
+                        </form>
+                        <form action="Reject_Servlet">
+                            <div class="col-xs-2"><button type="submit" class="btn btn-default manage-btn" name="reject" value="<%= i.getUser_id() %>">Reject</button></div>
+                        </form>                             
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="<%= i.getUser_id()%>" class="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -95,7 +99,9 @@
                                         <form action="Approve_Servlet">
                                             <div class="col-xs-4"><button type="submit" class="btn btn-default" name="approve" value="<%= i.getUser_id() %>">Approve</button></div>
                                         </form>
-                                        <div class="col-xs-4"><button type="button" class="btn btn-default">Reject</button></div>
+                                        <form>
+                                            <div class="col-xs-4"><button type="submit" class="btn btn-default" name="reject" value="<%= i.getUser_id() %>">Reject</button></div>
+                                        </form>
                                     </div>
                                     <div id="line"></div>
                                     <div class="q-form">
