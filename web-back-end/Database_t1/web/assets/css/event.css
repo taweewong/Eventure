@@ -117,3 +117,12 @@ img {
 .person>h3 {
 	color: #0099FF;
 }
+
+.join-btn {
+    float: right;
+    color: white;
+    background-color:#0099FF; 
+    width: 100px;
+    border: none;
+    height: 40px;
+}

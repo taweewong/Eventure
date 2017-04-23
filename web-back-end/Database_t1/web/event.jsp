@@ -3,6 +3,7 @@
     Created on : Apr 11, 2017, 2:12:52 PM
     Author     : Taweewong
 --%>
+<%@page import="Model.Reserve"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="Model.Event"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,6 +22,9 @@
             event = (Model.Event) session.getAttribute("event_session");
             users = (LinkedList<Model.User>) session.getAttribute("User_list");
             //System.out.println(users.get(0).getFirstname());
+            //LinkedList<Model.Question> question_join = new LinkedList<Model.Question>();
+            Model.Reserve reserve = new Model.Reserve();
+            reserve = (Model.Reserve) session.getAttribute("question_check_join");
         %>
 
 
@@ -33,6 +37,13 @@
                 <ul class="nav nav-pills color">
                     <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
                     <li><a data-toggle="pill" href="#member">Member</a></li>
+                    <% if(reserve.getJOIN().equals("0")) { %>
+                    <form action="Check_join_Servlet">
+                        <li style="float: right;"><button class="btn btn-default join-btn" name="insert_join" value="<%= user.getUser_id() %>">Join</button></li>
+                    </form>
+                    <% } else{%>
+                      
+                    <%}%>
                 </ul>
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
@@ -66,16 +77,16 @@
 
 
 
-                            
+
                             <% for (Model.User i : users) {%>
-                                <div class="person">
+                            <div class="person">
                                 <img src="assets/css/pic/profile-icon.png">
-                                <h3><%= i.getFirstname() %></h3>
+                                <h3><%= i.getFirstname()%></h3>
                                 <p>Member</p>
                             </div>
                             <% }%>
 
-                            
+
 
                         </div>
                     </div>

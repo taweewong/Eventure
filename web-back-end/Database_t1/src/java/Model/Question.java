@@ -16,7 +16,18 @@ public class Question {
     private int FORM_ID;
     private int ANSWER_ID;
     private String ANSWER;
+    private String STATUS;
 
+    public String getSTATUS() {
+        return STATUS;
+    }
+
+    public void setSTATUS(String STATUS) {
+        this.STATUS = STATUS;
+    }
+
+    
+    
     public String getANSWER() {
         return ANSWER;
     }
@@ -24,16 +35,19 @@ public class Question {
     public void setANSWER(String ANSWER) {
         this.ANSWER = ANSWER;
     }
-    
-    
-    
-    public Question(int QUESTION_ID, String QUESTION, int FORM_ID, int ANSWER_ID, String ANSWER) {
+
+    public Question(int QUESTION_ID, String QUESTION, int FORM_ID, int ANSWER_ID, String ANSWER, String STATUS) {
         this.QUESTION_ID = QUESTION_ID;
         this.QUESTION = QUESTION;
         this.FORM_ID = FORM_ID;
         this.ANSWER_ID = ANSWER_ID;
         this.ANSWER = ANSWER;
+        this.STATUS = STATUS;
     }
+    
+    
+    
+    
 
     
 
