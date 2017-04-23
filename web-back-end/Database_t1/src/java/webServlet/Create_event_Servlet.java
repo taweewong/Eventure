@@ -84,8 +84,7 @@ public class Create_event_Servlet extends HttpServlet {
                 
                 
              stmt = conn.createStatement();
-             String sql1 = "INSERT INTO EVENT VALUES ("+event_id+",'"+event_name+"','"+location+"',"+duration+",'"+event_desc+"','"+organizer+"',"+userid.getUser_id()+",'"+cate_id+"','"+date+"','"+time+"', NULL);";
-                stmt.executeUpdate(sql1);
+                String sql1 = "INSERT INTO EVENT VALUES ("+event_id+",'"+event_name+"','"+location+"',"+duration+",'"+event_desc+"','"+organizer+"',"+userid.getUser_id()+",'"+cate_id+"','"+date+"','"+time+"', NULL);";                stmt.executeUpdate(sql1);
                 System.out.println(sql1);
                 
                 

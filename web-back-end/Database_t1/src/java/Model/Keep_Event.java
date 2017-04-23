@@ -75,7 +75,7 @@ public class Keep_Event {
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) ORDER BY DATE_EVENT limit 4";
+            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE DATE_EVENT >= NOW() Group by DATE_EVENT, EVENT_ID LIMIT 4;";
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
@@ -105,7 +105,7 @@ public class Keep_Event {
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) limit 8";
+            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE DATE_EVENT >= NOW() Group by DATE_EVENT, EVENT_ID ORDER BY RAND() LIMIT 8;";
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
