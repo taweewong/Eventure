@@ -72,8 +72,9 @@ public class Create_event_Servlet extends HttpServlet {
             
             int eventid_new = Integer.parseInt(event_id);
             eventid_new++;
+            System.out.println(event_id+" "+location );
             event_id = eventid_new + "";
-            
+            System.out.println(event_id+" "+location );
             
             String duration = "0";
             //String organizer = "No";
@@ -83,13 +84,14 @@ public class Create_event_Servlet extends HttpServlet {
             Statement stmt;
             Statement get_userid;
             Statement set_k;
+            System.out.println("user_id_createvent"+userid.getUser_id());
             try {
                 
                 
                 
                 stmt = conn.createStatement();
              
-                String sql1 = "INSERT INTO EVENT VALUES ('"+event_id+"','"+event_name+"','"+location+"','"+duration+"','"+event_desc+"','"+organizer+"','"+userid.getUser_id()+"','"+cate_id+"','"+date+"','"+time+"');" ;
+                String sql1 = "INSERT INTO EVENT VALUES ("+event_id+",'"+event_name+"','"+location+"',"+duration+",'"+event_desc+"','"+organizer+"',"+userid.getUser_id()+",'"+cate_id+"','"+date+"','"+time+"', NULL);";
                 stmt.executeUpdate(sql1);
                 System.out.println(sql1);
                 

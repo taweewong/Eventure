@@ -15,9 +15,12 @@
 
     <body>
         <div class="container">
-            <div class="rows title-box">
+            <div class="rows title-box">                
                 <h1>Create Form</h1>
             </div>
+            <%
+                String event_id = (String) session.getAttribute("event_id_join");
+            %>
             <div class="rows input-box">
                 <form action="Create_form_Servlet">
                     <div id="input-name-div">
@@ -39,7 +42,7 @@
                         
                     <button class="btn btn-default" id="add-btn" type="button">Add question</button>
                     <br><br><br>
-                    <button class="btn btn-success submit-btn" type="submit">submit</button>
+                    <button class="btn btn-success submit-btn" type="submit" name="event_create_form" value="<%= event_id %>" >submit</button>
 
                     
           

@@ -48,6 +48,7 @@ public class Create_form_Servlet extends HttpServlet {
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
             String title = request.getParameter("event_name");
+            String event_id = request.getParameter("event_create_form");
             answer = request.getParameterValues("answer1");
             Statement stmt = null;
             Statement stmt1 = null;
@@ -64,7 +65,10 @@ public class Create_form_Servlet extends HttpServlet {
                 plus_form++;
                 String sql1 = "INSERT INTO application_form VALUES("+plus_form+",'"+title+"')";
                 stmt.executeUpdate(sql1);
+                sql1 = null;
                 
+                sql1 = "UPDATE event SET FORM_ID = '"+plus_form+"'WHERE EVENT_ID='"+event_id+"'";
+                stmt.executeUpdate(sql1);
                 for (String i : answer) {
                     rs = null;
                     
