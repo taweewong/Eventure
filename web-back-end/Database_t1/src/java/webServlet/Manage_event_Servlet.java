@@ -50,6 +50,7 @@ public class Manage_event_Servlet extends HttpServlet {
             Event ev = ke.getEvents().get(0);
             System.out.println(ev.getEvent_name()+" sadasd");
             session.setAttribute("event_id_inf", ev);
+            session.setAttribute("event_id_join", event_id);
             
             RequestDispatcher rd = request.getRequestDispatcher("manage_event.jsp");
             rd.forward(request, response);

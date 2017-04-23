@@ -44,16 +44,16 @@ public class Join_req_Servlet extends HttpServlet {
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
             HttpSession session = request.getSession(true);
-            String event_id = request.getParameter("event");
+            String event_id = (String) session.getAttribute("event_id_join");
             
             Keep_User ku = new Keep_User(conn);
-            ku.show_user_lists(event_id);
+            ku.show_user_join(event_id);
             
             
             String user_id = request.getParameter("viewanswer");
             System.out.println("viewanswer "+user_id);
             User user = (User) session.getAttribute("user_session");
-                       
+                      
             
             
             session.setAttribute("user_join", ku.getUsers());
