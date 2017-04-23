@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
@@ -60,7 +61,8 @@ public class Approve_Servlet extends HttpServlet {
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "INSERT INTO reserve values("+user_id+','+event_id+','+dateFormat.format(date)+")";
+            //String sql = "INSERT INTO reserve values("+user_id+','+event_id+','+dateFormat.format(date)+','+1+")";
+            String sql = "UPDATE reserve set STATUS = 1 where USER_ID ="+user_id+" and EVENT_ID ="+ event_id;
             stmt.executeUpdate(sql);
 //                System.out.println(sql);
             
@@ -68,7 +70,13 @@ public class Approve_Servlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
+            RequestDispatcher rd = request.getRequestDispatcher("Join_req_Servlet");
+            rd.forward(request, response);
+            
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
