@@ -105,7 +105,7 @@ public class Keep_Event {
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) limit 8";
+            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) limit 12";
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
