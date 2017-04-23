@@ -59,6 +59,7 @@ public class Update_profile_Servlet extends HttpServlet {
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
             String bdate = request.getParameter("bdate");
+            String gender = request.getParameter("gender");
             String address = request.getParameter("address");
             String occupation = request.getParameter("occupation");
 
@@ -81,16 +82,20 @@ public class Update_profile_Servlet extends HttpServlet {
                 File file = new File("C:‪/Users/Taweewong/Downloads/doge.jpeg");
                 file.createNewFile();
              */
+            //new File(savepath).mkdir();
             String app = request.getServletContext().getRealPath("");
             String savepath = app + "assets\\image\\profile_img\\";
-
-            //new File(savepath).mkdir();
             Part part = request.getPart("file");
-            part.write(savepath + user.getUser_id() + "_profile_img.jpg");
-            
+            String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+
+            if (!fileName.equals("")) {
+                part.write(savepath + user.getUser_id() + "_profile_img.jpg");
+                System.out.println("WRITED !");
+            }
+
             String image;
             image = ("assets/image/profile_img/" + user.getUser_id() + "_profile_img.jpg");
-            
+
             //UPDATE DATA BASE
             Statement stmt = null;
             try {
@@ -103,11 +108,12 @@ public class Update_profile_Servlet extends HttpServlet {
                         + "b_date = '" + bdate + "', "
                         + "address = '" + address + "', "
                         + "occupation = '" + occupation + "', "
+                        + "gender = '" + gender + "', "
                         + "image = '" + image + "'"
                         + "WHERE user_id = '" + user.getUser_id() + "'";
 
                 int rs = stmt.executeUpdate(sql);
-                
+
                 user.setFirstname(fname);
                 user.setLastname(lname);
                 user.setEmail(email);
@@ -116,6 +122,7 @@ public class Update_profile_Servlet extends HttpServlet {
                 user.setAddress(address);
                 user.setOccupation(occupation);
                 user.setImage(image);
+                user.setGender(gender);
 
             } catch (SQLException ex) {
                 Logger.getLogger(Update_profile_Servlet.class.getName()).log(Level.SEVERE, null, ex);
