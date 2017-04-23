@@ -15,37 +15,49 @@
 
     <body>
         <div class="container">
-            <div class="rows title-box">
-                <h1>Create Form</h1>
+            <div class="rows title-box">                
+                <h1>Application Form</h1>
             </div>
+            <%
+                String event_id = (String) session.getAttribute("event_id_join");
+            %>
+
             <div class="rows input-box">
-                <form action="Create_form_Servlet">
+                <form action="Answer_form_Servlet">
+
+
+
                     <div id="input-name-div">
                         <h3>
-                            Form name : 
-                            <input class="name-input" type="text" name="event_name" id="event-name">
+                            Form Name
                         </h3>
                     </div>
                     <br>
                     <div id="my-form">
-                        <div class="question">
-                            <h3>Question 1 <span><i class="fa fa-trash-o" aria-hidden="true"></i></span></h3>
+
+                        <!-- Loop -->
+
+                        <div class="answer">
+                            <h3>Question 1</h3>
                             <textarea id="q1" class="input-question" rows="1" name="answer1"></textarea>
                             <hr align="left">
                             <br>
                         </div>
+
+                        <!-- Loop -->
+                        
                     </div>
 
-                        
-                    <button class="btn btn-default" id="add-btn" type="button">Add question</button>
-                    <br><br><br>
-                    <button class="btn btn-success submit-btn" type="submit">submit</button>
 
-                    
-          
+
+                    <br><br><br>
+                    <button class="btn btn-success submit-btn" type="submit" name="event_anwer_form" value="<%= event_id%>" >submit</button>
+
+
+
                 </form>
             </div>
         </div>
-        <script type="text/javascript" src="assets/js/create_form.js"></script>
+        <script type="text/javascript" src="assets/js/answer_form.js"></script>
     </body>
     <%@include file="footer.html" %>
