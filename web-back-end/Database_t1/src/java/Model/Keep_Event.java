@@ -107,6 +107,7 @@ public class Keep_Event {
 
             Statement stmt = null;
             ResultSet rs = null;
+            
             stmt = conn.createStatement();
             String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE DATE_EVENT >= NOW() Group by DATE_EVENT, EVENT_ID LIMIT 4;";
             rs = stmt.executeQuery(sql);
