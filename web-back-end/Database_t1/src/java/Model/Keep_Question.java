@@ -21,6 +21,7 @@ import webServlet.Category_ex_Servlet;
  */
 public class Keep_Question {
     List<Question> questions;
+    List<Real_Question> real_questions;
     Connection conn;
     Reserve keep_reserve;
 
@@ -33,7 +34,31 @@ public class Keep_Question {
     }
 
     
+    public void query_question_form(String EVENT_ID){
+        try {
 
+            Statement stmt = null;
+            ResultSet rs = null;
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM event join question USING (FORM_ID) join application_form using (FORM_ID) where EVENT_ID='"+ EVENT_ID + "'"; 
+            rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                System.out.println("real");
+                Real_Question rqt = new Real_Question();
+                rqt.setQuestion_id(rs.getInt("QUESTION_ID"));
+                rqt.setQuestion(rs.getString("QUESTION"));
+                rqt.setForm_id(rs.getInt("FORM_ID"));
+                rqt.setForm_name(rs.getString("TITLE"));
+                real_questions.add(rqt);
+                //questions.add(qt);
+                
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Category_ex_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
     public void query_question(String USER_ID, String EVENT_ID){
@@ -102,7 +127,13 @@ public class Keep_Question {
     public Keep_Question(Connection conn) {
         this.conn = conn;
         questions = new LinkedList<>();
+        real_questions = new LinkedList<>();
     }
+
+    public List<Real_Question> getReal_questions() {
+        return real_questions;
+    }
+    
     
     
     

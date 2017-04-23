@@ -9,6 +9,7 @@ import Model.Keep_Question;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,15 +42,17 @@ public class Answer_form_Servlet extends HttpServlet {
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
             
-            String user_id = request.getParameter("viewanswer");
-            System.out.println("viewanswer "+user_id);
-            Model.User user = (Model.User) session.getAttribute("user_session");
+            
+            
             
             String event_id = (String) session.getAttribute("event_join");
             
             Keep_Question kq = new Keep_Question(conn);
             kq.query_question_form(event_id);
-            session.setAttribute("question_join", kq.getQuestions());
+            session.setAttribute("question_answer_form", kq.getReal_questions());
+            
+            RequestDispatcher rd = request.getRequestDispatcher("answer_form.jsp");
+            rd.forward(request, response);
         }
     }
 
