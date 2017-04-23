@@ -6,17 +6,17 @@
 package webServlet;
 
 import Model.Event;
-import Model.Keep_Question;
-import Model.Keep_User;
-import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -30,10 +30,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author thitikron_gun
+ * @author Sea
  */
-@WebServlet(name = "Event_Servlet", urlPatterns = {"/Event_Servlet"})
-public class Event_Servlet extends HttpServlet {
+@WebServlet(name = "Check_join_Servlet", urlPatterns = {"/Check_join_Servlet"})
+public class Check_join_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,55 +48,32 @@ public class Event_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            
-            String EVENT_ID = request.getParameter("eid") ;
-            HttpSession session = request.getSession(true);
+            HttpSession session = request.getSession();
 
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
 
+            Event event = (Model.Event) session.getAttribute("event_session");
+            String user_id = request.getParameter("insert_join");
             Statement stmt = null;
-            
+
             try {
-                stmt = conn.createStatement();
-                String sql = "SELECT * FROM EVENT where EVENT_ID = '" + EVENT_ID + "'";
-                ResultSet rs = stmt.executeQuery(sql);
+                LocalDate localDate = LocalDate.now();
+                DateTimeFormatter.ofPattern("yyyy/MM/dd").format(localDate);
                 
-                stmt = null;
-                //ResultSet rs1 = null;
-                stmt = conn.createStatement();
-                rs = stmt.executeQuery(sql);
-                rs.next();
-                
-                Keep_User ku = new Keep_User(conn);
-                
-                ku.show_user_lists(EVENT_ID);
-                
-                session.setAttribute("User_list", ku.getUsers());
-                
-                
-                session.setAttribute("EVENT_ID", EVENT_ID);
 
-                Event event = new Event(rs.getString("EVENT_ID"), rs.getString("EVENT_NAME"), rs.getString("LOCATION"), rs.getString("DURATION"), rs.getString("DETAIL"), rs.getString("ORGANIZER"), rs.getString("CATE_ID"), rs.getDate("DATE_EVENT"), rs.getTime("EVENT_START"), rs.getString("USER_ID"), rs.getInt("FORM_ID"));
-                session.setAttribute("event_session", event);
+                System.out.println("Date" + localDate);
+                stmt = conn.createStatement();
+                String sql = "INSERT INTO reserve VALUES('" + user_id + "','" + event.getEvent_id() + "','" + localDate + "','" + 0 + "')";
 
-                User user = new User();
-                user = (User) session.getAttribute("user_session");
-                Keep_Question kq = new Keep_Question(conn);
-                kq.status_join(user.getUser_id(), EVENT_ID);
-                session.setAttribute("question_check_join", kq.getKeep_reserve());
-                
-                RequestDispatcher pg = request.getRequestDispatcher("event.jsp");
-                pg.forward(request, response);
-                        
-                        
+                stmt.executeUpdate(sql);
+
             } catch (SQLException ex) {
-                Logger.getLogger(Event_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Check_join_Servlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-                
             
-            
+            RequestDispatcher rd = request.getRequestDispatcher("answer_form.jsp");
+            rd.forward(request, response);
         }
     }
 

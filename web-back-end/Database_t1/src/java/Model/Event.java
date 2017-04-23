@@ -32,7 +32,37 @@ public class Event {
     private Date date_event;
     private Time event_start;
     private String user_id;
+    private int Form_id;
+    
+    
 
+    public Event(String event_id, String event_name, String location, String duration, String detail, String organizer, String cate_id, Date date_event, Time event_start, String user_id, int Form_id) {
+        this.event_id = event_id;
+        this.event_name = event_name;
+        this.location = location;
+        this.duration = duration;
+        this.detail = detail;
+        this.organizer = organizer;
+        this.cate_id = cate_id;
+        this.date_event = date_event;
+        this.event_start = event_start;
+        this.user_id = user_id;
+        this.Form_id = Form_id;
+    }
+
+    public int getForm_id() {
+        return Form_id;
+    }
+
+    public void setForm_id(int Form_id) {
+        this.Form_id = Form_id;
+    }
+    
+
+   
+
+    
+    
     public String getUser_id() {
         return user_id;
     }
@@ -49,17 +79,9 @@ public class Event {
     public Event() {
     }
 
-    public Event(String event_id, String event_name, String location, String duration, String detail, String organizer, String cate_id, Date date_event, Time event_start) {
-        this.event_id = event_id;
-        this.event_name = event_name;
-        this.location = location;
-        this.duration = duration;
-        this.detail = detail;
-        this.organizer = organizer;
-        this.cate_id = cate_id;
-        this.date_event = date_event;
-        this.event_start = event_start;
-    }
+    
+
+    
 
     
 
