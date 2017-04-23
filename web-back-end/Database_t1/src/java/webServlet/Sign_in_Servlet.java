@@ -47,8 +47,8 @@ public class Sign_in_Servlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            HttpSession session = request.getSession();
             
+            HttpSession session = request.getSession(true);
             
             Boolean status_login = false;
             
@@ -76,8 +76,15 @@ public class Sign_in_Servlet extends HttpServlet {
                         String sql2 = "SELECT * FROM RESERVE join MUSER USING (USER_ID) where '"+ rs.getString("USER_ID")+"'";
                         
                         
-                        
-                        
+                        if(rs.getString("ADMIN_ID").equals("5807") ){
+                            String admin_mode = "admin";
+                            session.setAttribute("admin_mode", admin_mode);
+                            System.out.println(admin_mode);
+                        }
+                        else{
+                            String admin_mode = "none";
+                            session.setAttribute("admin_mode", admin_mode);
+                        }
                         stmt = null;
                         ResultSet rs1 = null;
                         stmt = conn.createStatement();

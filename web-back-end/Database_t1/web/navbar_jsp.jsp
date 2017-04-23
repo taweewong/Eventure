@@ -6,6 +6,7 @@
 
 <%@page import="jdk.nashorn.internal.ir.RuntimeNode.Request"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,900" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
 <!--<link rel="stylesheet" type="text/css" href="assets/css/footer.css">-->
@@ -13,6 +14,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=false;">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
 </head>
 <header>
     <!-- NAV BAR -->
@@ -66,7 +68,16 @@
                                     <li><a href="Profile_jsp.jsp">Profile</a></li>
                                     <li><a href="My_event_Servlet">My event</a></li>
                                     <li><a href="History_Servlet">History</a></li>
-                                    <li><a href="Sign_out_Servlets">Sign out</a></li>
+                                    
+                                    <% String mode = (String) session.getAttribute("admin_mode");
+                                    System.out.println(mode+"adminnnnnnnnnnnn");
+                                        if (mode.equals("admin")){ %>
+                                            <li><a id="blue" href="admin.jsp">Admin Mode</a></li>
+                                            <% } 
+                                    
+                                    %>
+                                            <li><a href="Sign_out_Servlets">Sign out</a></li>
+
                                 </ul>
                             </div>
                         </li>
