@@ -49,7 +49,8 @@ public class Keep_answer_Servlet extends HttpServlet {
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
             String title = request.getParameter("event_name");
-            String event_id = request.getParameter("event_create_form");
+            String event_id = request.getParameter("event_answer_form");
+            Model.User user_id = (Model.User) session.getAttribute("user_session");
             answer = request.getParameterValues("answer1");
             Statement stmt = null;
             Statement stmt1 = null;
@@ -82,6 +83,9 @@ public class Keep_answer_Servlet extends HttpServlet {
                     String sql = "INSERT INTO answer VALUES("+plus_num+",'"+i+"',"+question.get(count).getQuestion_id()+")";
                     count++;
                     stmt.executeUpdate(sql);
+                    System.out.println(user_id.getUser_id()+"       "+event_id);
+                    String sql1 = "INSERT INTO fill VALUES('"+user_id.getUser_id()+"','"+plus_num+"')";
+                    stmt.executeUpdate(sql1);
                     
                 }
             } catch (SQLException ex) {

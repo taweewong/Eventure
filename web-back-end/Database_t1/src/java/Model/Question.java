@@ -5,26 +5,28 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sea
  */
-public class Question {
+public class Question implements Serializable{
     
     private int QUESTION_ID;
     private String QUESTION;
     private int FORM_ID;
     private int ANSWER_ID;
     private String ANSWER;
-    private String STATUS;
+    //private String STATUS;
 
-    public String getSTATUS() {
-        return STATUS;
-    }
+   // public String getSTATUS() {
+   //     return STATUS;
+    //}
 
-    public void setSTATUS(String STATUS) {
-        this.STATUS = STATUS;
-    }
+    //public void setSTATUS(String STATUS) {
+      //  this.STATUS = STATUS;
+    //}
 
     
     
@@ -36,13 +38,13 @@ public class Question {
         this.ANSWER = ANSWER;
     }
 
-    public Question(int QUESTION_ID, String QUESTION, int FORM_ID, int ANSWER_ID, String ANSWER, String STATUS) {
+    public Question(int QUESTION_ID, String QUESTION, int FORM_ID, int ANSWER_ID, String ANSWER) {
         this.QUESTION_ID = QUESTION_ID;
         this.QUESTION = QUESTION;
         this.FORM_ID = FORM_ID;
         this.ANSWER_ID = ANSWER_ID;
         this.ANSWER = ANSWER;
-        this.STATUS = STATUS;
+        //this.STATUS = STATUS;
     }
     
     

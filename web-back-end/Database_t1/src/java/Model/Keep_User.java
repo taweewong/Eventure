@@ -58,7 +58,9 @@ public class Keep_User {
     }
     
     public void show_user_join(String EVENT_ID) {
+        System.out.println("11111111111111111111111111111111111111111111111");
         try {
+            System.out.println("222222222222222222222222222222222222222222222");
             System.out.println(EVENT_ID);
             Statement stmt = null;
             ResultSet rs = null;
@@ -66,9 +68,13 @@ public class Keep_User {
             String sql = "SELECT * FROM account join muser using (USER_ID) join reserve using (USER_ID) join event using (EVENT_ID) where EVENT_ID ='" + EVENT_ID + "'";
             rs = stmt.executeQuery(sql);
 //                System.out.println(sql);
+            System.out.println("*************************************************************");
             while (rs.next()) {
-                if (rs.getString("STATUS").equals("0")) {
-                    System.out.println(rs.getString("STATUS")+" status");
+                String stat = rs.getString("STATUS");
+                System.out.println("-------------------------------------------------------------");   
+                
+                if (stat.equals("0")) {
+
                     User user_ex = new User();
                     user_ex.setAccount_id(rs.getString("ACCOUNT_ID"));
                     user_ex.setAddress(rs.getString("ADDRESS"));

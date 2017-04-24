@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sea
  */
-public class Real_Question {
+public class Real_Question implements Serializable{
     private int Question_id;
     private String Question;
     private int Form_id;

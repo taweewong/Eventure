@@ -4,6 +4,8 @@
     Author     : Taweewong
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="Model.Real_Question"%>
 <%@page import="Model.Question"%>
 <%@page import="java.util.LinkedList"%>
@@ -24,11 +26,12 @@
             </div>
             <%
                 //String event_id = (String) session.getAttribute("event_id_join");
-                String event_id = (String) session.getAttribute("event_join");
-                
+                Model.Event event_id = (Model.Event) session.getAttribute("event_session");
+                System.out.println("event_join : >>>>>>>>>>>>>>>>>>>>>>>>>>>" + event_id.getEvent_id());
 
-                LinkedList<Model.Real_Question> question = new LinkedList<Model.Real_Question>();
-                question = (LinkedList<Model.Real_Question>) session.getAttribute("question_answer_form");
+                LinkedList<Model.Real_Question> question_real = new LinkedList<Model.Real_Question>();
+                question_real = (LinkedList<Model.Real_Question>) session.getAttribute("question_answer_form");
+                List<Model.Real_Question> question_real_array = new ArrayList<Model.Real_Question>(question_real);
             %>
 
             <div class="rows input-box">
@@ -39,14 +42,14 @@
                     <div id="input-name-div">
                         <h3>
                             
-                            <%= question.get(0).getForm_name() %>
+                            <%= question_real_array.get(0).getForm_name() %>
                         </h3>
                     </div>
                     <br>
                     <div id="my-form">
                         
                         <!-- Loop -->
-                        <% for(Model.Real_Question i: question) {%>
+                        <% for(Model.Real_Question i: question_real_array) {%>
                         <div class="answer">
                             <h3><%= i.getQuestion() %></h3>
                             <textarea id="q1" class="input-question" rows="1" name="answer1"></textarea>
@@ -61,7 +64,8 @@
 
 
                     <br><br><br>
-                    <button class="btn btn-success submit-btn" type="submit" name="event_anwer_form" value="<%= event_id%>" >submit</button>
+                    <input type="hidden" name="event_answer_form" value="<%= event_id.getEvent_id() %>">
+                    <button class="btn btn-success submit-btn" type="submit">submit</button>
 
 
 

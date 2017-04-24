@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -21,7 +22,7 @@ import webServlet.Category_ex_Servlet;
  *
  * @author thitikron_gun
  */
-public class Event {
+public class Event implements Serializable{
     private String event_id;
     private String event_name;
     private String location;

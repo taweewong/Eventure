@@ -58,7 +58,7 @@ public class Join_req_Servlet extends HttpServlet {
             
             session.setAttribute("user_join", ku.getUsers());
             session.setAttribute("event_join", event_id);
-            
+            System.out.println(event_id+" kuyyyyyyyyyyyyyyyyyyyyyy");
             
             RequestDispatcher rd = request.getRequestDispatcher("join_req.jsp");
             rd.forward(request, response);

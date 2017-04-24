@@ -5,7 +5,8 @@
  */
 package Model;
 
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ import webServlet.Category_ex_Servlet;
  *
  * @author thitikron_gun
  */
-public class Keep_Event {
+public class Keep_Event implements Serializable{
 
     List<Event> events;
     Connection conn;

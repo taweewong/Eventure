@@ -4,6 +4,8 @@
     Author     : Taweewong
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="Model.Keep_Question"%>
 <%@page import="Model.Question"%>
@@ -26,19 +28,20 @@
             </div>
             <%
                 //Model.Event event = new Model.Event();
-                LinkedList<Model.User> user_join = new LinkedList<Model.User>();
+                ServletContext ctx = getServletContext();
+                Connection conn = (Connection) ctx.getAttribute("connection");
+                LinkedList<Model.User> user_join = new LinkedList<>();
                 //LinkedList<Model.Question> question = new LinkedList<Question>();
                 String event = (String) session.getAttribute("event_join");
                 user_join = (LinkedList<Model.User>) session.getAttribute("user_join");
-                ServletContext ctx = getServletContext();
-                Connection conn = (Connection) ctx.getAttribute("connection");
+                List<Model.User> user_join_array = new ArrayList<Model.User>( user_join);
                 //LinkedList<Model.Question> question = new LinkedList<Question>();
                 //question = (LinkedList<Model.Question>) session.getAttribute("question_join");
 
             %>
             <div class="rows box">
                 <div class="box-body">
-                    <% for (Model.User i : user_join) {%>
+                    <% for (Model.User i : user_join_array) {%>
                     <div class="event-rows">
                         <div class="col-xs-8 detail-box">
 
@@ -74,12 +77,14 @@
                                     </div>
                                     <div class="text-row">
                                         <h5>Name</h5>
-                                        <% System.out.println(i.getFirstname() + " " + i.getLastname());
+                                        <% System.out.println(i.getFirstname() + " kuy " + i.getLastname());
                                             Keep_Question kq = new Keep_Question(conn);
+                                            System.out.println(event+"userrrrrrrrrrrrrr"+i.getUser_id());
                                             kq.query_question(i.getUser_id(), event);
                                             session.setAttribute("question_join", kq.getQuestions());
-                                            LinkedList<Model.Question> question = new LinkedList<Question>();
-                                            question = (LinkedList<Model.Question>) session.getAttribute("question_join");
+                                            LinkedList<Model.Question> question = new LinkedList<>();
+                                            question = (LinkedList<Model.Question>) kq.getQuestions();
+                                            List<Model.Question> question_array = new ArrayList<Model.Question>(question);
                                         %>
                                         <h3 id="applicant-detail"><%= i.getFirstname() + " " + i.getLastname()%></h3>
                                     </div>
@@ -99,13 +104,13 @@
                                         <form action="Approve_Servlet">
                                             <div class="col-xs-4"><button type="submit" class="btn btn-default" name="approve" value="<%= i.getUser_id() %>">Approve</button></div>
                                         </form>
-                                        <form>
+                                        <form action="Reject_Servlet">
                                             <div class="col-xs-4"><button type="submit" class="btn btn-default" name="reject" value="<%= i.getUser_id() %>">Reject</button></div>
                                         </form>
                                     </div>
                                     <div id="line"></div>
                                     <div class="q-form">
-                                        <% for (Model.Question j : question) {%>
+                                        <% for (Model.Question j : question_array) {%>
                                         <div class="question">
                                             <h4><%= j.getQUESTION()%> ?</h4>
                                         </div>

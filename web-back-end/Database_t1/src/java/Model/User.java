@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author thitikron_gun
  */
-public class User {
+public class User implements Serializable{
     //SELECT * FROM account join muser using (USER_ID) join reserve using (USER_ID) join event using (EVENT_ID) where EVENT_ID = 0000
     
     private String username;

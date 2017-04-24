@@ -5,6 +5,7 @@
  */
 package webServlet;
 
+import Model.Event;
 import Model.Keep_Question;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,10 +46,10 @@ public class Answer_form_Servlet extends HttpServlet {
             
             
             
-            String event_id = (String) session.getAttribute("event_join");
-            
+            Event event_id = (Event) session.getAttribute("event_session");
+            System.out.println("qqqqqqqqqqqqqqqqqqqqqqqq"+event_id.getEvent_id());
             Keep_Question kq = new Keep_Question(conn);
-            kq.query_question_form(event_id);
+            kq.query_question_form(event_id.getEvent_id());
             session.setAttribute("question_answer_form", kq.getReal_questions());
             
             RequestDispatcher rd = request.getRequestDispatcher("answer_form.jsp");

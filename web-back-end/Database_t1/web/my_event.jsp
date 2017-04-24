@@ -4,6 +4,8 @@
     Author     : Taweewong
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,6 +26,7 @@
             <% LinkedList<Model.Event> ke = new LinkedList<Model.Event>();
 
             ke = (LinkedList<Model.Event>) session.getAttribute("my_event");
+            List<Model.Event> ke_array = new ArrayList<Model.Event>(ke);
             //Model.Event[] array = ke.toArray(new Model.Event[ke.size()]);
             //System.out.println(ke.get(0).getEvent_name());
 
@@ -38,7 +41,7 @@
                 </div>
                 <div class="box-body">
                     
-                    <% for (Model.Event i : ke) {%>
+                    <% for (Model.Event i : ke_array) {%>
                     <form action="Manage_event_Servlet">
                         <div class="event-rows">
                             <div class="col-xs-3"><%= i.getEvent_name()%></div>
