@@ -72,12 +72,12 @@ public class Update_event_Servlet extends HttpServlet {
             String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 
             if (!fileName.equals("")) {
-                part.write(savepath + event.getEvent_id() + "_event_img.jpg");
+                part.write(savepath + event_id + "_event_img.jpg");
                 System.out.println("WRITED !");
             }
 
             String image;
-            image = ("assets/image/event_img/" + event.getEvent_id() + "_event_img.jpg");
+            image = ("assets/image/event_img/" + event_id + "_event_img.jpg");
 
             Statement stmt = null;
             try {
@@ -102,9 +102,14 @@ public class Update_event_Servlet extends HttpServlet {
                 event.setLocation(location);
                 event.setDetail(detail);
                 event.setOrganizer(organizer);
-                event.setDate_event(date_event);
-                event.setEvent_start(event_start);
+                //event.setDate_event(date_event);
+                //event.setEvent_start(event_start);
                 event.setImage(image);
+                
+                System.out.println("IMG eieiza : " + image);
+                
+                session.setAttribute("event_session_new", event);
+                session.setAttribute("event_session", event);
 
                 response.sendRedirect("Event_Servlet?eid=" + event_id);
 

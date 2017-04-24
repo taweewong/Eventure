@@ -18,8 +18,8 @@
         <div class="container-fluid">
             <%
                     Model.Event event = new Event();
-                    event = (Model.Event) session.getAttribute("event_id_inf");
-                    System.out.println(event.getEvent_name());
+                    event = (Model.Event) session.getAttribute("event_session");
+                    System.out.println("IMG EVENT >>>>>>>> ! >>>>>>>>> " + event.getImage());
 
                 %>
             <div class="head-pic">
