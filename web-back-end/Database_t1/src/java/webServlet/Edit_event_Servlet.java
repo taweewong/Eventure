@@ -44,7 +44,7 @@ public class Edit_event_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            String event_id = "1"; //request.getParameter("event_id")
+            String event_id = request.getParameter("event_id"); //request.getParameter("event_id")
             
             Event event = new Event();
             
@@ -61,13 +61,14 @@ public class Edit_event_Servlet extends HttpServlet {
                 ResultSet rs = stmt.executeQuery(sql);
                 
                 if (rs.next()) {
-                    event.setEvent_id("event_id");
+                    event.setEvent_id(event_id);
                     event.setEvent_name(rs.getString("EVENT_NAME"));
                     event.setLocation(rs.getString("LOCATION"));
                     event.setDetail(rs.getString("DETAIL"));
                     event.setOrganizer(rs.getString("ORGANIZER"));
                     event.setDate_event(rs.getDate("DATE_EVENT"));
                     event.setEvent_start(rs.getTime("EVENT_START"));
+                    event.setImage(rs.getString("IMAGE"));
                 }
                 
                 session.setAttribute("event_session", event);

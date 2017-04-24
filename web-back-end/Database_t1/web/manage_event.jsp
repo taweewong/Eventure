@@ -16,14 +16,15 @@
 
     <body>
         <div class="container-fluid">
-            <div class="head-pic">
-                <img class="head-pic-crop" src="assets/css/pic/anthony-delanoix-48936.jpg">
-                <%
+            <%
                     Model.Event event = new Event();
                     event = (Model.Event) session.getAttribute("event_id_inf");
                     System.out.println(event.getEvent_name());
 
                 %>
+            <div class="head-pic">
+                <img class="head-pic-crop" src="<%= event.getImage() %>">
+                
             </div>
             <div class="container">
                 <div class="row">

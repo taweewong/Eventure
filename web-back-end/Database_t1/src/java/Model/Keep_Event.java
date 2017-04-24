@@ -125,6 +125,7 @@ public class Keep_Event implements Serializable{
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
+                ev.setImage(rs.getString("IMAGE"));
                 events.add(ev);
             }
 
@@ -155,6 +156,7 @@ public class Keep_Event implements Serializable{
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
+                ev.setImage(rs.getString("IMAGE"));
                 events.add(ev);
             }
 

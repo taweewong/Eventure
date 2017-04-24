@@ -52,6 +52,8 @@
                     events = (LinkedList<Model.Event>) ke.getEvents();
                     //Model.Event[] array = ke.toArray(new Model.Event[ke.size()]);
                     //System.out.println(events.get(0).getEvent_name());
+                    
+                    
 
                 %>
 
@@ -59,7 +61,9 @@
                     <% for(Model.Event i: events) {%>
                     <a class="event-thumbnail" href="Event_Servlet?eid=<%= i.getEvent_id() %>" value="<% i.getEvent_id(); %>">
                         <div class=up-block>
-                            <img class="up_pic" src="assets/css/pic/NoImageAvailable.png" width="210">
+                            <div class="img-up-block">
+                                <img class="up_pic" src="<%= i.getImage()%>" width="210">
+                            </div>                  
                             <h4><%= i.getEvent_name()%></h4>
                             <h5><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation()%></h5>
                             <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event()%> | <%= i.getEvent_start()%></h5>					
@@ -89,7 +93,10 @@
                     <% System.out.println("aaa"); %>
                     <a class="event-thumbnail" href="Event_Servlet?eid=<%= i.getEvent_id() %>" value="<% i.getEvent_id(); %>">
                         <div class="exp-block">
-                            <img class="up_pic" src="assets/css/pic/noImageAvailable.jpg" width="300">
+                            <div class="img-block">
+                                <img class="up_pic" src="<%= i.getImage()%>" width="300">
+                            </div>
+                            
                             <h3><%= i.getEvent_name()%></h3>
                             <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation() %></h4>
                             <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event()%> | <%= i.getEvent_start()%></h4>	

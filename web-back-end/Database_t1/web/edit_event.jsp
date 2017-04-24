@@ -25,7 +25,7 @@
                     <% 
                         Event event = (Event) session.getAttribute("event_session");
                     %>
-                    <form action="Update_event_Servlet" method="post" id="create_form">
+                    <form action="Update_event_Servlet" method="post" enctype="multipart/form-data" id="create_form">
                         <div class="dropdown" align="right">
 
                             <select class="selectpicker" name="category" form="create_form" title="select category" required>
@@ -56,9 +56,12 @@
                                 <textarea name="event_desc" rows="8" cols="84"><%= event.getDetail() %></textarea><br><br>
                             </div>
                             
+                            <h4>Event image</h4>
+                            <input type="file" id="event-img" name="file" accept="image/*"><br><br>
+                            
                             <div class="sbutton">
                                 <div class="button">
-                                    <input type="submit" name="submit" value="Create Eventure" id="submit"> &nbsp; or &nbsp; <a href="index.jsp" id="blue">Discard</a>
+                                    <button type="submit" name="event_id" value="<%= event.getEvent_id() %>" id="submit">Submit</button> &nbsp; or &nbsp; <a href="index.jsp" id="blue">Discard</a>
                                 </div>
                             </div>
                         </div>

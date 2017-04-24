@@ -37,6 +37,12 @@
                 <ul class="nav nav-pills color">
                     <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
                     <li><a data-toggle="pill" href="#member">Member</a></li>
+                    <% if(user.getUser_id().equals(event.getUser_id())) { %>
+                    <form action="Edit_event_Servlet">
+                        <li style="float: right;"><button class="btn btn-default join-btn" name="event_id" value="<%= event.getEvent_id() %>">Edit</button></li>
+                    </form>
+                    <% } %>
+                    
                     <% if(reserve.getJOIN().equals("0")) { %>
                     <form action="Check_join_Servlet">
                         <li style="float: right;"><button class="btn btn-default join-btn" name="insert_join" value="<%= user.getUser_id() %>">Join</button></li>
@@ -48,7 +54,7 @@
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">
                         <div class="home-pic">
-                            <img src="assets/css/pic/anthony-delanoix-48936.jpg" class="home-pic-crop">
+                            <img src="<%= event.getImage()%>" class="home-pic-crop">
                         </div>
                         <div class="small-tab">
                             <div class="small-content"><h3><%= event.getEvent_name()%></h3></div>

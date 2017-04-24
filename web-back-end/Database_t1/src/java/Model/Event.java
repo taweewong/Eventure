@@ -34,6 +34,7 @@ public class Event implements Serializable{
     private Time event_start;
     private String user_id;
     private int Form_id;
+    private String image;
     
     
 
@@ -58,10 +59,18 @@ public class Event implements Serializable{
     public void setForm_id(int Form_id) {
         this.Form_id = Form_id;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     
 
    
-
+    
     
     
     public String getUser_id() {
@@ -169,6 +178,14 @@ public class Event implements Serializable{
     
     
     private ServletContext getServletContext() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setEvent_start(String event_start) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setDate_event(String date_event) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
