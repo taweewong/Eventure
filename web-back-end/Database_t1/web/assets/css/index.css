@@ -218,3 +218,19 @@ body {
     color: #0099FF;
     text-decoration: none;
 }
+
+.img-block {
+    width: 300px;
+    height: 200px;
+    display: flex;
+}
+
+.img-up-block {
+    width: 210px;
+    height: 140px;
+    display: flex;
+}
+
+.up-pic {
+    
+}

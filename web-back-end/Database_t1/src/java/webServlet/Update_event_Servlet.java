@@ -9,7 +9,9 @@ import Model.Event;
 import Model.Muser;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,17 +19,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Taweewong
  */
 @WebServlet(name = "Update_event_Servlet", urlPatterns = {"/Update_event_Servlet"})
+@MultipartConfig()
 public class Update_event_Servlet extends HttpServlet {
 
     /**
@@ -43,7 +48,7 @@ public class Update_event_Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             String event_name = request.getParameter("event_name");
             String location = request.getParameter("location");
             String detail = request.getParameter("event_desc");
@@ -51,15 +56,28 @@ public class Update_event_Servlet extends HttpServlet {
             String event_start = request.getParameter("time");
             String date_event = request.getParameter("date");
             String cate_id = request.getParameter("category");
-            
-            String event_id = "1";
-            
+
+            String event_id = request.getParameter("event_id");
+
             Event event = new Event();
-            
+
             HttpSession session = request.getSession();
 
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
+
+            String app = request.getServletContext().getRealPath("");
+            String savepath = app + "assets/image/event_img/";
+            Part part = request.getPart("file");
+            String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+
+            if (!fileName.equals("")) {
+                part.write(savepath + event.getEvent_id() + "_event_img.jpg");
+                System.out.println("WRITED !");
+            }
+
+            String image;
+            image = ("assets/image/event_img/" + event.getEvent_id() + "_event_img.jpg");
 
             Statement stmt = null;
             try {
@@ -71,16 +89,25 @@ public class Update_event_Servlet extends HttpServlet {
                         + "organizer = '" + organizer + "', "
                         + "event_start = '" + event_start + "', "
                         + "cate_id = '" + cate_id + "', "
+                        + "image = '" + image + "', "
                         + "date_event = '" + date_event + "'"
                         + "WHERE event_id = '" + event_id + "';";
-                
+
                 System.out.println(sql);
 
                 stmt.executeUpdate(sql);
-                
+
+                event.setEvent_id(event_id);
+                event.setEvent_name(event_name);
+                event.setLocation(location);
+                event.setDetail(detail);
+                event.setOrganizer(organizer);
+                event.setDate_event(date_event);
+                event.setEvent_start(event_start);
+                event.setImage(image);
+
                 response.sendRedirect("Event_Servlet?eid=" + event_id);
 
-                
             } catch (SQLException ex) {
                 Logger.getLogger(Sign_in_Servlet.class.getName()).log(Level.SEVERE, null, ex);
             }
