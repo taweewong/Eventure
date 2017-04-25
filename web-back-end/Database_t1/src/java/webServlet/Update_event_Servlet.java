@@ -106,10 +106,11 @@ public class Update_event_Servlet extends HttpServlet {
                 //event.setEvent_start(event_start);
                 event.setImage(image);
                 
-                System.out.println("IMG eieiza : " + image);
+                System.out.println("IMG eieiza : " + event.getImage());
                 
-                session.setAttribute("event_session_new", event);
                 session.setAttribute("event_session", event);
+                
+                System.out.println("BOBO BOBO : " + ((Event) session.getAttribute("event_session")).getImage());
 
                 response.sendRedirect("Event_Servlet?eid=" + event_id);
 

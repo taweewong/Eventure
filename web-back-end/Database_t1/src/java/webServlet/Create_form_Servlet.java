@@ -83,8 +83,9 @@ public class Create_form_Servlet extends HttpServlet {
                     System.out.println(Integer.parseInt( rs.getString("maxnum")));
                     plus_num++;
                     
-                    System.out.println(plus_form);
+                    System.out.println(plus_form + "--------------------------------" + plus_num);
                     String sql = "INSERT INTO question VALUES("+plus_num+",'"+i+"',"+plus_form+")";
+                    
                     
                     stmt.executeUpdate(sql);
                     

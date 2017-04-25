@@ -38,7 +38,7 @@ public class Event implements Serializable{
     
     
 
-    public Event(String event_id, String event_name, String location, String duration, String detail, String organizer, String cate_id, Date date_event, Time event_start, String user_id, int Form_id) {
+    public Event(String event_id, String event_name, String location, String duration, String detail, String organizer, String cate_id, Date date_event, Time event_start, String user_id, int Form_id, String image) {
         this.event_id = event_id;
         this.event_name = event_name;
         this.location = location;
@@ -50,6 +50,7 @@ public class Event implements Serializable{
         this.event_start = event_start;
         this.user_id = user_id;
         this.Form_id = Form_id;
+        this.image = image;
     }
 
     public int getForm_id() {
