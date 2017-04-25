@@ -24,7 +24,9 @@
             //System.out.println(users.get(0).getFirstname());
             //LinkedList<Model.Question> question_join = new LinkedList<Model.Question>();
             Model.Reserve reserve = new Model.Reserve();
-            reserve = (Model.Reserve) session.getAttribute("question_check_join");
+            if (session.getAttribute("status") != null) {
+                reserve = (Model.Reserve) session.getAttribute("question_check_join");
+            }
         %>
 
 
@@ -37,19 +39,24 @@
                 <ul class="nav nav-pills color">
                     <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
                     <li><a data-toggle="pill" href="#member">Member</a></li>
-                    <% if(user.getUser_id().equals(event.getUser_id())) { %>
+                        <% if ((Boolean) session.getAttribute("status") != null && user.getUser_id().equals(event.getUser_id())) {%>
                     <form action="Edit_event_Servlet">
-                        <li style="float: right;"><button class="btn btn-default join-btn" name="event_id" value="<%= event.getEvent_id() %>">Edit</button></li>
+                        <li style="float: right;"><button class="btn btn-default join-btn" name="event_id" value="<%= event.getEvent_id()%>">Edit</button></li>
                     </form>
                     <% } %>
-                    
-                    <% if(reserve.getJOIN().equals("0")) { %>
+
+                    <% if ((Boolean) session.getAttribute("status") != null && reserve.getJOIN().equals("0") && event.getForm_id() != 0) { %>
                     <form action="Check_join_Servlet">
-                        <li style="float: right;"><button class="btn btn-default join-btn" name="insert_join" value="<%= user.getUser_id() %>">Join</button></li>
+                        <li style="float: right;"><button class="btn btn-default join-btn" name="insert_join" value="<%= user.getUser_id()%>">Join</button></li>
                     </form>
-                    <% } else{%>
-                      
+                    <% } else if((Boolean) session.getAttribute("status") != null && reserve.getJOIN().equals("0") && event.getForm_id() == 0){%>
+                    <form action="Check_join_no_app_Servlet">
+                        <li style="float: right;"><button class="btn btn-default join-btn" name="insert_join" value="<%= user.getUser_id()%>">Join</button></li>
+                    </form>
+                    <%} else {%>
+                    
                     <%}%>
+                    
                 </ul>
                 <div class="tab-content">
                     <div id="home" class="tab-pane fade in active">

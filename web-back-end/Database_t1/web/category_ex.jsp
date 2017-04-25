@@ -34,7 +34,7 @@
 
                     <% for (Model.Event i : ke) {%>
                     <a class="box col-xs-12 col-sm-4 col-md-3" href="Event_Servlet?eid=<%= i.getEvent_id() %>">
-                        <div><img src="assets/css/pic/NoImageAvailable.png" width="200"></div>                      
+                        <div class="img-div"><img class="img-show" src="<%= i.getImage()%>" width="200"></div>                      
                         <div class="detail">                               
                             <%--<c:forEach  var="i" items="${array}">
                             <%-- NAME : ${i.getEvent_name}" 
@@ -42,7 +42,7 @@
                         </c:forEach> --%>            
                             <h3><%= i.getEvent_name()%></h3>
                             <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= i.getLocation()%>   </h4>
-                            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDuration()%></h4>
+                            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> <%= i.getDate_event()%></h4>
                         </div>
                     </a>
                     <% }%>

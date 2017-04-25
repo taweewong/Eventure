@@ -83,10 +83,12 @@ public class Event_Servlet extends HttpServlet {
 
                 User user = new User();
                 user = (User) session.getAttribute("user_session");
-                Keep_Question kq = new Keep_Question(conn);
-                kq.status_join(user.getUser_id(), EVENT_ID);
-                session.setAttribute("question_check_join", kq.getKeep_reserve());
                 
+                if ((Boolean) session.getAttribute("status")!=null) {
+                    Keep_Question kq = new Keep_Question(conn);
+                    kq.status_join(user.getUser_id(), EVENT_ID);
+                    session.setAttribute("question_check_join", kq.getKeep_reserve());
+                }
                 RequestDispatcher pg = request.getRequestDispatcher("event.jsp");
                 pg.forward(request, response);
                         

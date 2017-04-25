@@ -16,9 +16,9 @@
 
     <body>
         <div class="container-fluid">
-            <%
+                <%
                     Model.Event event = new Event();
-                    event = (Model.Event) session.getAttribute("event_session");
+                    event = (Model.Event) session.getAttribute("event_id_inf");
                     System.out.println("IMG EVENT >>>>>>>> ! >>>>>>>>> " + event.getImage());
 
                 %>
@@ -42,10 +42,12 @@
                             </form>
                             <br>
                             <%-- <a type="button" class="btn btn-default manage-btn">Create Application Form</a> --%>
-
+                            
+                            <% if (event.getForm_id() != 0) { %>               
                             <form action="Join_req_Servlet">
                                 <button type="submit" class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id()%>">View Join Request</button>
                             </form>
+                            <% } %>
                             <%--<a class="btn btn-default manage-btn" name="event" value="<%= event.getEvent_id() %>" href="Join_req_Servlet" role="button">View join request</a>--%>
                             <%--<button type="button" class="btn btn-default manage-btn">View join request</button>--%>
 

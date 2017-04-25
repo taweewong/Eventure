@@ -62,6 +62,7 @@ public class Keep_Event implements Serializable{
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
+                ev.setImage(rs.getString("IMAGE"));
                 events.add(ev);
             }
 
@@ -94,6 +95,7 @@ public class Keep_Event implements Serializable{
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
+                ev.setImage(rs.getString("IMAGE"));
                 events.add(ev);
             }
 
@@ -187,6 +189,7 @@ public class Keep_Event implements Serializable{
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
+                ev.setImage(rs.getString("IMAGE"));
                 events.add(ev);
             }
 
@@ -219,6 +222,8 @@ public class Keep_Event implements Serializable{
             ev.setEvent_start(rs.getTime("EVENT_START"));
             ev.setDate_event(rs.getDate("DATE_EVENT"));
             ev.setEvent_start(rs.getTime("EVENT_START"));
+            ev.setForm_id(rs.getInt("FORM_ID"));
+            ev.setImage(rs.getString("IMAGE"));
             events.add(ev);
 
         } catch (SQLException ex) {
@@ -272,6 +277,7 @@ public class Keep_Event implements Serializable{
                 ev.setOrganizer(rs.getString("ORGANIZER"));
                 ev.setDate_event(rs.getDate("DATE_EVENT"));
                 ev.setEvent_start(rs.getTime("EVENT_START"));
+                ev.setImage(rs.getString("IMAGE"));
                 events.add(ev);
             }
 
