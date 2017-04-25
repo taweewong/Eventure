@@ -1,61 +1,92 @@
 .container {
-	margin-top: 15px;
-	margin-bottom: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .head {
-	height: 150px;
+    height: 150px;
 }
 
 .title {
-	height: 150px;
-	background-color: #0099FF;
-	color: white;
-	display: flex;
-	padding-left: 30px;
+    height: 150px;
+    background-color: #0099FF;
+    color: white;
+    display: flex;
+    padding-left: 30px;
 }
 
 .title>h1 {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .box {
-	border: 2px gray solid;
-	height: 100%;
+    border: 2px gray solid;
+    height: 100%;
 }
 
 .box-head {
-	height: 50px;
-	padding: 30px;
-	border-bottom: 2px #c4c4c4 solid;
+    height: 50px;
+    padding: 30px;
+    border-bottom: 2px #c4c4c4 solid;
 }
 
 .event-rows {
-	height: 40px;
-	display: flex;
-	align-items: center;
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
 
 .btn {
-	background-color: #0099FF;
-	border: none;
-	color: white;
+    background-color: #0099FF;
+    border: none;
+    color: white;
 }
 
 .btn:hover {
-	background-color: #11AAFF;
-	border: none;
-	color: white;
+    background-color: #11AAFF;
+    border: none;
+    color: white;
 }
 
 .btn:active:focus {
-	background-color: #0088EE;
-	border: none;
-	color: white;
+    background-color: #0088EE;
+    border: none;
+    color: white;
 }
 
 .box-body {
-	padding-left: 30px;
-	padding-right: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
+
+.delete-btn {
+    background-color: #ee0000;
+}
+
+.delete-btn:hover {
+    background-color: #ff0000;
+}
+
+.delete-btn:focus:active {
+    background-color: #dd0000;
+}
+
+@media (min-width: 1200px) {
+    .event-rows {
+        height: 40px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .event-rows {
+        height: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0px;
+    }
+}
+

@@ -27,8 +27,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author thitikron_gun
  */
-@WebServlet(name = "Admin_Servlet", urlPatterns = {"/Admin_Servlet"})
-public class Admin_Servlet extends HttpServlet {
+@WebServlet(name = "Delete_event_Servlet", urlPatterns = {"/Delete_event_Servlet"})
+public class Delete_event_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,60 +44,34 @@ public class Admin_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession(true); 
-                       
+            HttpSession session = request.getSession(true);
+
             String event_id = request.getParameter("event_id");
-            String user_id = request.getParameter("user_id");
-            System.out.println(event_id);
-            
+
 //            int event_id_num = Integer.parseInt(event_id);
 //            int user_id_num = Integer.parseInt(user_id);
-            
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
             Statement stmt = null;
-            
-            
-            
-            if(event_id != null){
+
+            if (event_id != null) {
                 int event_id_num = Integer.parseInt(event_id);
                 try {
                     stmt = conn.createStatement();
-                    String sql = "delete from EVENT where EVENT_ID = "+ event_id_num +";" ;  
-                    String sql2 = "delete from FILL where EVENT_ID = "+ event_id_num +";" ; 
-                    String sql3 = "delete from RESERVE where EVENT_ID = "+ event_id_num +";" ;
+                    String sql = "delete from EVENT where EVENT_ID = " + event_id_num + ";";
+                    String sql2 = "delete from FILL where EVENT_ID = " + event_id_num + ";";
+                    String sql3 = "delete from RESERVE where EVENT_ID = " + event_id_num + ";";
                     stmt.executeUpdate(sql);
                     stmt.executeUpdate(sql2);
                     stmt.executeUpdate(sql3);
 
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Admin_Servlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Delete_event_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            
-            else if (user_id != null){
-                  int user_id_num = Integer.parseInt(user_id);
-                try {
-                    stmt = conn.createStatement();
-                    String sql = "delete from ACCOUNT where USER_ID = "+ user_id_num +";" ;
-                    String sql2 = "delete from MUSER where USER_ID = "+ user_id_num +";" ;
-                    String sql3 = "delete from RESERVE where USER_ID = "+ user_id_num +";" ;
-                    stmt.executeUpdate(sql);
-                    stmt.executeUpdate(sql2);
-                    stmt.executeUpdate(sql3);
 
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Admin_Servlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-            }
-            
-            
-            
-            
-            RequestDispatcher pg = request.getRequestDispatcher("admin.jsp");
-            pg.forward(request, response);
-            
-            
+            response.sendRedirect("My_event_Servlet");
+
         }
     }
 

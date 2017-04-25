@@ -47,13 +47,11 @@ public class Sign_in_Servlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            
+
             HttpSession session = request.getSession(true);
-            
+
             Boolean status_login = false;
-            
-            
-            
+
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
             int login;
@@ -61,27 +59,22 @@ public class Sign_in_Servlet extends HttpServlet {
             try {
                 stmt = conn.createStatement();
                 String sql = "SELECT * FROM muser where USERNAME = '" + username + "'";
-                
+
                 ResultSet rs = stmt.executeQuery(sql);
-                
-                
-                
-                
+
                 if (rs.next()) {
-                    
+
                     System.out.println(rs.getString("USERNAME"));
                     if (rs.getString("USERNAME").equals(username) && rs.getString("PASSWORD").equals(password)) {
                         out.println("pass");
                         String sql1 = "SELECT * FROM ACCOUNT where USER_ID= '" + rs.getString("USER_ID") + "'";
-                        String sql2 = "SELECT * FROM RESERVE join MUSER USING (USER_ID) where '"+ rs.getString("USER_ID")+"'";
-                        
-                        
-                        if(rs.getString("ADMIN_ID").equals("5807") ){
+                        String sql2 = "SELECT * FROM RESERVE join MUSER USING (USER_ID) where '" + rs.getString("USER_ID") + "'";
+
+                        if (rs.getString("ADMIN_ID").equals("5807")) {
                             String admin_mode = "admin";
                             session.setAttribute("admin_mode", admin_mode);
                             System.out.println(admin_mode);
-                        }
-                        else{
+                        } else {
                             String admin_mode = "none";
                             session.setAttribute("admin_mode", admin_mode);
                         }
@@ -91,45 +84,40 @@ public class Sign_in_Servlet extends HttpServlet {
                         rs1 = stmt.executeQuery(sql1);
                         rs1.next();
                         session.setAttribute("username", username);
-                        Muser muser = new Muser (rs1.getString("USER_ID"), username, password,rs1.getString("ACCOUNT_ID"), rs.getString("ADMIN_ID"));    
-                        
-                        
+                        Muser muser = new Muser(rs1.getString("USER_ID"), username, password, rs1.getString("ACCOUNT_ID"), rs.getString("ADMIN_ID"));
+
                         stmt = null;
                         ResultSet rs2 = null;
                         stmt = conn.createStatement();
                         rs2 = stmt.executeQuery(sql2);
                         rs2.next();
-                        
-                        User user = new User(username, password, rs1.getString("EMAIL"), rs1.getString("USER_ID"),rs2.getString("EVENT_ID"),rs.getString("ADMIN_ID"), rs1.getString("ACCOUNT_ID"), rs1.getString("FIRST_NAME"), rs1.getString("LAST_NAME"), rs1.getString("B_DATE"), rs1.getString("ADDRESS"), rs1.getString("PHONE"), rs1.getString("IMAGE"), rs1.getString("OCCUPATION"), rs1.getString("GENDER"));
-                        
+
+                        User user = new User(username, password, rs1.getString("EMAIL"), rs1.getString("USER_ID"), rs2.getString("EVENT_ID"), rs.getString("ADMIN_ID"), rs1.getString("ACCOUNT_ID"), rs1.getString("FIRST_NAME"), rs1.getString("LAST_NAME"), rs1.getString("B_DATE"), rs1.getString("ADDRESS"), rs1.getString("PHONE"), rs1.getString("IMAGE"), rs1.getString("OCCUPATION"), rs1.getString("GENDER"));
+
                         session.setAttribute("user_session", user);
                         session.setAttribute("muser_session", muser);
-                        
+
 //                        status_login = true;
 //                        session.setAttribute("status", status_login);
 ////                        
                         login = 1;
                         session.setAttribute("status", true);
-                        
-                        
+
                         //response.sendRedirect("index.jsp");
-                        
                         RequestDispatcher pg = request.getRequestDispatcher("index.jsp");
                         pg.forward(request, response);
-                        
-                        
-                        
-                        
-                        
+
                     } else {
                         out.println("not pass");
                         session.setAttribute("status", false);
+                        RequestDispatcher pg = request.getRequestDispatcher("sign_in.jsp");
+                        pg.forward(request, response);
                     }
 
                 } else {
                     out.println("sign up");
                     session.setAttribute("status", false);
-                    RequestDispatcher pg = request.getRequestDispatcher("sign_up.html");
+                    RequestDispatcher pg = request.getRequestDispatcher("sign_up.jsp");
                     pg.forward(request, response);
                 }
             } catch (SQLException ex) {

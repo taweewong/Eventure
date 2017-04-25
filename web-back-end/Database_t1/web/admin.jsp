@@ -67,7 +67,7 @@
                                     <p class="text locate-list"><%= i.getOrganizer()%></p>
                                 </div>
                                 <form action="Admin_Servlet" method="POST">
-                                    <div class="col-xs-2"><button type="submit" name="evnet_id" value="<%= i.getEvent_id()%>" class="btn btn-default manage-btn">Delete</button></div>
+                                    <div class="col-xs-2"><button type="submit" name="event_id" value="<%= i.getEvent_id()%>" class="btn btn-default manage-btn">Delete</button></div>
                                 </form>
 
                             </div>

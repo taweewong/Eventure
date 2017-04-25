@@ -64,10 +64,10 @@
                             <img src="<%= event.getImage()%>" class="home-pic-crop">
                         </div>
                         <div class="small-tab">
-                            <div class="small-content"><h3><%= event.getEvent_name()%></h3></div>
-                            <div class="small-content"><p><%= event.getCate_id()%></p></div>
-                            <div class="small-content"><p><%= event.getLocation()%></p></div>
-                            <div class="small-content"><p><%= event.getDuration()%></p></div>
+                            <div class="small-content"><p><%= event.getEvent_name()%></p></div>
+                            <div class="small-content"><p>Date :<%= event.getDate_event()%></p></div>
+                            <div class="small-content"><p>Location : <%= event.getLocation()%></p></div>
+                            
                         </div>
                         <div class="detail">
                             <p>&emsp; <%= event.getDetail()%> </p>
