@@ -77,7 +77,7 @@ public class Create_event_Servlet extends HttpServlet {
             
             Statement get_userid;
             Statement set_k;
-            System.out.println("user_id_createvent"+userid.getUser_id());
+           // System.out.println("user_id_createvent"+userid.getUser_id());
 
             try {
                 
