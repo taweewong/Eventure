@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="box col-md-8 col-md-offset-2">
                     <h1 class="header">Create Eventure</h1>
-                    <form action="Create_event_Servlet" method="post" id="create_form">
+                    <form action="Create_event_Servlet" method="post" enctype="multipart/form-data" id="create_form">
                         <div class="dropdown" align="right">
 
                             <select class="selectpicker" name="category" form="create_form" title="select category" required>
@@ -51,6 +51,9 @@
                                 Event description : <br>
                                 <textarea name="event_desc" rows="8" cols="84"></textarea><br><br>
                             </div>
+                            
+                            <h4>Event image</h4>
+                            <input type="file" id="event-img" name="file" accept="image/*"><br><br>
                             
                             <div class="sbutton">
                                 <div class="button">

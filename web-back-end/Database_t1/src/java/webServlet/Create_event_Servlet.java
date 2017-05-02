@@ -1,10 +1,10 @@
-
 package webServlet;
 
 import Model.Keep_Event;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,17 +15,20 @@ import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author thitikron_gun
  */
 @WebServlet(name = "Create_event_Servlet", urlPatterns = {"/Create_event_Servlet"})
+@MultipartConfig()
 public class Create_event_Servlet extends HttpServlet {
 
     /**
@@ -42,7 +45,7 @@ public class Create_event_Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+
             String event_name = request.getParameter("event_name");
             String date = request.getParameter("date");
             String time = request.getParameter("time");
@@ -50,63 +53,73 @@ public class Create_event_Servlet extends HttpServlet {
             String event_desc = request.getParameter("event_desc");
             String organizer = request.getParameter("organizer");
             String cate_id = request.getParameter("category");
-            String image = "assets/image/event_img/default.jpg";
-
 
             HttpSession session = request.getSession(true);
 
             ServletContext ctx = getServletContext();
             Connection conn = (Connection) ctx.getAttribute("connection");
-            
+
             Keep_Event ke = new Keep_Event(conn);
             ke.query_event_id();
-            
-            
-            
-            
-            String event_id = ke.getNum();
-  
-            int eventid_new = Integer.parseInt(event_id);
-            eventid_new++;
-            event_id = eventid_new + "";
-            
-            String duration = "0";   
-            User userid = (User) session.getAttribute("user_session");
-            //System.out.println(userid.getUser_id()+"jjjjjjjj");
-            Statement stmt;
-            
-            Statement get_userid;
-            Statement set_k;
-           // System.out.println("user_id_createvent"+userid.getUser_id());
+
+            String image = null;
 
             try {
-                
-                
-                
+                Statement get_ev_id = conn.createStatement();
+                String sql_ev_id = "SELECT max(event_id) FROM event";
 
-                stmt = conn.createStatement();
-             
-                String sql1 = "INSERT INTO EVENT VALUES ("+event_id+",'"+event_name+"','"+location+"',"+duration+",'"+event_desc+"','"+organizer+"',"+userid.getUser_id()+",'"+cate_id+"','"+date+"','"+time+"', NULL, '"+image+"');";
-                System.out.println("sql1");
-                System.out.println(sql1);
-                stmt.executeUpdate(sql1);
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                ResultSet rs_ev_id = get_ev_id.executeQuery(sql_ev_id);
+
+                rs_ev_id.next();
+                int event_id = rs_ev_id.getInt("max(event_id)") + 1;
+
+                String app = request.getServletContext().getRealPath("");
+                String savepath = app + "assets/image/event_img/";
+                Part part = request.getPart("file");
+                String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+
+                if (!fileName.equals("")) {
+                    part.write(savepath + event_id + "_event_img.jpg");
+                    System.out.println("WRITED !");
+                    image = ("assets/image/event_img/" + event_id + "_event_img.jpg");
+                } else {
+                    image = ("assets/image/event_img/default.jpg");
+                }
+
             } catch (SQLException ex) {
                 Logger.getLogger(Create_event_Servlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-               
-                
-          
-            
+
+            System.out.println("IMAGE >>>>>>>>>>>>>>>> " + image);
+
+            String event_id = ke.getNum();
+
+            int eventid_new = Integer.parseInt(event_id);
+            eventid_new++;
+            event_id = eventid_new + "";
+
+            String duration = "0";
+            User userid = (User) session.getAttribute("user_session");
+            //System.out.println(userid.getUser_id()+"jjjjjjjj");
+            Statement stmt;
+
+            Statement get_userid;
+            Statement set_k;
+            // System.out.println("user_id_createvent"+userid.getUser_id());
+
+            try {
+
+                stmt = conn.createStatement();
+
+                String sql1 = "INSERT INTO EVENT VALUES (" + event_id + ",'" + event_name + "','" + location + "'," + duration + ",'" + event_desc + "','" + organizer + "'," + userid.getUser_id() + ",'" + cate_id + "','" + date + "','" + time + "', NULL, '" + image + "');";
+                System.out.println("sql1");
+                System.out.println(sql1);
+                stmt.executeUpdate(sql1);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Create_event_Servlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             RequestDispatcher pg = request.getRequestDispatcher("index.jsp");
             pg.forward(request, response);
         }

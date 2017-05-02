@@ -28,12 +28,28 @@
         <div class="container-fluid">
             <div class="wrapper center-block">
                 <div class="title">
-                    <div><h1>Technical</h1></div>
+                    <div><h1>
+                            <% if (ke.get(0).getCate_id().equals("01")) { %>
+                            Technical
+                            <% } else if (ke.get(0).getCate_id().equals("02")) {%>
+                            Art & Music
+                            <% } else if (ke.get(0).getCate_id().equals("03")) {%>
+                            Sport & Health
+                            <% } else if (ke.get(0).getCate_id().equals("04")) {%>
+                            Community
+                            <% } else if (ke.get(0).getCate_id().equals("05")) {%>
+                            Food
+                            <% } else if (ke.get(0).getCate_id().equals("06")) {%>
+                            IT
+                            <% } else if (ke.get(0).getCate_id().equals("07")) {%>
+                            Other
+                            <% } %>
+                        </h1></div>
                 </div>
                 <div class="show-case">
 
                     <% for (Model.Event i : ke) {%>
-                    <a class="box col-xs-12 col-sm-4 col-md-3" href="Event_Servlet?eid=<%= i.getEvent_id() %>">
+                    <a class="box col-xs-12 col-sm-4 col-md-3" href="Event_Servlet?eid=<%= i.getEvent_id()%>">
                         <div class="img-div"><img class="img-show" src="<%= i.getImage()%>" width="200"></div>                      
                         <div class="detail">                               
                             <%--<c:forEach  var="i" items="${array}">

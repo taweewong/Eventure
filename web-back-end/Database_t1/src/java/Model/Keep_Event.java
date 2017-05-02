@@ -143,7 +143,7 @@ public class Keep_Event implements Serializable{
             Statement stmt = null;
             ResultSet rs = null;
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE DATE_EVENT >= NOW() Group by DATE_EVENT, EVENT_ID ORDER BY RAND() LIMIT 8;";
+            String sql = "SELECT * FROM CATEGORY JOIN EVENT USING (CATE_ID) WHERE DATE_EVENT >= NOW() Group by DATE_EVENT, EVENT_ID ORDER BY RAND() LIMIT 12;";
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {

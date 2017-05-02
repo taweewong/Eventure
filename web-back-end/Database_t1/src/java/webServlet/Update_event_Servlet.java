@@ -70,6 +70,8 @@ public class Update_event_Servlet extends HttpServlet {
             String savepath = app + "assets/image/event_img/";
             Part part = request.getPart("file");
             String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+            
+            
 
             if (!fileName.equals("")) {
                 part.write(savepath + event_id + "_event_img.jpg");
